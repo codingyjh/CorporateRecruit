@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.jumbotron {
+	background: url('/images/companyInfo/vision/jpg/vision.jpg');
+	background-size:cover;
+	color: white;
+}
+.row .col-sm-5 {
+	text-align: center;
+}

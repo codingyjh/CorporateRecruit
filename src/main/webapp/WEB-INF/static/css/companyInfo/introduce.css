@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.jumbotron {
+	background: url('/images/companyInfo/introduce/jpg/company.jpg');
+	background-size:cover;
+	color: white;
+}
+		
+.inner {
+	position: relative;
+	text-align: center;
+}
+		
+.row .col-sm-5:first-child {
+	text-align: center;
+} 

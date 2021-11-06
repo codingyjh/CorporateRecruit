@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.jumbotron{
+	background: url('/images/recruitInfo/talentedHRModel/jpg/talentedHRModel.jpg');	
+	background-size:cover;
+	color: white;
+}
+	
+.row > .imgDiv {
+	text-align: center;
+}

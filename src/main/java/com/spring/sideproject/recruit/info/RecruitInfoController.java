@@ -12,4 +12,9 @@ public class RecruitInfoController {
 	public String viewRecruitmentGuidePage() {
 		return HttpRequestHelper.getJspPath();
 	}
+	
+	@GetMapping("/recruitInfo/talentedHRModel")
+	public String viewTalentedHRModelPage() {
+		return HttpRequestHelper.getJspPath();
+	}
 }

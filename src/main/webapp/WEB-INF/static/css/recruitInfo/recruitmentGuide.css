@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.jumbotron {
+	background: url('/images/recruitInfo/recruitmentGuide/jpg/recruitGuide.jpg');	
+	background-size:cover;
+	color: white;
+}

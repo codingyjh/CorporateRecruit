@@ -12,4 +12,9 @@ public class CompanyInfoController {
 	public String viewCompanyIntroducePage() {
 		return HttpRequestHelper.getJspPath();
 	}
+	
+	@GetMapping("/companyInfo/vision")
+	public String viewCompanyVisionPage() {
+		return HttpRequestHelper.getJspPath();
+	}
 }

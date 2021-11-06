@@ -17,4 +17,9 @@ public class CompanyInfoController {
 	public String viewCompanyVisionPage() {
 		return HttpRequestHelper.getJspPath();
 	}
+	
+	@GetMapping("/companyInfo/ceoMessage")
+	public String viewCompanyCeoMessagePage() {
+		return HttpRequestHelper.getJspPath();
+	}
 }

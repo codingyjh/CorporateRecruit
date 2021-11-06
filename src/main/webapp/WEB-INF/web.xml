@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>CorporateRecruit</display-name>
+  
+  <!-- 세션 타임아웃 -->
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+  
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/pc/errors/error403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/pc/errors/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/pc/errors/error500.jsp</location>
+	</error-page>  
 <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>

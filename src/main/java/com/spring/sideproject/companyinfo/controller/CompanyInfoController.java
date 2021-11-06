@@ -1,4 +1,4 @@
-package com.spring.sideproject.company.info.controller;
+package com.spring.sideproject.companyinfo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.spring.sideproject.recruit.info.controller;
+package com.spring.sideproject.recruitinfo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

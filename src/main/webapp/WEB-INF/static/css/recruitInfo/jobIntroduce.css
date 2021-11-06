@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.jumbotron {
+	background: url('/images/recruitInfo/jobIntroduce/jpg/jobIntroduce.jpg');	
+	background-size:cover;
+	color: white;
+}
+.modal-header {
+	text-align: center;
+}
+#row > p {
+	font-size: 20px;
+}		
+.row .col-sm-4:first-child {
+	text-align: center;
+}

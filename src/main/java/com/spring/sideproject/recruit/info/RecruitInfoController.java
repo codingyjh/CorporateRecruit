@@ -17,4 +17,9 @@ public class RecruitInfoController {
 	public String viewTalentedHRModelPage() {
 		return HttpRequestHelper.getJspPath();
 	}
+	
+	@GetMapping("/recruitInfo/jobIntroduce")
+	public String viewJobIntroducePage() {				
+		return HttpRequestHelper.getJspPath();
+	}
 }

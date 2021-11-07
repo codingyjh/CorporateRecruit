@@ -61,4 +61,11 @@ public class RecruitMemberController {
 		
 		return view;
 	}
+	
+	@GetMapping("/recruitMember/recruitMemberLogout")
+	public String doRecruitMemberLogoutAction(HttpSession session) {
+		
+		session.invalidate();
+		return "redirect:/companyMain/main";
+	}
 }

@@ -23,4 +23,9 @@ public class RecruitMemberController {
 //			) {
 //		
 //	}
+	
+	@GetMapping("/recruitMember/recruitMemberLogin")
+	public String viewRecruitMemberLoginPage() {
+		return HttpRequestHelper.getJspPath();
+	}
 }

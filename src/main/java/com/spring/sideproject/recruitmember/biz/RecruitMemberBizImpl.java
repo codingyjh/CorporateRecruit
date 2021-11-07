@@ -16,8 +16,12 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 	@Override
 	public boolean registOneRecruitMember(RecruitMemberVo recruitMemberVo) {
 		
-
-		recruitMemberVo.setPassword(recruitMemberVo.getPassword());
+		String salt = SHA256Util.generateSalt();
+		String password = this.getHashedPassword(salt, recruitMemberVo.getPassword()); 
+		
+		recruitMemberVo.setPassword(password);
+		recruitMemberVo.setSalt(salt);
+		
 		return this.recruitMemberDao.insertOneRecruitMember(recruitMemberVo) > 0;
 	}
 	
@@ -27,6 +31,14 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 
 	@Override
 	public RecruitMemberVo readOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+		
+		String salt = this.recruitMemberDao.getSaltByEmail(recruitMemberVo.getEmail());
+		
+		if ( salt != null ) {
+			String password = this.getHashedPassword(salt, recruitMemberVo.getPassword());
+			recruitMemberVo.setPassword(password);
+		}
+		
 		return this.recruitMemberDao.selectOneRecruitMember(recruitMemberVo);
 	}
 

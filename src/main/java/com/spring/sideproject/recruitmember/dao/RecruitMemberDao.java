@@ -9,4 +9,5 @@ public interface RecruitMemberDao {
 	
 	// 로그인
 	public RecruitMemberVo selectOneRecruitMember(RecruitMemberVo recruitMemberVo);
+	public String getSaltByEmail(String email);
 }

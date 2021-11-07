@@ -26,4 +26,10 @@ public class RecruitMemberDaoImplMyBatis extends SqlSessionDaoSupport implements
 		return getSqlSession().selectOne("RecruitMemberDao.selectOneRecruitMember", recruitMemberVo);
 	}
 
+	@Override
+	public String getSaltByEmail(String email) {
+		return getSqlSession().selectOne("RecruitMemberDao.getSaltByEmail", email);
+	}
+
+
 }

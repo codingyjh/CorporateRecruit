@@ -13,17 +13,19 @@
 								, SALT				
 								, IS_ADMIN_YN
 								, LATEST_LOGIN
-								, LOGIN_FAIL_COUNT				
+								, LOGIN_FAIL_COUNT
+								, MDFY_DT				
   						   	)
 		VALUES				(
 								#{email}
 								, #{name}
 								, #{password}
 								, SYSDATE
-								, NULL
+								, #{salt}
 								, 'N'
 								, NULL
 								, 0	
+								, SYSDATE
 							)  						   
   	</insert>
   	<select id="selectOneRecruitMember"
@@ -38,5 +40,13 @@
   		FROM	RECRUITMEMBER
   		WHERE	EMAIL = #{email}
   		AND		PASSWORD = #{password}  		
+  	</select>
+  	<select id="getSaltByEmail"
+  			parameterType="RecruitMemberVo"
+  			resultType="string">
+  			
+  		SELECT	SALT
+  		FROM	RECRUITMEMBER
+  		WHERE	EMAIL = #{email}
   	</select>  	
   </mapper>

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="RecruitMemberDao">
-  	<insert id="insertOneRecruitMembers" parameterType="RecruitMemberVo">
+  	<insert id="insertOneRecruitMember" parameterType="RecruitMemberVo">
   		INSERT INTO RECRUITMEMBER	(
 								EMAIL
 								, NAME		
@@ -20,10 +20,23 @@
 								, #{name}
 								, #{password}
 								, SYSDATE
-								, #{salt}
+								, NULL
 								, 'N'
-								, SYSDATE
+								, NULL
 								, 0	
 							)  						   
   	</insert>
+  	<select id="selectOneRecruitMember"
+  			parameterType="RecruitMemberVo"
+  			resultType="RecruitMemberVo">
+  		
+  		SELECT	EMAIL
+  				, NAME
+  				, PASSWORD
+  				, IS_ADMIN_YN isAdminYn
+  				, LOGIN_FAIL_COUNT loginFailCount
+  		FROM	RECRUITMEMBER
+  		WHERE	EMAIL = #{email}
+  		AND		PASSWORD = #{password}  		
+  	</select>  	
   </mapper>

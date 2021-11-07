@@ -18,7 +18,12 @@ public class RecruitMemberDaoImplMyBatis extends SqlSessionDaoSupport implements
 	
 	@Override
 	public int insertOneRecruitMember(RecruitMemberVo recruitMemberVo) {
-		return getSqlSession().insert("RecruitMemberDao.insertOneRecruitMembers", recruitMemberVo);
+		return getSqlSession().insert("RecruitMemberDao.insertOneRecruitMember", recruitMemberVo);
+	}
+
+	@Override
+	public RecruitMemberVo selectOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+		return getSqlSession().selectOne("RecruitMemberDao.selectOneRecruitMember", recruitMemberVo);
 	}
 
 }

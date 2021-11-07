@@ -13,8 +13,13 @@ public class RecruitMemberServiceImpl implements RecruitMemberService {
 	private RecruitMemberBiz recruitMemberBiz;
 	
 	@Override
-	public boolean registOneRecruitMembers(RecruitMemberVo recruitMemberVo) {
-		return this.recruitMemberBiz.registOneRecruitMembers(recruitMemberVo);
+	public boolean registOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+		return this.recruitMemberBiz.registOneRecruitMember(recruitMemberVo);
+	}
+
+	@Override
+	public RecruitMemberVo readOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+		return this.recruitMemberBiz.readOneRecruitMember(recruitMemberVo);
 	}
 
 }

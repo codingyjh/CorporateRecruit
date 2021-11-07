@@ -14,19 +14,20 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 	private RecruitMemberDao recruitMemberDao;
 	
 	@Override
-	public boolean registOneRecruitMembers(RecruitMemberVo recruitMemberVo) {
+	public boolean registOneRecruitMember(RecruitMemberVo recruitMemberVo) {
 		
-		String salt = SHA256Util.generateSalt();
-		String password = this.getHashedPassword(salt, recruitMemberVo.getPassword());
-		
-		recruitMemberVo.setPassword(password);
-		recruitMemberVo.setSalt(salt);
-		
+
+		recruitMemberVo.setPassword(recruitMemberVo.getPassword());
 		return this.recruitMemberDao.insertOneRecruitMember(recruitMemberVo) > 0;
 	}
 	
 	public String getHashedPassword(String salt, String password) {
 		return SHA256Util.getEncrypt(password, salt);
+	}
+
+	@Override
+	public RecruitMemberVo readOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+		return this.recruitMemberDao.selectOneRecruitMember(recruitMemberVo);
 	}
 
 }

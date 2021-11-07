@@ -5,9 +5,12 @@ import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 public interface RecruitMemberDao {
 	
 	// 회원가입
-	public int insertOneRecruitMember(RecruitMemberVo recruitMemberVo);
+	public int insertOneRecruitMemberDao(RecruitMemberVo recruitMemberVo);
 	
 	// 로그인
-	public RecruitMemberVo selectOneRecruitMember(RecruitMemberVo recruitMemberVo);
-	public String getSaltByEmail(String email);
+	public RecruitMemberVo selectOneRecruitMemberDao(RecruitMemberVo recruitMemberVo);
+	public String getSaltByEmailDao(String email);
+	
+	// 중복체크
+	public int duplicateCheckByEmailDao(String email);
 }

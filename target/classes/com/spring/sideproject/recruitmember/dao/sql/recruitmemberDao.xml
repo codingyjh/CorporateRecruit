@@ -48,5 +48,13 @@
   		SELECT	SALT
   		FROM	RECRUITMEMBER
   		WHERE	EMAIL = #{email}
+  	</select>
+  	<select id="duplicateCheckByEmail"
+  			parameterType="string"
+  			resultType="Integer">
+  		
+  		SELECT	COUNT(*)
+  		FROM	RECRUITMEMBER
+  		WHERE	EMAIL = #{email}  	
   	</select>  	
   </mapper>

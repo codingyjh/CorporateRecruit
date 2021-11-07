@@ -17,18 +17,23 @@ public class RecruitMemberDaoImplMyBatis extends SqlSessionDaoSupport implements
 	}
 	
 	@Override
-	public int insertOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+	public int insertOneRecruitMemberDao(RecruitMemberVo recruitMemberVo) {
 		return getSqlSession().insert("RecruitMemberDao.insertOneRecruitMember", recruitMemberVo);
 	}
 
 	@Override
-	public RecruitMemberVo selectOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+	public RecruitMemberVo selectOneRecruitMemberDao(RecruitMemberVo recruitMemberVo) {
 		return getSqlSession().selectOne("RecruitMemberDao.selectOneRecruitMember", recruitMemberVo);
 	}
 
 	@Override
-	public String getSaltByEmail(String email) {
+	public String getSaltByEmailDao(String email) {
 		return getSqlSession().selectOne("RecruitMemberDao.getSaltByEmail", email);
+	}
+
+	@Override
+	public int duplicateCheckByEmailDao(String email) {
+		return getSqlSession().selectOne("RecruitMemberDao.duplicateCheckByEmail", email);
 	}
 
 

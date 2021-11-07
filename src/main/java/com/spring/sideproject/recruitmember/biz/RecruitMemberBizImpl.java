@@ -14,7 +14,7 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 	private RecruitMemberDao recruitMemberDao;
 	
 	@Override
-	public boolean registOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+	public boolean registOneRecruitMemberBiz(RecruitMemberVo recruitMemberVo) {
 		
 		String salt = SHA256Util.generateSalt();
 		String password = this.getHashedPassword(salt, recruitMemberVo.getPassword()); 
@@ -22,7 +22,7 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 		recruitMemberVo.setPassword(password);
 		recruitMemberVo.setSalt(salt);
 		
-		return this.recruitMemberDao.insertOneRecruitMember(recruitMemberVo) > 0;
+		return this.recruitMemberDao.insertOneRecruitMemberDao(recruitMemberVo) > 0;
 	}
 	
 	public String getHashedPassword(String salt, String password) {
@@ -30,16 +30,21 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 	}
 
 	@Override
-	public RecruitMemberVo readOneRecruitMember(RecruitMemberVo recruitMemberVo) {
+	public RecruitMemberVo readOneRecruitMemberBiz(RecruitMemberVo recruitMemberVo) {
 		
-		String salt = this.recruitMemberDao.getSaltByEmail(recruitMemberVo.getEmail());
+		String salt = this.recruitMemberDao.getSaltByEmailDao(recruitMemberVo.getEmail());
 		
 		if ( salt != null ) {
 			String password = this.getHashedPassword(salt, recruitMemberVo.getPassword());
 			recruitMemberVo.setPassword(password);
 		}
 		
-		return this.recruitMemberDao.selectOneRecruitMember(recruitMemberVo);
+		return this.recruitMemberDao.selectOneRecruitMemberDao(recruitMemberVo);
+	}
+
+	@Override
+	public int duplicateCheckByEmailBiz(String email) {
+		return this.recruitMemberDao.duplicateCheckByEmailDao(email);
 	}
 
 }

@@ -5,8 +5,11 @@ import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 public interface RecruitMemberBiz {
 	
 	// 회원가입
-	public boolean registOneRecruitMember(RecruitMemberVo recruitMemberVo);
+	public boolean registOneRecruitMemberBiz(RecruitMemberVo recruitMemberVo);
 	
 	// 로그인
-	public RecruitMemberVo readOneRecruitMember(RecruitMemberVo recruitMemberVo);
+	public RecruitMemberVo readOneRecruitMemberBiz(RecruitMemberVo recruitMemberVo);
+	
+	// 중복체크
+	public int duplicateCheckByEmailBiz(String email);
 }

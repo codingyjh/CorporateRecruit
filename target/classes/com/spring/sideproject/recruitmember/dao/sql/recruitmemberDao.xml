@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="RecruitMemberDao">
+  	<insert id="insertOneRecruitMembers" parameterType="RecruitMemberVo">
+  		INSERT INTO RECRUITMEMBER	(
+								EMAIL
+								, NAME		
+								, PASSWORD	
+								, CRT_DT			
+								, SALT				
+								, IS_ADMIN_YN
+								, LATEST_LOGIN
+								, LOGIN_FAIL_COUNT				
+  						   	)
+		VALUES				(
+								#{email}
+								, #{name}
+								, #{password}
+								, SYSDATE
+								, #{salt}
+								, 'N'
+								, SYSDATE
+								, 0	
+							)  						   
+  	</insert>
+  </mapper>

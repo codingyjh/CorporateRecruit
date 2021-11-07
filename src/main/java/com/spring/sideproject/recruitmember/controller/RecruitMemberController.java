@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
+import com.spring.sideproject.common.validator.RecruitMemberValidator;
 import com.spring.sideproject.recruitmember.service.RecruitMemberService;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 
@@ -39,11 +42,18 @@ public class RecruitMemberController {
 	
 	@PostMapping("/recruitMember/recruitMemberRegist")
 	public ModelAndView doRecruitMemberRegistAction(
-			@ModelAttribute RecruitMemberVo recruitMemberVo
+			@Validated(value = {RecruitMemberValidator.Regist.class}) @ModelAttribute RecruitMemberVo recruitMemberVo
+			, Errors errors
 			, HttpServletRequest request
 			, HttpServletResponse response) {
 		
 		ModelAndView view = new ModelAndView("redirect:/recruitMember/recruitMemberLogin");
+		
+		if ( errors.hasErrors() ) {
+			view.setViewName("recruitMember/recruitMemberRegist");
+			view.addObject("recruitMemberVo", recruitMemberVo);
+			return view;
+		}
 		
 		boolean isSuccess = this.recruitMemberService.registOneRecruitMemberService(recruitMemberVo);
 		
@@ -57,10 +67,17 @@ public class RecruitMemberController {
 	
 	@PostMapping("/recruitMember/recruitMemberLogin")	
 	public ModelAndView doRecruitMemberLoginAction(
-			@ModelAttribute RecruitMemberVo recruitMemberVo
-			,HttpSession session) {
+			@Validated(value= {RecruitMemberValidator.Login.class}) @ModelAttribute RecruitMemberVo recruitMemberVo
+			, Errors errors
+			, HttpSession session) {
 		
 		ModelAndView view = new ModelAndView("redirect:/companyMain/main");
+		
+		if ( errors.hasErrors() ) {
+			view.setViewName("recruitMember/recruitMemberLogin");
+			view.addObject("recruitMemberVo", recruitMemberVo);
+			return view;
+		}
 		
 		RecruitMemberVo loginMember = this.recruitMemberService.readOneRecruitMemberService(recruitMemberVo);
 		loginMember.setEmail(recruitMemberVo.getEmail());

@@ -34,7 +34,7 @@ var controller = $.extend(new $.CommonObj(), {
 				controller.autoClosingAlert("#successMessage", 2000);
 				$("#registForm").attr({
 					method:"post", 					     				     	
-					action:"/Recruit/recruitMember/recruitMemberRegist.do"
+					action:"/recruitMember/recruitMemberRegist"
 				}).submit();
 			}	
 			
@@ -185,8 +185,7 @@ var controller = $.extend(new $.CommonObj(), {
 				
 			}
 			return true;
-		}
-		else {
+		} else {
 				
 				if ( emailCheckFlag == true) {
 					return true;

@@ -11,37 +11,36 @@
 <!-- 로그인 화면 구성 -->
 <div class="container" style="width: 40%;">
 	<div class="login-box well">
-		 <form:form id="loginForm"
-               		modelAttribute="recruitMemberVO">
-               <legend style="text-align: center;">로그인</legend>
-               <div class="form-group has-feedback">
-		        <div class="input-group">
-      				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-      				<input id="email" type="text" class="form-control" name="email" placeholder="이메일" value="${recruitMemberVO.email}">
-    			</div>
+		<form:form id="loginForm" modelAttribute="recruitMemberVo">
+			<legend style="text-align: center;">로그인</legend>
+			<div class="form-group has-feedback">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+					<input id="email" type="text" class="form-control" name="email" placeholder="이메일" value="${recruitMemberVo.email}">
+				</div>
 		        <span id="emailMessage" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
             	<span class="glyphicon glyphicon-ok form-control-feedback"></span>
-<%--             	<form:errors cssStyle="color: red;" path="email" /> --%>
+            	<form:errors cssStyle="color: red;" path="email" />
        		</div>
                    
-               <div class="form-group has-feedback">
-		        <div class="input-group">
+            <div class="form-group has-feedback">
+				<div class="input-group">
       				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      				<input id="password" type="password" class="form-control" name="password" placeholder="비밀번호" maxlength="20" value="${recruitMemberVO.password}">
+      				<input id="password" type="password" class="form-control" name="password" placeholder="비밀번호" maxlength="20" value="${recruitMemberVo.password}">
     			</div>
 		        <span id="passwordMessage" class="help-block">비밀번호를 입력해주세요.</span>
 		        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-<%-- 		        <form:errors cssStyle="color: red;" path="password" /> --%>
+		        <form:errors cssStyle="color: red;" path="password" />
        		</div>
-               <div>
-               	<input type="button" id="loginBtn" class="btn btn-primary form-control" value="로그인">
-               </div>
-               <br />
-               <div class="text-center">
-               	<p><a href="<c:url value='/recruitMember/recruitMemberRegist' />">회원가입</a></p>
+			<div>
+				<input type="button" id="loginBtn" class="btn btn-primary form-control" value="로그인">
+			</div>
+			<br />
+			<div class="text-center">
+				<p><a href="<c:url value='/recruitMember/recruitMemberRegist' />">회원가입</a></p>
                	<p><a href="<c:url value='/recruitMember/recruitMemberPasswordFindPopup' />" id="passwordFindPopup">비밀번호를 잊으셨나요?</a></p>
-               </div>
-           </form:form>
+			</div>
+		</form:form>
 	</div>
 </div>
 <div class="alert alert-success" id="successMessage">

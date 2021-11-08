@@ -73,15 +73,18 @@ public class RecruitMemberController {
 		
 		ModelAndView view = new ModelAndView("redirect:/companyMain/main");
 		
-		if ( errors.hasErrors() ) {
-			view.setViewName("recruitMember/recruitMemberLogin");
-			view.addObject("recruitMemberVo", recruitMemberVo);
-			return view;
-		}
+//		if ( errors.hasErrors() ) {
+//			view.setViewName("recruitMember/recruitMemberLogin");
+//			view.addObject("recruitMemberVo", recruitMemberVo);
+//			return view;
+//		}
 		
 		RecruitMemberVo loginMember = this.recruitMemberService.readOneRecruitMemberService(recruitMemberVo);
 		loginMember.setEmail(recruitMemberVo.getEmail());
 		loginMember.setPassword(recruitMemberVo.getPassword());
+		
+		System.out.println("loginMember.getEmail() : " + loginMember.getEmail());
+		System.out.println("loginMember.getPassword() : " + loginMember.getPassword());
 		
 		session.setAttribute(Session.USER, loginMember);
 		
@@ -107,5 +110,10 @@ public class RecruitMemberController {
 		
 		session.invalidate();
 		return "redirect:/companyMain/main";
+	}
+	
+	@GetMapping("/recruitMember/recruitMemberUpdate")
+	public String viewRecruitMemberUpdatePage() {
+		return HttpRequestHelper.getJspPath();
 	}
 }

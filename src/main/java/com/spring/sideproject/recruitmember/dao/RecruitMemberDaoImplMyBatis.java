@@ -36,5 +36,10 @@ public class RecruitMemberDaoImplMyBatis extends SqlSessionDaoSupport implements
 		return getSqlSession().selectOne("RecruitMemberDao.duplicateCheckByEmail", email);
 	}
 
+	@Override
+	public int updateOneRecruitMemberInfoDao(RecruitMemberVo recruitMemberVo) {
+		return getSqlSession().update("RecruitMemberDao.updateOneRecruitMemberInfo", recruitMemberVo);
+	}
+
 
 }

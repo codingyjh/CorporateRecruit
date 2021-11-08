@@ -27,4 +27,9 @@ public class RecruitMemberServiceImpl implements RecruitMemberService {
 		return this.recruitMemberBiz.duplicateCheckByEmailBiz(email);
 	}
 
+	@Override
+	public boolean updateOneRecruitMemberInfoService(RecruitMemberVo recruitMemberVo) {
+		return this.recruitMemberBiz.updateOneRecruitMemberInfoBiz(recruitMemberVo);
+	}
+
 }

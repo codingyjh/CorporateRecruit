@@ -12,4 +12,8 @@ public interface RecruitMemberService {
 	
 	// 중복체크
 	public int duplicateCheckByEmailService(String email);
+	
+	// 비밀번호 변경
+	public boolean updateOneRecruitMemberInfoService(RecruitMemberVo recruitMemberVo);
+
 }

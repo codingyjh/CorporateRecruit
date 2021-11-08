@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.sideproject.common.session.Session;
@@ -113,7 +114,27 @@ public class RecruitMemberController {
 	}
 	
 	@GetMapping("/recruitMember/recruitMemberUpdate")
-	public String viewRecruitMemberUpdatePage() {
+	public String viewRecruitMemberInfoUpdatePage() {
 		return HttpRequestHelper.getJspPath();
+	}
+	
+	@PostMapping("/recruitMember/recruitMemberUpdate")
+	public ModelAndView doRecruitMemberInfoUpdateAction(
+			@Validated(value = {RecruitMemberValidator.Update.class})
+			@SessionAttribute(Session.USER) @ModelAttribute RecruitMemberVo recruitMemberVo
+			, Errors errors) {
+		
+		ModelAndView view = new ModelAndView("redirect:/companyMain/main");
+		
+		if ( errors.hasErrors() ) {
+			view.setViewName("recruitMember/recruitMemberUpdate");
+			view.addObject("recruitMemberVo", recruitMemberVo);
+			return view;
+		}
+		
+		boolean isSuccess = this.recruitMemberService.updateOneRecruitMemberInfoService(recruitMemberVo);
+		
+		return view;
+		
 	}
 }

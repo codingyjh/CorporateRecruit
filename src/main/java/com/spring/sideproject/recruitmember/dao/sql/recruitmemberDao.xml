@@ -56,5 +56,14 @@
   		SELECT	COUNT(*)
   		FROM	RECRUITMEMBER
   		WHERE	EMAIL = #{email}  	
-  	</select>  	
+  	</select>
+  	<update id="updateOneRecruitMemberInfo"
+  			parameterType="RecruitMemberVo">
+  			
+  		UPDATE	RECRUITMEMBER
+  		SET		PASSWORD  = #{password}
+  				, SALT = #{salt}
+  				, MDFY_DT = SYSDATE
+  		WHERE	EMAIL = #{email}
+  	</update>  		
   </mapper>

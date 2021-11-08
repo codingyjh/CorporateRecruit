@@ -13,4 +13,7 @@ public interface RecruitMemberDao {
 	
 	// 중복체크
 	public int duplicateCheckByEmailDao(String email);
+	
+	// 비밀번호 변경
+	public int updateOneRecruitMemberInfoDao(RecruitMemberVo recruitMemberVo);
 }

@@ -47,4 +47,16 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 		return this.recruitMemberDao.duplicateCheckByEmailDao(email);
 	}
 
+	@Override
+	public boolean updateOneRecruitMemberInfoBiz(RecruitMemberVo recruitMemberVo) {
+		
+		String salt = SHA256Util.generateSalt();
+		String password = this.getHashedPassword(salt, recruitMemberVo.getPassword());
+		
+		recruitMemberVo.setPassword(password);
+		recruitMemberVo.setSalt(salt);
+		
+		return this.recruitMemberDao.updateOneRecruitMemberInfoDao(recruitMemberVo) > 0;
+	}
+
 }

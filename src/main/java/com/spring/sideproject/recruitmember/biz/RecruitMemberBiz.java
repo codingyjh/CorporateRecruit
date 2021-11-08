@@ -12,4 +12,7 @@ public interface RecruitMemberBiz {
 	
 	// 중복체크
 	public int duplicateCheckByEmailBiz(String email);
+	
+	// 비밀번호 변경
+	public boolean updateOneRecruitMemberInfoBiz(RecruitMemberVo recruitMemberVo);
 }

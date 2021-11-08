@@ -11,7 +11,6 @@ var controller = $.extend(new $.CommonObj(), {
 		
 		$("#password").keyup(function() {
 			controller.passwordRegCheck();
-			
 		});
 		
 		$("#passwordConfirm").keyup(function() {
@@ -92,8 +91,8 @@ var controller = $.extend(new $.CommonObj(), {
 		
 	}, emptyCheck : function() {
 		
-		var passwordEmpty = false;
-		var passwordConfirmEmpty = false;
+		passwordEmpty = false;
+		passwordConfirmEmpty = false;
 		
 		if ( $("#password").val() == "" ) {
 			passwordEmpty = true;
@@ -115,13 +114,13 @@ var controller = $.extend(new $.CommonObj(), {
 			 
 			 if ( passwordEmpty ) {
 				 $("#passwordMessage").text("비밀번호를 입력해주세요.").show();
-				 errorState("#password");
+				 controller.errorState("#password");
 					
 			 }
 			 
 			 if ( passwordConfirmEmpty ) {
 				 $("#passwordConfirmMessage").text("비밀번호 확인을 입력해주세요.").show();
-				 errorState("#passwordConfirm");							
+				 controller.errorState("#passwordConfirm");							
 			 }
 			 return true;
 		 } else {

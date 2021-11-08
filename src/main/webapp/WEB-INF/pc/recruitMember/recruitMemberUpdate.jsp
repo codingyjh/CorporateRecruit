@@ -46,7 +46,7 @@
        		</div>
        		<div class="buttonDiv">
        			<input type="button" id="updateBtn" class="btn btn-primary btn-warning" value="수정">
-       			<a href="/Recruit/" class="btn btn-primary" type="button" >취소</a>
+       			<a href="<c:url value='/companyMain/main' />" class="btn btn-primary" type="button" >취소</a>
        		</div> 
 	    </form:form>		
 	</div>

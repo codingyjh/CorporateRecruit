@@ -20,6 +20,14 @@ public class RecruitBoardController {
 	@Autowired
 	private RecruitBoardService recruitBoardService;
 	
+	@RequestMapping("/recruitBoard/recruitBoardInit") 
+	public String viewRecruitBoardListPageForInitiate(HttpSession session) {
+		
+		session.removeAttribute(Session.RECRUIT_BOARD_SEARCH);
+		return "redirect:/recruitBoard/recruitBoardList";
+	}
+	
+	
 	@RequestMapping("/recruitBoard/recruitBoardList")
 	public ModelAndView viewBoardListPaga(
 			@ModelAttribute RecruitBoardSearchVo recruitBoardSearchVo

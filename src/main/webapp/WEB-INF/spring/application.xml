@@ -16,6 +16,28 @@
 	<mvc:resources location="/WEB-INF/static/bootstrap/" mapping="/bootstrap/**" />
 	<mvc:resources location="/WEB-INF/static/ckeditor5/" mapping="/ckeditor5/**" />
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/recruitMember/recruitMemberUpdate"/>
+			<mvc:mapping path="/recruitMember/recruitMemberInit"/>
+			<mvc:mapping path="/recruitBoard/recruitBoardWrite" />
+			<mvc:mapping path="/recruitBoard/recruitBoardUpdate" />
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberLogin"/>
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberRegist"/>
+			<bean id="sessionInterceptor"
+				  class="com.spring.sideproject.common.interceptor.SessionInterceptor">				  
+			</bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/recruitMember/**"/>
+			<mvc:mapping path="/recruitMember/recruitMemberLogin"/>
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberUpdate"/>
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberLogout"/>
+			<bean id="preventSessionInterceptor"
+				  class="com.spring.sideproject.common.interceptor.PreventSessionInterceptor">			
+			</bean>	
+		</mvc:interceptor>
+	</mvc:interceptors>
 	<bean	id="viewResolver"
 			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="prefix" value="/WEB-INF/" />

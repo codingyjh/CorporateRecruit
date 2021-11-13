@@ -9,6 +9,7 @@ import com.spring.sideproject.common.pager.explorer.ListPageExplorer;
 import com.spring.sideproject.common.pager.explorer.PageExplorer;
 import com.spring.sideproject.recruitboard.dao.RecruitBoardDao;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo;
+import com.spring.sideproject.recruitboard.vo.RecruitBoardVo;
 
 @Component
 public class RecruitBoardBizImpl implements RecruitBoardBiz {
@@ -28,6 +29,11 @@ public class RecruitBoardBizImpl implements RecruitBoardBiz {
 		pageExplorer.setList(this.recruitBoardDao.selectAllRecruitBoardsDao(recruitBoardSearchVo));
 		
 		return pageExplorer;
+	}
+
+	@Override
+	public boolean createOneRecruitBoardBiz(RecruitBoardVo recruitBoardVo) {
+		return this.recruitBoardDao.insertOneRecruitBoardDao(recruitBoardVo) > 0;
 	}
 	
 	

@@ -1,11 +1,14 @@
 package com.spring.sideproject.recruitboard.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +17,8 @@ import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
 import com.spring.sideproject.recruitboard.service.RecruitBoardService;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo;
+import com.spring.sideproject.recruitboard.vo.RecruitBoardVo;
+import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 
 @Controller
 public class RecruitBoardController {
@@ -59,5 +64,24 @@ public class RecruitBoardController {
 	@GetMapping("/recruitBoard/recruitBoardWrite")
 	public String viewRecruitBoardWritePage() {
 		return HttpRequestHelper.getJspPath();
+	}
+	
+	@PostMapping("/recruitBoard/recruitBoardWrite")
+	public ModelAndView doRecruitBoardWriteAction(
+			@ModelAttribute RecruitBoardVo recruitBoardVo
+			, Errors errors
+			, HttpSession session) {
+		
+		ModelAndView view = new ModelAndView("redirect:/recruitBoard/recruitBoardList");
+		
+		RecruitMemberVo loginRecruitMember = (RecruitMemberVo) session.getAttribute(Session.USER);
+		String email = loginRecruitMember.getEmail();
+		
+		recruitBoardVo.setRecruitMemberVo(loginRecruitMember);
+		recruitBoardVo.setEmail(email);
+		
+		boolean isSuccess = this.recruitBoardService.createOneRecruitBoardService(recruitBoardVo);
+		
+		return view;
 	}
 }

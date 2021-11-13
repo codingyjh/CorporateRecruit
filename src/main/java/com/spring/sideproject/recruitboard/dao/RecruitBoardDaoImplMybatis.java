@@ -30,4 +30,9 @@ public class RecruitBoardDaoImplMybatis extends SqlSessionDaoSupport implements 
 		return getSqlSession().selectList("RecruitBoardDao.selectAllRecruitBoardsDao", recruitBoardSearchVo);
 	}
 
+	@Override
+	public int insertOneRecruitBoardDao(RecruitBoardVo recruitBoardVo) {
+		return getSqlSession().insert("RecruitBoardDao.insertOneRecruitBoardDao", recruitBoardVo);
+	}
+
 }

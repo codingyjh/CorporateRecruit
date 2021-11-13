@@ -49,7 +49,7 @@ var controller = $.extend(new $.CommonObj(), {
 			$("#boardWriteForm").attr({
 				method:"post", 
 		     	action:"/recruitBoard/recruitBoardWrite",
-		     	enctype:"multipart/form-data"
+		     	//enctype:"multipart/form-data"
 			}).submit();
 		});
 		

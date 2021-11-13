@@ -59,4 +59,30 @@
 				)
 		WHERE	RNUM >= #{startRow}
   	</select>
+  	<insert id="insertOneRecruitBoardDao" parameterType="RecruitBoardVo">
+		INSERT	INTO	RECRUITBOARD	(
+											BOARD_ID
+											, RECRUIT_DT
+											, TITLE
+											, CONTENT
+											, HIT
+											, EMAIL
+											, WRT_DT
+											, MDFY_DT
+<!-- 											, FILE_NAME -->
+<!-- 											, ORIGIN_FILE_NAME -->
+										)
+		VALUES							(
+											RECRUITBOARD_ID_SEQ.NEXTVAL
+											, #{recruitDt}
+											, #{title}
+											, #{content}
+											, 0
+											, #{email}
+											, SYSDATE
+											, SYSDATE
+<!-- 											, #{fileName}        -->
+<!-- 											, #{originFileName} -->
+										)								  					   
+  	</insert>  	
   </mapper>

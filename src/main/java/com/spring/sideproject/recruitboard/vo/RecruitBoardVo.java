@@ -1,5 +1,6 @@
 package com.spring.sideproject.recruitboard.vo;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.sideproject.common.dao.support.Types;
@@ -11,9 +12,11 @@ public class RecruitBoardVo {
 	private int boardId;
 
 	@Types
+	@NotEmpty(message = "글 제목은 필수 잆력 값입니다.")
 	private String title;
 
 	@Types
+	@NotEmpty(message = "글 내용은 필수 잆력 값입니다.")
 	private String content;
 
 	@Types(alias = "R_EMAIL")
@@ -35,11 +38,12 @@ public class RecruitBoardVo {
 	private String originFileName;
 
 	@Types
+	@NotEmpty(message = "채용마감은 필수 입력 값입니다.")
 	private String recruitDt;
 
 	private MultipartFile file;
 
-	private RecruitMemberVo recruitMemberVO;
+	private RecruitMemberVo recruitMemberVo;
 
 	private String token;
 
@@ -131,12 +135,12 @@ public class RecruitBoardVo {
 		this.file = file;
 	}
 
-	public RecruitMemberVo getRecruitMemberVO() {
-		return recruitMemberVO;
+	public RecruitMemberVo getRecruitMemberVo() {
+		return recruitMemberVo;
 	}
 
-	public void setRecruitMemberVO(RecruitMemberVo recruitMemberVO) {
-		this.recruitMemberVO = recruitMemberVO;
+	public void setRecruitMemberVo(RecruitMemberVo recruitMemberVo) {
+		this.recruitMemberVo = recruitMemberVo;
 	}
 
 	public String getToken() {

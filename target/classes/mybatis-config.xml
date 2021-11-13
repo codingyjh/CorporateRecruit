@@ -6,5 +6,7 @@
 	<configuration>
 		<typeAliases>
 			<typeAlias type="com.spring.sideproject.recruitmember.vo.RecruitMemberVo" alias="RecruitMemberVo"/>
+			<typeAlias type="com.spring.sideproject.recruitboard.vo.RecruitBoardVo" alias="RecruitBoardVo"/>
+			<typeAlias type="com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo" alias="RecruitBoardSearchVo"/>
   		</typeAliases>
   	</configuration>

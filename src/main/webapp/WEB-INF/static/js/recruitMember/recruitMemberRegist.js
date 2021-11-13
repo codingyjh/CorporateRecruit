@@ -23,7 +23,7 @@ var controller = $.extend(new $.CommonObj(), {
 		});
 		
 		$("#name").keyup(function() {
-			controller.NameCheck();
+			controller.nameCheck();
 		});
 		
 		$("#registBtn").click(function() {

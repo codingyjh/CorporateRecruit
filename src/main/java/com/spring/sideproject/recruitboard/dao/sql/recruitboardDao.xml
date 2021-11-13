@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="RecruitBoardDao">
+  	<resultMap type="RecruitBoardVo" id="recruitBoardResultMap">
+		<id property="boardId" column="BOARD_ID" />
+		<result property="recruitDt" column="RECRUIT_DT" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="email" column="R_EMAIL" />
+		<result property="hit" column="HIT" />
+		<result property="wrtDt" column="WRT_DT" />
+		<result property="mdfyDt" column="MDFY_DT" />
+		<result property="fileName" column="FILE_NAME" />
+		<result property="originFileName" column="ORIGIN_FILE_NAME" />
+		
+		<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+			<result property="name" column="NAME"/>
+		</association>
+	</resultMap>
+	
+  	<select id="selectAllRecruitBoardsCountDao" parameterType="RecruitBoardSearchVo" resultType="_int">
+  		SELECT	COUNT(1)
+  		FROM	RECRUITBOARD R
+  				, RECRUITMEMBER M
+		WHERE	R.EMAIL = M.EMAIL
+		<if test="searchKeyword != null and searchKeyword != ''">
+		AND		TITLE LIKE '%' || #{searchKeyword} || '%'
+		</if>  				
+  	</select>	
+   	<select id="selectAllRecruitBoardsDao" parameterType="RecruitBoardSearchVo" resultMap="recruitBoardResultMap">
+  		SELECT	*
+		FROM	(
+					SELECT	A.*
+							, ROWNUM RNUM
+					FROM	(
+								SELECT	R.BOARD_ID
+						  				, R.RECRUIT_DT
+						  				, R.TITLE
+						  				, R.CONTENT
+						  				, R.EMAIL B_EMAIL
+						  				, R.HIT
+						  				, R.WRT_DT
+						  				, R.MDFY_DT
+						  				, M.EMAIL M_EMAIL
+						  				, M.NAME
+						  		FROM	RECRUITBOARD R
+						  				, RECRUITMEMBER M
+						  		WHERE	R.EMAIL = M.EMAIL
+						  		<if test="searchKeyword != null and searchKeyword != ''">
+						  		AND		TITLE LIKE '%' ||#{searchKeyword} || '%' 
+						  		</if>
+						  		ORDER	BY BOARD_ID DESC
+							) A
+					WHERE	ROWNUM <![CDATA[<=]]> #{endRow}
+				)
+		WHERE	RNUM >= #{startRow}
+  	</select>
+  </mapper>

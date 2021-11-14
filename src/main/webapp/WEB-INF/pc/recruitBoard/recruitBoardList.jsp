@@ -18,8 +18,8 @@
            <h1 class="page-header">채용공고 게시판 </h1>
            <input type="text" name="searchKeyword" value="${recruitBoardSearchVo.searchKeyword}" />
            <input type="submit" class="btn btn-primary" value="검색" onsubmit="javascript:movePage(0);"/>			   
-		   <a href="<c:url value='/recruitBoard/recruitBoardInit' />" class="btn btn-primary" type="button">검색 초기화</a>
-		   <a href="<c:url value='/recruitBoard/recruitBoardWrite' />" class="btn btn-primary btn-warning pull-right" type="button" >글 작성</a>
+		   <a href="<c:url value='/recruitBoard/recruitBoardInit.do' />" class="btn btn-primary" type="button">검색 초기화</a>
+		   <a href="<c:url value='/recruitBoard/recruitBoardWrite.do' />" class="btn btn-primary btn-warning pull-right" type="button" >글 작성</a>
         </div>
         <div class="col-lg-12"><!--게시판 넓이 -->
             <div class="panel panel-default">
@@ -42,7 +42,7 @@
                         		<c:forEach items="${recruitBoardVoList}" var="recruitBoard">
 		                            <tr>
 		                                <td>${recruitBoard.boardId}</td>			                                
-		                                <td><a href="<c:url value='/recruitBoard/recruitBoardDetail/${recruitBoard.boardId}' />">${recruitBoard.title}</a></td>			                                
+		                                <td><a href="<c:url value='/recruitBoard/recruitBoardDetail.do/${recruitBoard.boardId}' />">${recruitBoard.title}</a></td>			                                
 		                                <td>${recruitBoard.recruitMemberVo.name}</td>
 		                                <td>${recruitBoard.recruitDt}</td>		                                
 		                                <td>${recruitBoard.wrtDt}</td>

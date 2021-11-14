@@ -16,5 +16,11 @@ public interface RecruitBoardDao {
 	
 	// 채용공고 게시물 등록
 	public int insertOneRecruitBoardDao(RecruitBoardVo recruitBoardVo);
+	
+	// 채용공고 게시물 조회
+	public RecruitBoardVo selectOneRecruitBoardDao(int boardId);
+	
+	// 채용공고 게시물 조회 수 업데이트 
+	public int updateHitOneRecruitBoardDao(int boardId);
 
 }

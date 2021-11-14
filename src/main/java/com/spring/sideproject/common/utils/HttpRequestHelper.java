@@ -61,8 +61,8 @@ public class HttpRequestHelper {
 		Platform platform = getPlatformByUri(request.getRequestURI());
 		
 		String uri = request.getRequestURI();
-//		String jsp = uri.substring(0, uri.lastIndexOf("."));
-		String jsp = uri;
+		String jsp = uri.substring(0, uri.lastIndexOf("."));
+//		String jsp = uri;
 		
 		StringBuffer fullPath = new StringBuffer();
 		

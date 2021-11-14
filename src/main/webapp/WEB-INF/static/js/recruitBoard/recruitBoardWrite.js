@@ -12,7 +12,7 @@ var controller = $.extend(new $.CommonObj(), {
 		ClassicEditor
 			.create(document.querySelector("#content"), {
 				ckfinder: {
-							uploadUrl: 'http://localhost:8080/recruitBoard/recruitBoardImageFileUpload'
+							uploadUrl: 'http://localhost:8080/recruitBoard/recruitBoardImageFileUpload.do'
 				},
 				alignment: {
 					options: ['left', 'center', 'right']
@@ -56,7 +56,7 @@ var controller = $.extend(new $.CommonObj(), {
 			controller.autoClosingAlert("#successMessage", 2000);
 			$("#boardWriteForm").attr({
 				method:"post", 
-		     	action:"/recruitBoard/recruitBoardWrite",
+		     	action:"/recruitBoard/recruitBoardWrite.do",
 		     	//enctype:"multipart/form-data"
 			}).submit();
 		});

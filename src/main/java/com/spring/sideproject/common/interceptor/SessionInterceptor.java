@@ -19,7 +19,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 		RecruitMemberVo recruitMemberVo = (RecruitMemberVo) session.getAttribute(Session.USER);
 		
 		if ( recruitMemberVo == null ) {
-			response.sendRedirect("/recruitMember/recruitMemberLogin");
+			response.sendRedirect("/recruitMember/recruitMemberLogin.do");
 			return false;
 		}
 		return true;		

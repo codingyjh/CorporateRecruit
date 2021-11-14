@@ -25,7 +25,7 @@
 	            <h2 class="h1">일시적인 오류로 인해 페이지를 표시할 수 없습니다.</h2>
 				<h4>잠시 후 다시 시도해 주세요.</h4>
 				<h4>이 페이지가 계속 보인다면, 사이트 관리자에게 문의해 주세요.</h4>
-	            <a href="<c:url value='/companyMain/main' />" class="btn btn-primary" type="button" >홈으로 돌아가기</a>
+	            <a href="<c:url value='/companyMain/main.do' />" class="btn btn-primary" type="button" >홈으로 돌아가기</a>
 	        </div>
 	    </div>
 	</div>

@@ -18,21 +18,21 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/recruitMember/recruitMemberUpdate"/>
-			<mvc:mapping path="/recruitMember/recruitMemberInit"/>
-			<mvc:mapping path="/recruitBoard/recruitBoardWrite" />
-			<mvc:mapping path="/recruitBoard/recruitBoardUpdate" />
-			<mvc:exclude-mapping path="/recruitMember/recruitMemberLogin"/>
-			<mvc:exclude-mapping path="/recruitMember/recruitMemberRegist"/>
+			<mvc:mapping path="/recruitMember/recruitMemberUpdate.do"/>
+			<mvc:mapping path="/recruitMember/recruitMemberInit.do"/>
+			<mvc:mapping path="/recruitBoard/recruitBoardWrite.do" />
+			<mvc:mapping path="/recruitBoard/recruitBoardUpdate.do" />
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberLogin.do"/>
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberRegist.do"/>
 			<bean id="sessionInterceptor"
 				  class="com.spring.sideproject.common.interceptor.SessionInterceptor">				  
 			</bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/recruitMember/**"/>
-			<mvc:mapping path="/recruitMember/recruitMemberLogin"/>
-			<mvc:exclude-mapping path="/recruitMember/recruitMemberUpdate"/>
-			<mvc:exclude-mapping path="/recruitMember/recruitMemberLogout"/>
+			<mvc:mapping path="/recruitMember/recruitMemberLogin.do"/>
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberUpdate.do"/>
+			<mvc:exclude-mapping path="/recruitMember/recruitMemberLogout.do"/>
 			<bean id="preventSessionInterceptor"
 				  class="com.spring.sideproject.common.interceptor.PreventSessionInterceptor">			
 			</bean>	

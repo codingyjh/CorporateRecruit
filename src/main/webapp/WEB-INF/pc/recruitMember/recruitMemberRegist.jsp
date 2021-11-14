@@ -54,7 +54,7 @@
        		</div>
        		<div class="buttonDiv" style="text-align: center;">
        			<input type="button" id="registBtn" class="btn btn-primary btn-warning" value="등록">        			
-       			<a href="<c:url value='/companyMain/main' />" class="btn btn-primary" type="button" >취소</a>        			        			
+       			<a href="<c:url value='/companyMain/main.do' />" class="btn btn-primary" type="button" >취소</a>        			        			
        		</div>
            </form:form>
 	</div>

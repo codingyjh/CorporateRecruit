@@ -36,22 +36,22 @@ public class RecruitMemberController {
 	@Autowired
 	private RecruitMemberService recruitMemberService;
 	
-	@GetMapping("/recruitMember/recruitMemberRegist")
+	@GetMapping("/recruitMember/recruitMemberRegist.do")
 	public String viewRecruitMemberRegistPage() {
 		return HttpRequestHelper.getJspPath();
 	}
 	
-	@PostMapping("/recruitMember/recruitMemberRegist")
+	@PostMapping("/recruitMember/recruitMemberRegist.do")
 	public ModelAndView doRecruitMemberRegistAction(
 			@Validated(value = {RecruitMemberValidator.Regist.class}) @ModelAttribute RecruitMemberVo recruitMemberVo
 			, Errors errors
 			, HttpServletRequest request
 			, HttpServletResponse response) {
 		
-		ModelAndView view = new ModelAndView("redirect:/recruitMember/recruitMemberLogin");
+		ModelAndView view = new ModelAndView("redirect:/recruitMember/recruitMemberLogin.do");
 		
 		if ( errors.hasErrors() ) {
-			view.setViewName("recruitMember/recruitMemberRegist");
+			view.setViewName("recruitMember/recruitMemberRegist.do");
 			view.addObject("recruitMemberVo", recruitMemberVo);
 			return view;
 		}
@@ -61,18 +61,18 @@ public class RecruitMemberController {
 		return view;
 	}
 	
-	@GetMapping("/recruitMember/recruitMemberLogin")
+	@GetMapping("/recruitMember/recruitMemberLogin.do")
 	public String viewRecruitMemberLoginPage() {
 		return HttpRequestHelper.getJspPath();
 	}
 	
-	@PostMapping("/recruitMember/recruitMemberLogin")	
+	@PostMapping("/recruitMember/recruitMemberLogin.do")	
 	public ModelAndView doRecruitMemberLoginAction(
 			@Validated(value= {RecruitMemberValidator.Login.class}) @ModelAttribute RecruitMemberVo recruitMemberVo
 			, Errors errors
 			, HttpSession session) {
 		
-		ModelAndView view = new ModelAndView("redirect:/companyMain/main");
+		ModelAndView view = new ModelAndView("redirect:/companyMain/main.do");
 		
 //		if ( errors.hasErrors() ) {
 //			view.setViewName("recruitMember/recruitMemberLogin");
@@ -84,15 +84,12 @@ public class RecruitMemberController {
 		loginMember.setEmail(recruitMemberVo.getEmail());
 		loginMember.setPassword(recruitMemberVo.getPassword());
 		
-		System.out.println("loginMember.getEmail() : " + loginMember.getEmail());
-		System.out.println("loginMember.getPassword() : " + loginMember.getPassword());
-		
 		session.setAttribute(Session.USER, loginMember);
 		
 		return view;
 	}
 	
-	@RequestMapping("/recruitMember/emailDuplicate")
+	@RequestMapping("/recruitMember/emailDuplicate.do")
 	@ResponseBody
 	public Map<Object, Object> doDulicateCheckOfEmail(
 			@RequestParam String email) {
@@ -106,28 +103,28 @@ public class RecruitMemberController {
 		return map;
 	}
 	
-	@GetMapping("/recruitMember/recruitMemberLogout")
+	@GetMapping("/recruitMember/recruitMemberLogout.do")
 	public String doRecruitMemberLogoutAction(HttpSession session) {
 		
 		session.invalidate();
-		return "redirect:/companyMain/main";
+		return "redirect:/companyMain/main.do";
 	}
 	
-	@GetMapping("/recruitMember/recruitMemberUpdate")
+	@GetMapping("/recruitMember/recruitMemberUpdate.do")
 	public String viewRecruitMemberInfoUpdatePage() {
 		return HttpRequestHelper.getJspPath();
 	}
 	
-	@PostMapping("/recruitMember/recruitMemberUpdate")
+	@PostMapping("/recruitMember/recruitMemberUpdate.do")
 	public ModelAndView doRecruitMemberInfoUpdateAction(
 			@Validated(value = {RecruitMemberValidator.Update.class})
 			@SessionAttribute(Session.USER) @ModelAttribute RecruitMemberVo recruitMemberVo
 			, Errors errors) {
 		
-		ModelAndView view = new ModelAndView("redirect:/companyMain/main");
+		ModelAndView view = new ModelAndView("redirect:/companyMain/main.do");
 		
 		if ( errors.hasErrors() ) {
-			view.setViewName("recruitMember/recruitMemberUpdate");
+			view.setViewName("recruitMember/recruitMemberUpdate.do");
 			view.addObject("recruitMemberVo", recruitMemberVo);
 			return view;
 		}

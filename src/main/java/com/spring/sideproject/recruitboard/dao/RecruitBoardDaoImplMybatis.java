@@ -35,4 +35,14 @@ public class RecruitBoardDaoImplMybatis extends SqlSessionDaoSupport implements 
 		return getSqlSession().insert("RecruitBoardDao.insertOneRecruitBoardDao", recruitBoardVo);
 	}
 
+	@Override
+	public RecruitBoardVo selectOneRecruitBoardDao(int boardId) {
+		return getSqlSession().selectOne("RecruitBoardDao.selectOneRecruitBoardDao", boardId);
+	}	
+	
+	@Override
+	public int updateHitOneRecruitBoardDao(int boardId) {
+		return getSqlSession().update("RecruitBoardDao.updateHitOneRecruitBoardDao", boardId);
+	}
+
 }

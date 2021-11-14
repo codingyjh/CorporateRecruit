@@ -25,13 +25,13 @@ var controller = $.extend(new $.CommonObj(), {
 				controller.autoClosingAlert("#successMessage", 2000);
 				$("#loginForm").attr({
 					method:"post", 				     	
-			     	action:"/recruitMember/recruitMemberLogin"
+			     	action:"/recruitMember/recruitMemberLogin.do"
 				}).submit();	
 			}
 		});
 		
 		$("passwordFindPopup").click(function() {
-			window.open("http://localhost:8080/recruitMember/passwordFindPopup")
+			window.open("http://localhost:8080/recruitMember/passwordFindPopup.do")
 		});
 		
 	}, emailCheck : function() {

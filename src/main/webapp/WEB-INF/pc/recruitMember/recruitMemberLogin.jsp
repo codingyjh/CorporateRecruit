@@ -37,8 +37,8 @@
 			</div>
 			<br />
 			<div class="text-center">
-				<p><a href="<c:url value='/recruitMember/recruitMemberRegist' />">회원가입</a></p>
-               	<p><a href="<c:url value='/recruitMember/recruitMemberPasswordFindPopup' />" id="passwordFindPopup">비밀번호를 잊으셨나요?</a></p>
+				<p><a href="<c:url value='/recruitMember/recruitMemberRegist.do' />">회원가입</a></p>
+               	<p><a href="<c:url value='/recruitMember/recruitMemberPasswordFindPopup.do' />" id="passwordFindPopup">비밀번호를 잊으셨나요?</a></p>
 			</div>
 		</form:form>
 	</div>

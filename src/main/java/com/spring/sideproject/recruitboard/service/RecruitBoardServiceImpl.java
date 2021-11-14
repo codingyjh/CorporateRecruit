@@ -7,6 +7,7 @@ import com.spring.sideproject.common.pager.explorer.PageExplorer;
 import com.spring.sideproject.recruitboard.biz.RecruitBoardBiz;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardVo;
+import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 
 @Service
 public class RecruitBoardServiceImpl implements RecruitBoardService {
@@ -22,6 +23,11 @@ public class RecruitBoardServiceImpl implements RecruitBoardService {
 	@Override
 	public boolean createOneRecruitBoardService(RecruitBoardVo recruitBoardVo) {
 		return this.recruitBoardBiz.createOneRecruitBoardBiz(recruitBoardVo);
+	}
+
+	@Override
+	public RecruitBoardVo readOneRecruitBoardService(int boardId, RecruitMemberVo recruitMemberVo) {
+		return this.recruitBoardBiz.readOneRecruitBoardBiz(boardId, recruitMemberVo);
 	}
 
 }

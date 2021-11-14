@@ -72,7 +72,7 @@
 		          <h3>기업정보 </h3>
 		          <h4>IT의 신기술을 지향하는 OO 기업은</h4>
 		          <h4>스마트한 세상을 향하며 달려가고 있습니다.</h4>
-		          <p><a href="<c:url value='/companyInfo/introduce' />" class="btn btn-primary">자세히 알아보기</a></p>				          
+		          <p><a href="<c:url value='/companyInfo/introduce.do' />" class="btn btn-primary">자세히 알아보기</a></p>				          
 		        </div>
 		     </div>
 		</div>					
@@ -83,7 +83,7 @@
 		          <h3>채용정보 </h3>
 		          <h4>여러분의 빛나는 미래를 위한 첫걸음,</h4>
 		          <h4>OO 기업이 당신의 열정과 함께 합니다.</h4>
-		          <p><a href="<c:url value='/recruitInfo/recruitmentGuide' />" class="btn btn-primary">자세히 알아보기</a></p>				          
+		          <p><a href="<c:url value='/recruitInfo/recruitmentGuide.do' />" class="btn btn-primary">자세히 알아보기</a></p>				          
 		        </div>
 		     </div>
 		</div>

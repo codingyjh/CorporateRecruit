@@ -34,7 +34,7 @@ var controller = $.extend(new $.CommonObj(), {
 				controller.autoClosingAlert("#successMessage", 2000);
 				$("#registForm").attr({
 					method:"post", 					     				     	
-					action:"/recruitMember/recruitMemberRegist"
+					action:"/recruitMember/recruitMemberRegist.do"
 				}).submit();
 			}	
 			
@@ -45,7 +45,7 @@ var controller = $.extend(new $.CommonObj(), {
 		var email = $("#email").val();
 		var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-		$.post("/recruitMember/emailDuplicate"
+		$.post("/recruitMember/emailDuplicate.do"
 				,  {									 
 						"email": $("#email").val()
 					} 

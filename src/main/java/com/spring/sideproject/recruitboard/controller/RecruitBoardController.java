@@ -11,8 +11,10 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.sideproject.common.pager.explorer.PageExplorer;
@@ -29,15 +31,15 @@ public class RecruitBoardController {
 	@Autowired
 	private RecruitBoardService recruitBoardService;
 	
-	@RequestMapping("/recruitBoard/recruitBoardInit") 
+	@RequestMapping("/recruitBoard/recruitBoardInit.do") 
 	public String viewRecruitBoardListPageForInitiate(HttpSession session) {
 		
 		session.removeAttribute(Session.RECRUIT_BOARD_SEARCH);
-		return "redirect:/recruitBoard/recruitBoardList";
+		return "redirect:/recruitBoard/recruitBoardList.do";
 	}
 	
 	
-	@RequestMapping("/recruitBoard/recruitBoardList")
+	@RequestMapping("/recruitBoard/recruitBoardList.do")
 	public ModelAndView viewBoardListPaga(
 			@ModelAttribute RecruitBoardSearchVo recruitBoardSearchVo
 			,HttpSession session) {
@@ -64,19 +66,19 @@ public class RecruitBoardController {
 		return view;
 	}
 	
-	@GetMapping("/recruitBoard/recruitBoardWrite")
+	@GetMapping("/recruitBoard/recruitBoardWrite.do")
 	public String viewRecruitBoardWritePage() {
 		return HttpRequestHelper.getJspPath();
 	}
 	
-	@PostMapping("/recruitBoard/recruitBoardWrite")
+	@PostMapping("/recruitBoard/recruitBoardWrite.do")
 	public ModelAndView doRecruitBoardWriteAction(
 			@ModelAttribute RecruitBoardVo recruitBoardVo
 			, Errors errors
 			, HttpSession session) {
 		
 		
-		ModelAndView view = new ModelAndView("redirect:/recruitBoard/recruitBoardList");
+		ModelAndView view = new ModelAndView("redirect:/recruitBoard/recruitBoardList.do");
 		
 //		if ( errors.hasErrors() ) {
 //			view.setViewName("recruitBoard/recruitBoardWrite");
@@ -91,6 +93,19 @@ public class RecruitBoardController {
 		recruitBoardVo.setEmail(email);
 		
 		boolean isSuccess = this.recruitBoardService.createOneRecruitBoardService(recruitBoardVo);
+		
+		return view;
+	}
+	
+	@RequestMapping("/recruitBoard/recruitBoardDetail.do/{boardId}")
+	public ModelAndView viewRecruitBoardDetailPage(
+			@PathVariable int boardId
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		RecruitBoardVo readRecruitBoard = this.recruitBoardService.readOneRecruitBoardService(boardId, recruitMemberVo);
+		
+		ModelAndView view = new ModelAndView(HttpRequestHelper.getJspPath());
+		view.addObject("recruitBoardVo", readRecruitBoard);
 		
 		return view;
 	}

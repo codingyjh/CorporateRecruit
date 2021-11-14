@@ -66,7 +66,7 @@
 					<tr>
 						<td class="tdBtnStyle" colspan="4">
 							<input type="button" id="createBtn" class="btn btn-primary btn-warning" value="등록" />
-							<a href="<c:url value='/recruitBoard/recruitBoardList' />" class="btn btn-primary" type="button" >목록</a>													
+							<a href="<c:url value='/recruitBoard/recruitBoardList.do' />" class="btn btn-primary" type="button" >목록</a>													
 						</td>
 					</tr>			
 				</tbody>

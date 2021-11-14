@@ -8,7 +8,7 @@ import com.spring.sideproject.common.utils.HttpRequestHelper;
 @Controller
 public class CompanyMainController {
 
-	@GetMapping("/companyMain/main")
+	@GetMapping("/companyMain/main.do")
 	public String viewRecruitMainPage() {
 		return HttpRequestHelper.getJspPath();
 	}

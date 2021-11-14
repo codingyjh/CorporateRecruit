@@ -34,7 +34,7 @@ var controller = $.extend(new $.CommonObj(), {
 				controller.autoClosingAlert("#successMessage", 2000);
 				$("#updateForm").attr({
 					method:"post", 
-			     	action:"/recruitMember/recruitMemberUpdate"					
+			     	action:"/recruitMember/recruitMemberUpdate.do"					
 				}).submit();
 			} 
 		});

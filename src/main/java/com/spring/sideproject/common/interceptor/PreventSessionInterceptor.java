@@ -19,7 +19,7 @@ public class PreventSessionInterceptor extends HandlerInterceptorAdapter {
 		RecruitMemberVo recruitMemberVo = (RecruitMemberVo) session.getAttribute(Session.USER);
 		
 		if ( recruitMemberVo != null ) {
-			response.sendRedirect("/companyMain/main");
+			response.sendRedirect("/companyMain/main.do");
 			return false;
 		}
 		return true;

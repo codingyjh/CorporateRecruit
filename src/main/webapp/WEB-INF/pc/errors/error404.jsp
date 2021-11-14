@@ -25,7 +25,7 @@
 	                <div class="msg">OH!<span class="triangle"></span></div>
 	            </div>
 	            <h2 class="h1">페이지를 찾을 수 없습니다.</h2>
-	            <a href="<c:url value='/companyMain/main' />" class="btn btn-primary" type="button" >홈으로 돌아가기</a>	            
+	            <a href="<c:url value='/companyMain/main.do' />" class="btn btn-primary" type="button" >홈으로 돌아가기</a>	            
 	        </div>
 	    </div>
 	</div>

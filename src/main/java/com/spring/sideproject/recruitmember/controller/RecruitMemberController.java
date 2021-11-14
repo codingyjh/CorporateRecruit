@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
 import com.spring.sideproject.common.validator.RecruitMemberValidator;
@@ -48,7 +49,7 @@ public class RecruitMemberController {
 			, HttpServletRequest request
 			, HttpServletResponse response) {
 		
-		ModelAndView view = new ModelAndView("redirect:/recruitMember/recruitMemberLogin.do");
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_MEMBER_LOGIN);
 		
 		if ( errors.hasErrors() ) {
 			view.setViewName(HttpRequestHelper.getJspPath());
@@ -72,7 +73,7 @@ public class RecruitMemberController {
 			, Errors errors
 			, HttpSession session) {
 		
-		ModelAndView view = new ModelAndView("redirect:/companyMain/main.do");
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_COMPANY_MAIN);
 		
 //		if ( errors.hasErrors() ) {
 //			view.setViewName(HttpRequestHelper.getJspPath());
@@ -107,7 +108,7 @@ public class RecruitMemberController {
 	public String doRecruitMemberLogoutAction(HttpSession session) {
 		
 		session.invalidate();
-		return "redirect:/companyMain/main.do";
+		return MasterCodeConstants.REDIRECT_COMPANY_MAIN;
 	}
 	
 	@GetMapping("/recruitMember/recruitMemberUpdate.do")
@@ -121,7 +122,7 @@ public class RecruitMemberController {
 			@SessionAttribute(Session.USER) @ModelAttribute RecruitMemberVo recruitMemberVo
 			, Errors errors) {
 		
-		ModelAndView view = new ModelAndView("redirect:/companyMain/main.do");
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_COMPANY_MAIN);
 		
 		if ( errors.hasErrors() ) {
 			view.setViewName(HttpRequestHelper.getJspPath());

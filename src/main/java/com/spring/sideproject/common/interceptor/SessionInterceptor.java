@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 
@@ -19,7 +20,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter {
 		RecruitMemberVo recruitMemberVo = (RecruitMemberVo) session.getAttribute(Session.USER);
 		
 		if ( recruitMemberVo == null ) {
-			response.sendRedirect("/recruitMember/recruitMemberLogin.do");
+			response.sendRedirect(MasterCodeConstants.INTERCEPTOR_RECRUIT_MEMBER_LOGIN);
 			return false;
 		}
 		return true;		

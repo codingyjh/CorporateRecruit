@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.common.pager.explorer.PageExplorer;
 import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
@@ -35,7 +36,7 @@ public class RecruitBoardController {
 	public String viewRecruitBoardListPageForInitiate(HttpSession session) {
 		
 		session.removeAttribute(Session.RECRUIT_BOARD_SEARCH);
-		return "redirect:/recruitBoard/recruitBoardList.do";
+		return MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST;
 	}
 	
 	
@@ -73,12 +74,12 @@ public class RecruitBoardController {
 	
 	@PostMapping("/recruitBoard/recruitBoardWrite.do")
 	public ModelAndView doRecruitBoardWriteAction(
-			@ModelAttribute RecruitBoardVo recruitBoardVo
+			@Valid @ModelAttribute RecruitBoardVo recruitBoardVo
 			, Errors errors
 			, HttpSession session) {
 		
 		
-		ModelAndView view = new ModelAndView("redirect:/recruitBoard/recruitBoardList.do");
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST);
 		
 		if ( errors.hasErrors() ) {
 			view.setViewName(HttpRequestHelper.getJspPath());

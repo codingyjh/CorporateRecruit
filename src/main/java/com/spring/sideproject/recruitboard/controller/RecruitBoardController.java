@@ -96,7 +96,7 @@ public class RecruitBoardController {
 			, HttpSession session) {
 		
 		
-		ModelAndView view = new ModelAndView("redirect:/recruitBoard/recruitBoardList.do");
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST);
 		
 		// Validation Annotation이 실패했는지 체크
 		if ( errors.hasErrors() ) {
@@ -150,7 +150,7 @@ public class RecruitBoardController {
 			MultipartHttpServletRequest multiFile) {
 		
 		Map<String, Object> result = new HashMap<>();
-		MultipartFile uploadFile = multiFile.getFile("upload");
+		MultipartFile uploadFile = multiFile.getFile(MasterCodeConstants.UPLOAD);
 		
 		if( !uploadFile.isEmpty() ) {
 			String fileName = UUID.randomUUID().toString();
@@ -173,11 +173,11 @@ public class RecruitBoardController {
            		 
             		ExtensionFilter filter = ExtensionFilterFactory.getFilter(ExtFilter.APACHE_TIKA);
             		boolean isImageFile = filter.doFilter(destFile.getAbsolutePath()
-            																		,"image/jpg"
-            																		,"image/bmp"
-            																		,"image/jpeg"
-            																		,"image/gif"
-            																		,"image/png" );
+            																		,MasterCodeConstants.IMAGE_JPG_PATH
+            																		,MasterCodeConstants.IMAGE_BMP_PATH
+            																		,MasterCodeConstants.IMAGE_JPEG_PATH
+            																		,MasterCodeConstants.IMAGE_GIF_PATH
+            																		,MasterCodeConstants.IMAGE_PNG_PATH );
            		 
             		if ( !isImageFile ) {
             			destFile.delete();
@@ -185,8 +185,8 @@ public class RecruitBoardController {
             		}            		 
             	}
             }
-            result.put("uploaded", true);
-            result.put("url", "/recruitBoard/recruitBoardImageDownloaded.do/" + fileName);
+            result.put(MasterCodeConstants.UPLOADED, true);
+            result.put(MasterCodeConstants.URL, MasterCodeConstants.RECRUIT_BOARD_IMAGE_DOWNLOADED + fileName);
             
             return result;
 		}

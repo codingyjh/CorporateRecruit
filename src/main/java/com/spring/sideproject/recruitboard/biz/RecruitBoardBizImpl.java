@@ -33,7 +33,7 @@ public class RecruitBoardBizImpl implements RecruitBoardBiz {
 	}
 
 	@Override
-	public boolean createOneRecruitBoardBiz(RecruitBoardVo recruitBoardVo) {
+	public boolean createOneRecruitBoardBiz(RecruitBoardVo recruitBoardVo, RecruitMemberVo recruitMemberVo) {
 		return this.recruitBoardDao.insertOneRecruitBoardDao(recruitBoardVo) > 0;
 	}
 

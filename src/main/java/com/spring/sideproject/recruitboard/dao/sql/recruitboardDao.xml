@@ -69,8 +69,8 @@
 											, EMAIL
 											, WRT_DT
 											, MDFY_DT
-<!-- 											, FILE_NAME -->
-<!-- 											, ORIGIN_FILE_NAME -->
+											, FILE_NAME
+											, ORIGIN_FILE_NAME
 										)
 		VALUES							(
 											RECRUITBOARD_ID_SEQ.NEXTVAL
@@ -81,8 +81,8 @@
 											, #{email}
 											, SYSDATE
 											, SYSDATE
-<!-- 											, #{fileName}        -->
-<!-- 											, #{originFileName} -->
+											, #{fileName}       
+											, #{originFileName}
 										)								  					   
   	</insert>
   	<select id="selectOneRecruitBoardDao"

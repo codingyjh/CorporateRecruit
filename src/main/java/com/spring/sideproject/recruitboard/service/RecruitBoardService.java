@@ -9,7 +9,7 @@ public interface RecruitBoardService {
 
 	public PageExplorer readAllRecruitBoardsService(RecruitBoardSearchVo recruitBoardSearchVo);
 	
-	public boolean createOneRecruitBoardService(RecruitBoardVo recruitBoardVo);
+	public boolean createOneRecruitBoardService(RecruitBoardVo recruitBoardVo, RecruitMemberVo recruitMemberVo);
 	
 	public RecruitBoardVo readOneRecruitBoardService(int boardId, RecruitMemberVo recruitMemberVo);
 }

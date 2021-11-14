@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 	<configuration>
+		<settings>
+  			<setting name="cacheEnabled" value="false"/>
+  			<setting name="jdbcTypeForNull" value="NULL"/>
+  		</settings>	
 		<typeAliases>
 			<typeAlias type="com.spring.sideproject.recruitmember.vo.RecruitMemberVo" alias="RecruitMemberVo"/>
 			<typeAlias type="com.spring.sideproject.recruitboard.vo.RecruitBoardVo" alias="RecruitBoardVo"/>

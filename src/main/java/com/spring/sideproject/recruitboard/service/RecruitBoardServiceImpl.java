@@ -21,8 +21,8 @@ public class RecruitBoardServiceImpl implements RecruitBoardService {
 	}
 
 	@Override
-	public boolean createOneRecruitBoardService(RecruitBoardVo recruitBoardVo) {
-		return this.recruitBoardBiz.createOneRecruitBoardBiz(recruitBoardVo);
+	public boolean createOneRecruitBoardService(RecruitBoardVo recruitBoardVo, RecruitMemberVo recruitMemberVo) {
+		return this.recruitBoardBiz.createOneRecruitBoardBiz(recruitBoardVo, recruitMemberVo);
 	}
 
 	@Override

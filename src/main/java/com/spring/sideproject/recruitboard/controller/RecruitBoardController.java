@@ -93,24 +93,53 @@ public class RecruitBoardController {
 	public ModelAndView doRecruitBoardWriteAction(
 			@Valid @ModelAttribute RecruitBoardVo recruitBoardVo
 			, Errors errors
-			, HttpSession session) throws IOException {
+			, HttpSession session) {
 		
 		
-		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST);
+		ModelAndView view = new ModelAndView("redirect:/recruitBoard/recruitBoardList.do");
 		
+		// Validation Annotation이 실패했는지 체크
 		if ( errors.hasErrors() ) {
-			view.setViewName(HttpRequestHelper.getJspPath());
-			view.addObject("recruitBoardVo", recruitBoardVo);
+			view.setViewName("recruitBoard/recruitBoardWrite.do");
+			view.addObject("recruitBoardVO", recruitBoardVo);
 			return view;
+		}
+		
+		MultipartFile uploadFile = recruitBoardVo.getFile();
+		
+		if ( !uploadFile.isEmpty() ) {
+			// 실제 파일 이름
+			String originFileName = uploadFile.getOriginalFilename();
+			// 파일 시스템에 저장될 파일의 이름(난수)
+			String fileName = UUID.randomUUID().toString();
+			
+			File uploadDir = new File(this.uploadFilePath);
+			
+			// 폴더가 존재하지 않는다면 생성
+			if ( !uploadDir.exists() ) {
+				uploadDir.mkdirs();
+			}
+			
+			// 파일이 업로드될 경로 지정
+			File destFile = new File(this.uploadFilePath, fileName);
+						
+			try {
+				// 업로드
+				uploadFile.transferTo(destFile);
+				// DB에 File 정보 저장하기 위한 정보 셋팅
+				recruitBoardVo.setOriginFileName(originFileName);
+				recruitBoardVo.setFileName(fileName);
+			} catch (IllegalStateException | IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
 		}
 		
 		RecruitMemberVo loginRecruitMember = (RecruitMemberVo) session.getAttribute(Session.USER);
 		String email = loginRecruitMember.getEmail();
-		
 		recruitBoardVo.setRecruitMemberVo(loginRecruitMember);
 		recruitBoardVo.setEmail(email);
 		
-		boolean isSuccess = this.recruitBoardService.createOneRecruitBoardService(recruitBoardVo);
+		boolean isSuccess = this.recruitBoardService.createOneRecruitBoardService(recruitBoardVo, loginRecruitMember);
 		
 		return view;
 	}
@@ -118,7 +147,7 @@ public class RecruitBoardController {
 	@RequestMapping("/recruitBoard/recruitBoardImageFileUpload.do")
 	@ResponseBody
 	public Map<String, Object> doRecruitBoardImageFileUploadAction(
-			MultipartHttpServletRequest multiFile) throws Exception {
+			MultipartHttpServletRequest multiFile) {
 		
 		Map<String, Object> result = new HashMap<>();
 		MultipartFile uploadFile = multiFile.getFile("upload");
@@ -136,10 +165,8 @@ public class RecruitBoardController {
 			
             try {
             	uploadFile.transferTo(destFile);
-           	 
             } catch (IllegalStateException | IOException e) {
             	throw new RuntimeException(e.getMessage(), e);
-           	 
             } finally {
             	
             	if ( destFile.exists() ) {

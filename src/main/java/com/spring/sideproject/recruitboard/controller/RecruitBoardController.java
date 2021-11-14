@@ -80,11 +80,11 @@ public class RecruitBoardController {
 		
 		ModelAndView view = new ModelAndView("redirect:/recruitBoard/recruitBoardList.do");
 		
-//		if ( errors.hasErrors() ) {
-//			view.setViewName("recruitBoard/recruitBoardWrite");
-//			view.addObject("recruitBoardVo", recruitBoardVo);
-//			return view;
-//		}
+		if ( errors.hasErrors() ) {
+			view.setViewName(HttpRequestHelper.getJspPath());
+			view.addObject("recruitBoardVo", recruitBoardVo);
+			return view;
+		}
 		
 		RecruitMemberVo loginRecruitMember = (RecruitMemberVo) session.getAttribute(Session.USER);
 		String email = loginRecruitMember.getEmail();

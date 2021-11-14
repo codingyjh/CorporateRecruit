@@ -51,7 +51,7 @@ public class RecruitMemberController {
 		ModelAndView view = new ModelAndView("redirect:/recruitMember/recruitMemberLogin.do");
 		
 		if ( errors.hasErrors() ) {
-			view.setViewName("recruitMember/recruitMemberRegist.do");
+			view.setViewName(HttpRequestHelper.getJspPath());
 			view.addObject("recruitMemberVo", recruitMemberVo);
 			return view;
 		}
@@ -75,7 +75,7 @@ public class RecruitMemberController {
 		ModelAndView view = new ModelAndView("redirect:/companyMain/main.do");
 		
 //		if ( errors.hasErrors() ) {
-//			view.setViewName("recruitMember/recruitMemberLogin");
+//			view.setViewName(HttpRequestHelper.getJspPath());
 //			view.addObject("recruitMemberVo", recruitMemberVo);
 //			return view;
 //		}
@@ -124,7 +124,7 @@ public class RecruitMemberController {
 		ModelAndView view = new ModelAndView("redirect:/companyMain/main.do");
 		
 		if ( errors.hasErrors() ) {
-			view.setViewName("recruitMember/recruitMemberUpdate.do");
+			view.setViewName(HttpRequestHelper.getJspPath());
 			view.addObject("recruitMemberVo", recruitMemberVo);
 			return view;
 		}

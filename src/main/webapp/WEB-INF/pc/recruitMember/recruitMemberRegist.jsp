@@ -25,8 +25,8 @@
        		
        		<div class="form-group has-feedback">
 	            <div class="input-group">
-     					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-     					<input id="password" type="password" class="form-control" name="password" placeholder="비밀번호" maxlength="20" value="${recruitMemberVo.password}">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="password" type="password" class="form-control" name="password" placeholder="비밀번호" maxlength="20" value="${recruitMemberVo.password}">
    				</div>
 	            <span id="passwordMessage" class="help-block">대/소문자, 특수문자 8글자 이상 입력하세요.</span>
 	            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
@@ -35,8 +35,8 @@
        		
        		<div class="form-group has-feedback">
 	            <div class="input-group">
-     					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-     					<input id="passwordConfirm" type="password" class="form-control" name="passwordConfirm" placeholder="비밀번호 확인" maxlength="20" value="${recruitMemberVo.passwordConfirm}">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="passwordConfirm" type="password" class="form-control" name="passwordConfirm" placeholder="비밀번호 확인" maxlength="20" value="${recruitMemberVo.passwordConfirm}">
    				</div>
 	            <span id="passwordConfirmMessage" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
 	            <span class="glyphicon glyphicon-ok form-control-feedback"></span>
@@ -45,8 +45,8 @@
        		
        		<div class="form-group has-feedback">
 	            <div class="input-group">
-     					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-     					<input id="name" type="text" class="form-control" name="name" placeholder="이름" value="${recruitMemberVo.name}">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="name" type="text" class="form-control" name="name" placeholder="이름" value="${recruitMemberVo.name}">
    				</div>
 	            <span id="nameMessage" class="help-block">이름을 입력해주세요.</span>
            		<span class="glyphicon glyphicon-ok form-control-feedback"></span>

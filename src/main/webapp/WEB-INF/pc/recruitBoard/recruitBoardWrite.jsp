@@ -7,7 +7,8 @@
 
 	<title>관리자 채용공고 게시판 페이지</title>
 	
-	<script src="<c:url value='/ckeditor5/ckeditor.js' />"></script>
+<%-- 	<script src="<c:url value='/ckeditor5/ckeditor.js' />"></script> --%>
+	<script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
 	<script src="<c:url value='/js/recruitBoard/recruitBoardWrite.js' />"></script>		
 
 	<div class="container">
@@ -42,10 +43,12 @@
 						<td><input class="form-control" type="text" id="title" name="title" placeholder="글 제목을 입력하세요." value="${recruitBoardVo.title}"></td>
 						
 					</tr>
-					<tr>
+					<tr style="height: 300px;">
 						<td class="tdStyle"><h5>글 내용</h5></td>
+<!-- 						<td> -->
+<%-- 							<div id="content" class="form-control" name="content" placeholder="글 내용을 입력하세요.">${recruitBoardVo.content}</div> --%>
+<!-- 						</td> -->
 						<td><textarea id="content" class="form-control" rows="10" name="content" placeholder="글 내용을 입력하세요.">${recruitBoardVo.content}</textarea></td>
-						
 					</tr>
 					<tr>
 						<td class="tdStyle"><h5>파일 업로드</h5></td>

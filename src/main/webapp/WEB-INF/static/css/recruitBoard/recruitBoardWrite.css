@@ -28,6 +28,13 @@ thead th {
 	display: none;
 }
 
+.ck.ck-editor {
+	max-width: 100%;
+}
+.ck-editor__editable {
+	min-height: 300px;
+}
+
 /* tr td:first-child,
 tr th:first-child {
 	border-top-left-radius: 6px;

@@ -100,7 +100,7 @@ public class RecruitBoardController {
 		
 		// Validation Annotation이 실패했는지 체크
 		if ( errors.hasErrors() ) {
-			view.setViewName("recruitBoard/recruitBoardWrite.do");
+			view.setViewName(HttpRequestHelper.getJspPath());
 			view.addObject("recruitBoardVO", recruitBoardVo);
 			return view;
 		}

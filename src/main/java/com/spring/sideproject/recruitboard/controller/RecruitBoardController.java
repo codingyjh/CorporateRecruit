@@ -1,5 +1,12 @@
 package com.spring.sideproject.recruitboard.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,12 +21,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.sideproject.common.constant.MasterCodeConstants;
+import com.spring.sideproject.common.mimetype.ExtFilter;
+import com.spring.sideproject.common.mimetype.ExtensionFilter;
+import com.spring.sideproject.common.mimetype.ExtensionFilterFactory;
 import com.spring.sideproject.common.pager.explorer.PageExplorer;
 import com.spring.sideproject.common.session.Session;
+import com.spring.sideproject.common.utils.DownloadUtil;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
 import com.spring.sideproject.recruitboard.service.RecruitBoardService;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo;
@@ -28,6 +42,9 @@ import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 
 @Controller
 public class RecruitBoardController {
+	
+	@Autowired
+	private String uploadFilePath;
 	
 	@Autowired
 	private RecruitBoardService recruitBoardService;
@@ -76,7 +93,7 @@ public class RecruitBoardController {
 	public ModelAndView doRecruitBoardWriteAction(
 			@Valid @ModelAttribute RecruitBoardVo recruitBoardVo
 			, Errors errors
-			, HttpSession session) {
+			, HttpSession session) throws IOException {
 		
 		
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST);
@@ -96,6 +113,70 @@ public class RecruitBoardController {
 		boolean isSuccess = this.recruitBoardService.createOneRecruitBoardService(recruitBoardVo);
 		
 		return view;
+	}
+	
+	@RequestMapping("/recruitBoard/recruitBoardImageFileUpload.do")
+	@ResponseBody
+	public Map<String, Object> doRecruitBoardImageFileUploadAction(
+			MultipartHttpServletRequest multiFile) throws Exception {
+		
+		Map<String, Object> result = new HashMap<>();
+		MultipartFile uploadFile = multiFile.getFile("upload");
+		
+		if( !uploadFile.isEmpty() ) {
+			String fileName = UUID.randomUUID().toString();
+			
+			File uploadDir = new File(this.uploadFilePath);
+			
+			if ( !uploadDir.exists() ) {
+				uploadDir.mkdirs();
+			}
+			
+			File destFile = new File(this.uploadFilePath, fileName);
+			
+            try {
+            	uploadFile.transferTo(destFile);
+           	 
+            } catch (IllegalStateException | IOException e) {
+            	throw new RuntimeException(e.getMessage(), e);
+           	 
+            } finally {
+            	
+            	if ( destFile.exists() ) {
+           		 
+            		ExtensionFilter filter = ExtensionFilterFactory.getFilter(ExtFilter.APACHE_TIKA);
+            		boolean isImageFile = filter.doFilter(destFile.getAbsolutePath()
+            																		,"image/jpg"
+            																		,"image/bmp"
+            																		,"image/jpeg"
+            																		,"image/gif"
+            																		,"image/png" );
+           		 
+            		if ( !isImageFile ) {
+            			destFile.delete();
+            			throw new RuntimeException("이미지 파일이 아닙니다.");
+            		}            		 
+            	}
+            }
+            result.put("uploaded", true);
+            result.put("url", "/recruitBoard/recruitBoardImageDownloaded.do/" + fileName);
+            
+            return result;
+		}
+		throw new RuntimeException("파일이 존재하지 않습니다.");
+	}
+	
+	@RequestMapping("/recruitBoard/recruitBoardImageDownloaded.do/{fileName}")
+	public void recruitBoardImageDownload(
+			@PathVariable String fileName
+			, HttpServletRequest request
+			, HttpServletResponse response) {
+		
+		try {
+			new DownloadUtil(this.uploadFilePath + File.separator + fileName).download(request, response, fileName);
+		} catch ( UnsupportedEncodingException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}	
 	}
 	
 	@RequestMapping("/recruitBoard/recruitBoardDetail.do/{boardId}")

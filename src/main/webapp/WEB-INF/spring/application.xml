@@ -45,6 +45,12 @@
 			<property name="order" value="2" />
 	</bean>
 	
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="defaultEncoding" value="UTF-8" />	
+	</bean>	
+	
 	<bean id="tilesViewResolver"
 		  class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>

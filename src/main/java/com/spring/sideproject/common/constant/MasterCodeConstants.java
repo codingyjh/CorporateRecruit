@@ -26,4 +26,6 @@ public interface MasterCodeConstants {
 	public static final String IMAGE_GIF_PATH 	= "image/gif";
 	public static final String IMAGE_PNG_PATH 	= "image/png";
 	
+	public static final String COUNT			= "count";
+	
 }

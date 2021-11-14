@@ -100,7 +100,7 @@ public class RecruitMemberController {
 		
 		count = this.recruitMemberService.duplicateCheckByEmailService(email);
 		log.info("count : " + count);
-		map.put("cnt", count);
+		map.put(MasterCodeConstants.COUNT, count);
 		return map;
 	}
 	

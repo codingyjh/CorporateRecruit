@@ -53,7 +53,7 @@ var controller = $.extend(new $.CommonObj(), {
 						
 					if ( reg.test(email) ) {
 						$("#emailMessage").hide();
-						if ( response.cnt > 0 ) {					 
+						if ( response.count > 0 ) {					 
 							$("#emailMessage").text("이미 존재하는 이메일입니다.").show();
 							controller.errorState("#email");
 							emailCheckFlag = true;

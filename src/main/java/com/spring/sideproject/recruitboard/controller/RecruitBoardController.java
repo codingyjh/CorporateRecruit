@@ -237,6 +237,17 @@ public class RecruitBoardController {
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e.getMessage(), e);
 		}
+	}
+	
+	@GetMapping("/recruitBoard/recruitBoardUpdate.do/{boardId}")
+	public ModelAndView viewRecruitBoardUpdatePage(
+			@PathVariable int boardId
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
 		
+		RecruitBoardVo recruitBoard = this.recruitBoardService.readOneRecruitBoardService(boardId);
+		ModelAndView view = new ModelAndView(HttpRequestHelper.getJspPath());
+		view.addObject("recruitBoardVo", recruitBoard);
+		
+		return view;
 	}
 }

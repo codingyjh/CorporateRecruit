@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
-public class User {
+public class User implements UserDetails {
 
 	private String userEmail;
 	private String userPassword;
@@ -17,7 +21,6 @@ public class User {
 	private String token;
 
 	public User(String userEmail, String userPassword, String grade, boolean isBlockAccount, String token) {
-		super();
 		this.userEmail = userEmail;
 		this.userPassword = userPassword;
 		this.grade = grade;
@@ -65,47 +68,47 @@ public class User {
 		this.token = token;
 	}
 
-//	@Override
-//	public Collection<? extends GrantedAuthority> getAuthorities() {
-//		
-//		List<GrantedAuthority> authorities = new ArrayList<>();
-//		authorities.add(new SimpleGrantedAuthority(grade));
-//		
-//		if ( grade.equals("ROLE_ADMIN") ) {
-//			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-//		}
-//		
-//		return authorities;
-//	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		List<GrantedAuthority> authorities = new ArrayList<>();
+		
+		authorities.add(new SimpleGrantedAuthority(grade));
+		
+		if ( grade.equals("ROLE_ADMIN")) {
+			authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		}
+		return authorities;
+	}
 
-//	@Override
-//	public String getPassword() {
-//		return this.getUserPassword();
-//	}
-//
-//	@Override
-//	public String getUsername() {
-//		return this.getUserEmail();
-//	}
-//
-//	@Override
-//	public boolean isAccountNonExpired() {
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean isAccountNonLocked() {
-//		return !isBlockAccount;
-//	}
-//
-//	@Override
-//	public boolean isCredentialsNonExpired() {
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean isEnabled() {
-//		return true;
-//	}
+	@Override
+	public String getPassword() {		
+		return this.userPassword;
+	}
+	
+	@Override
+	public String getUsername() {		
+		return this.userEmail;
+	}
+	
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {		
+		return !isBlockAccount;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {		
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {		
+		return true;
+	}
 
 }

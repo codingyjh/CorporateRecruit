@@ -41,6 +41,11 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 		
 		return this.recruitMemberDao.selectOneRecruitMemberDao(recruitMemberVo);
 	}
+	
+	@Override
+	public RecruitMemberVo readOneRecruitMembersGetByEmailBiz(String email) {
+		return this.recruitMemberDao.selectOneRecruitMembersGetByEmailDao(email);
+	}
 
 	@Override
 	public int duplicateCheckByEmailBiz(String email) {
@@ -57,6 +62,26 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 		recruitMemberVo.setSalt(salt);
 		
 		return this.recruitMemberDao.updateOneRecruitMemberInfoDao(recruitMemberVo) > 0;
+	}
+
+	@Override
+	public boolean isBlockUserBiz(String email) {
+		return this.recruitMemberDao.isBlockUserDao(email) > 0;
+	}
+
+	@Override
+	public boolean unBlockUserBiz(String email) {
+		return this.recruitMemberDao.unBlockUserDao(email) > 0;
+	}
+
+	@Override
+	public boolean blockUserBiz(String email) {
+		return false;
+	}
+
+	@Override
+	public boolean increaseLoginFailCountBiz(String email) {
+		return this.recruitMemberDao.increaseLoginFailCountDao(email) > 0;
 	}
 
 }

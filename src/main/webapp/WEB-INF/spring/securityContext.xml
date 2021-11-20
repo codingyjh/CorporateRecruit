@@ -9,4 +9,62 @@
 
 	<context:component-scan base-package="com.spring.sideproject" />
 	
+	<bean id="authenticationFailureHandler"
+		  class="com.spring.sideproject.recruitmember.controller.AuthenticationFailureHandler" />
+		  
+	<security:http auto-config='true' use-expressions="true">
+		
+		<security:intercept-url pattern="/" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/resources/**" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/companyMain/main.do" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/companyInfo/**" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/recruitInfo/**" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/recruitMember/emailDuplicate.do" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/recruitMember/recruitMemberRegist.do" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/recruitMember/recruitMemberLogin.do" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/recruitMember/loginSuccess.do" requires-channel="http" access="permitAll"/>
+		<security:intercept-url pattern="/recruitMember/recruitMemberUpdate.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardInit.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardList.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardWrite.do" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardDetail.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardUpdate.do/**" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardDelete.do/**" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardFileDownload.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardImageFileUpload.do" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardImageDownloaded.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>		
+		
+		<security:csrf disabled="true"/>
+		
+		<security:form-login
+			login-page="/recruitMember/recruitMemberLogin.do"
+			username-parameter="email"
+			password-parameter="password"
+			login-processing-url="/recruitMemberLogin.do"
+			default-target-url="/recruitMember/loginSuccess.do"
+			authentication-failure-handler-ref="authenticationFailureHandler"
+			always-use-default-target="true"
+		/>					
+		
+		<security:logout
+			logout-url="/recruitMemberLogout.do"
+			logout-success-url="/companyMain/main.do"
+			invalidate-session="true"
+		/>
+		
+		<security:session-management invalid-session-url="/companyMain/main.do">
+			<security:concurrency-control
+				max-sessions="1"
+				expired-url="/companyMain/main.do"
+			/>
+		</security:session-management>	
+	</security:http>
+	
+	<bean id="userService"
+		  class="com.spring.sideproject.recruitmember.service.UserService">
+	</bean>
+	
+	<security:authentication-manager>
+		 <security:authentication-provider ref="userService"/>
+	</security:authentication-manager>	
 </beans>

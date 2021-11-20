@@ -27,6 +27,14 @@ public interface MasterCodeConstants {
 	public static final String IMAGE_GIF_PATH 	= "image/gif";
 	public static final String IMAGE_PNG_PATH 	= "image/png";
 	
-	public static final String COUNT			= "count";
+	public static final String COUNT			= "count"; // 개수
+	public static final String EMAIL			= "email"; // 이메일
+	public static final String PASSWORD			= "password"; // 비밀번호
+	
+	public static final String ROLE_USER		= "ROLE_USER"; // 사용자 권한
+	public static final String ROLE_ADMIN		= "ROLE_ADMIN"; // ADMIN 권한
+	
+	public static final String YN_Y				= "Y";
+	public static final String YN_N				= "N";
 	
 }

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="RecruitMemberDao">
-  	<insert id="insertOneRecruitMember" parameterType="RecruitMemberVo">
+  	<insert id="insertOneRecruitMemberDao" parameterType="RecruitMemberVo">
   		INSERT INTO RECRUITMEMBER	(
 								EMAIL
 								, NAME		
@@ -28,7 +28,7 @@
 								, SYSDATE
 							)  						   
   	</insert>
-  	<select id="selectOneRecruitMember"
+  	<select id="selectOneRecruitMemberDao"
   			parameterType="RecruitMemberVo"
   			resultType="RecruitMemberVo">
   		
@@ -41,7 +41,7 @@
   		WHERE	EMAIL = #{email}
   		AND		PASSWORD = #{password}  		
   	</select>
-  	<select id="getSaltByEmail"
+  	<select id="getSaltByEmailDao"
   			parameterType="RecruitMemberVo"
   			resultType="string">
   			
@@ -49,7 +49,7 @@
   		FROM	RECRUITMEMBER
   		WHERE	EMAIL = #{email}
   	</select>
-  	<select id="duplicateCheckByEmail"
+  	<select id="duplicateCheckByEmailDao"
   			parameterType="string"
   			resultType="Integer">
   		
@@ -57,7 +57,7 @@
   		FROM	RECRUITMEMBER
   		WHERE	EMAIL = #{email}  	
   	</select>
-  	<update id="updateOneRecruitMemberInfo"
+  	<update id="updateOneRecruitMemberInfoDao"
   			parameterType="RecruitMemberVo">
   			
   		UPDATE	RECRUITMEMBER
@@ -65,5 +65,45 @@
   				, SALT = #{salt}
   				, MDFY_DT = SYSDATE
   		WHERE	EMAIL = #{email}
-  	</update>  		
+  	</update>
+  	<select id="isBlockUserDao"
+  			parameterType="string"
+  			resultType="_int">
+  			
+  		SELECT	COUNT(1)
+  		FROM	RECRUITMEMBER
+  		WHERE	EMAIL = #{email}
+  		AND		LOGIN_FAIL_COUNT > 3
+  		AND		LATEST_LOGIN + 1/24/60 >= SYSDATE	
+  	</select>
+  	<select id="unBlockUserDao"
+  			parameterType="string"
+  			resultType="_int">
+  		
+  		UPDATE	RECRUITMEMBER
+  		SET		LOGIN_FAIL_COUNT = 0
+  				, LATEST_LOGIN = SYSDATE
+  		WHERE	EMAIL = #{email}
+  	</select>
+  	<select id="increaseLoginFailCountDao"
+  			parameterType="string"
+  			resultType="_int">
+  		
+  		UPDATE	RECRUITMEMBER
+  		SET		LOGIN_FAIL_COUNT = LOGIN_FAIL_COUNT + 1
+  				, LATEST_LOGIN = SYSDATE
+  		WHERE	EMAIL = #{email}
+  	</select>
+  	<select id="selectOneRecruitMembersGetByEmailDao"
+  			parameterType="string"
+  			resultType="RecruitMemberVo">
+  			
+  		SELECT	EMAIL
+  				, NAME
+  				, PASSWORD
+  				, IS_ADMIN_YN isAdminYn
+  				, LOGIN_FAIL_COUNT loginFailCount
+		FROM	RECRUITMEMBER
+		WHERE	EMAIL = #{email}
+  	</select>  	
   </mapper>

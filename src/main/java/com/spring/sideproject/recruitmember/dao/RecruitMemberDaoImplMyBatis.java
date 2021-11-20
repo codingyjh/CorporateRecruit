@@ -18,28 +18,52 @@ public class RecruitMemberDaoImplMyBatis extends SqlSessionDaoSupport implements
 	
 	@Override
 	public int insertOneRecruitMemberDao(RecruitMemberVo recruitMemberVo) {
-		return getSqlSession().insert("RecruitMemberDao.insertOneRecruitMember", recruitMemberVo);
+		return getSqlSession().insert("RecruitMemberDao.insertOneRecruitMemberDao", recruitMemberVo);
 	}
 
 	@Override
 	public RecruitMemberVo selectOneRecruitMemberDao(RecruitMemberVo recruitMemberVo) {
-		return getSqlSession().selectOne("RecruitMemberDao.selectOneRecruitMember", recruitMemberVo);
+		return getSqlSession().selectOne("RecruitMemberDao.selectOneRecruitMemberDao", recruitMemberVo);
 	}
 
 	@Override
-	public String getSaltByEmailDao(String email) {
-		return getSqlSession().selectOne("RecruitMemberDao.getSaltByEmail", email);
+	public RecruitMemberVo selectOneRecruitMembersGetByEmailDao(String email) {
+		return getSqlSession().selectOne("RecruitMemberDao.selectOneRecruitMembersGetByEmailDao", email);
 	}
-
+	
 	@Override
 	public int duplicateCheckByEmailDao(String email) {
-		return getSqlSession().selectOne("RecruitMemberDao.duplicateCheckByEmail", email);
+		return getSqlSession().selectOne("RecruitMemberDao.duplicateCheckByEmailDao", email);
+	}
+	
+	@Override
+	public String getSaltByEmailDao(String email) {
+		return getSqlSession().selectOne("RecruitMemberDao.getSaltByEmailDao", email);
 	}
 
 	@Override
 	public int updateOneRecruitMemberInfoDao(RecruitMemberVo recruitMemberVo) {
-		return getSqlSession().update("RecruitMemberDao.updateOneRecruitMemberInfo", recruitMemberVo);
+		return getSqlSession().update("RecruitMemberDao.updateOneRecruitMemberInfoDao", recruitMemberVo);
 	}
 
+	@Override
+	public int isBlockUserDao(String email) {
+		return getSqlSession().selectOne("RecruitMemberDao.isBlockUserDao", email);
+	}
+
+	@Override
+	public int unBlockUserDao(String email) {
+		return getSqlSession().update("RecruitMemberDao.unBlockUserDao", email);
+	}
+
+	@Override
+	public boolean blockUserDao(String email) {
+		return false;
+	}
+
+	@Override
+	public int increaseLoginFailCountDao(String email) {
+		return getSqlSession().update("RecruitMemberDao.increaseLoginFailCountDao", email);
+	}
 
 }

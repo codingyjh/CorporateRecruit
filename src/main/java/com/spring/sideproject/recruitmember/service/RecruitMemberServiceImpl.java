@@ -23,6 +23,11 @@ public class RecruitMemberServiceImpl implements RecruitMemberService {
 	}
 
 	@Override
+	public RecruitMemberVo readOneRecruitMembersGetByEmailService(String email) {
+		return this.recruitMemberBiz.readOneRecruitMembersGetByEmailBiz(email);
+	}
+	
+	@Override
 	public int duplicateCheckByEmailService(String email) {
 		return this.recruitMemberBiz.duplicateCheckByEmailBiz(email);
 	}
@@ -32,4 +37,23 @@ public class RecruitMemberServiceImpl implements RecruitMemberService {
 		return this.recruitMemberBiz.updateOneRecruitMemberInfoBiz(recruitMemberVo);
 	}
 
+	@Override
+	public boolean isBlockUserService(String email) {
+		return this.recruitMemberBiz.isBlockUserBiz(email);
+	}
+
+	@Override
+	public boolean unBlockUserService(String email) {
+		return this.recruitMemberBiz.unBlockUserBiz(email);
+	}
+
+	@Override
+	public boolean blockUserService(String email) {
+		return false;
+	}
+
+	@Override
+	public boolean increaseLoginFailCountService(String email) {
+		return this.recruitMemberBiz.increaseLoginFailCountBiz(email);
+	}
 }

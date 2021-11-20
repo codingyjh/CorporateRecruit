@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -28,6 +29,7 @@ import com.spring.sideproject.common.utils.HttpRequestHelper;
 import com.spring.sideproject.common.validator.RecruitMemberValidator;
 import com.spring.sideproject.recruitmember.service.RecruitMemberService;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
+import com.spring.sideproject.recruitmember.vo.User;
 
 @Controller
 public class RecruitMemberController {
@@ -67,28 +69,51 @@ public class RecruitMemberController {
 		return HttpRequestHelper.getJspPath();
 	}
 	
-	@PostMapping("/recruitMember/recruitMemberLogin.do")	
-	public ModelAndView doRecruitMemberLoginAction(
+	@GetMapping("/recruitMember/loginSuccess.do")
+	@ResponseBody
+	public ModelAndView doRecruitMemberLoginAction (
 			@Validated(value= {RecruitMemberValidator.Login.class}) @ModelAttribute RecruitMemberVo recruitMemberVo
 			, Errors errors
 			, HttpSession session) {
 		
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_COMPANY_MAIN);
 		
-//		if ( errors.hasErrors() ) {
-//			view.setViewName(HttpRequestHelper.getJspPath());
-//			view.addObject("recruitMemberVo", recruitMemberVo);
-//			return view;
-//		}
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
 		
-		RecruitMemberVo loginMember = this.recruitMemberService.readOneRecruitMemberService(recruitMemberVo);
-		loginMember.setEmail(recruitMemberVo.getEmail());
-		loginMember.setPassword(recruitMemberVo.getPassword());
+		recruitMemberVo.setEmail(user.getUserEmail());
+		recruitMemberVo.setPassword(user.getPassword());
 		
-		session.setAttribute(Session.USER, loginMember);
+		RecruitMemberVo loginRecruitMember = this.recruitMemberService.readOneRecruitMemberService(recruitMemberVo);
+		loginRecruitMember.setEmail(recruitMemberVo.getEmail());
+		loginRecruitMember.setPassword(recruitMemberVo.getPassword());
+		
+		session.setAttribute(Session.USER, loginRecruitMember);
 		
 		return view;
 	}
+	
+//	@PostMapping("/recruitMember/recruitMemberLogin.do")	
+//	public ModelAndView doRecruitMemberLoginAction(
+//			@Validated(value= {RecruitMemberValidator.Login.class}) @ModelAttribute RecruitMemberVo recruitMemberVo
+//			, Errors errors
+//			, HttpSession session) {
+//		
+//		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_COMPANY_MAIN);
+//		
+////		if ( errors.hasErrors() ) {
+////			view.setViewName(HttpRequestHelper.getJspPath());
+////			view.addObject("recruitMemberVo", recruitMemberVo);
+////			return view;
+////		}
+//		
+//		RecruitMemberVo loginMember = this.recruitMemberService.readOneRecruitMemberService(recruitMemberVo);
+//		loginMember.setEmail(recruitMemberVo.getEmail());
+//		loginMember.setPassword(recruitMemberVo.getPassword());
+//		
+//		session.setAttribute(Session.USER, loginMember);
+//		
+//		return view;
+//	}
 	
 	@RequestMapping("/recruitMember/emailDuplicate.do")
 	@ResponseBody

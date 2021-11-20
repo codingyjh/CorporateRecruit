@@ -56,4 +56,9 @@ public class RecruitMemberServiceImpl implements RecruitMemberService {
 	public boolean increaseLoginFailCountService(String email) {
 		return this.recruitMemberBiz.increaseLoginFailCountBiz(email);
 	}
+
+	@Override
+	public String readOneEmailExistCheckService(String email) {
+		return this.recruitMemberBiz.readOneEmailExistCheckBiz(email);
+	}
 }

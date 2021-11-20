@@ -66,4 +66,9 @@ public class RecruitMemberDaoImplMyBatis extends SqlSessionDaoSupport implements
 		return getSqlSession().update("RecruitMemberDao.increaseLoginFailCountDao", email);
 	}
 
+	@Override
+	public String selectOneEmailExistCheckDao(String email) {
+		return getSqlSession().selectOne("RecruitMemberDao.selectOneEmailExistCheckDao", email);
+	}
+
 }

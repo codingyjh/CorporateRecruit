@@ -84,4 +84,9 @@ public class RecruitMemberBizImpl implements RecruitMemberBiz {
 		return this.recruitMemberDao.increaseLoginFailCountDao(email) > 0;
 	}
 
+	@Override
+	public String readOneEmailExistCheckBiz(String email) {
+		return this.recruitMemberDao.selectOneEmailExistCheckDao(email);
+	}
+
 }

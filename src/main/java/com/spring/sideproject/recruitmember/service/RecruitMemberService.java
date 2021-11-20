@@ -21,6 +21,9 @@ public interface RecruitMemberService {
 	public boolean isBlockUserService(String email);
 	public boolean unBlockUserService(String email);
 	public boolean blockUserService(String email);
-	public boolean increaseLoginFailCountService(String email);	
+	public boolean increaseLoginFailCountService(String email);
+	
+	// 이메일 존재 체크
+	public String readOneEmailExistCheckService(String email);
 
 }

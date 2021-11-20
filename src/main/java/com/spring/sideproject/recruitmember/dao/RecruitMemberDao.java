@@ -23,4 +23,7 @@ public interface RecruitMemberDao {
 	public int unBlockUserDao(String email);
 	public boolean blockUserDao(String email);
 	public int increaseLoginFailCountDao(String email);
+	
+	// 이메일 존재 체크
+	public String selectOneEmailExistCheckDao(String email);
 }

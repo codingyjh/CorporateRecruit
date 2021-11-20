@@ -73,7 +73,7 @@
   		SELECT	COUNT(1)
   		FROM	RECRUITMEMBER
   		WHERE	EMAIL = #{email}
-  		AND		LOGIN_FAIL_COUNT > 3
+  		AND		LOGIN_FAIL_COUNT > 5
   		AND		LATEST_LOGIN + 1/24/60 >= SYSDATE	
   	</select>
   	<select id="unBlockUserDao"
@@ -105,5 +105,20 @@
   				, LOGIN_FAIL_COUNT loginFailCount
 		FROM	RECRUITMEMBER
 		WHERE	EMAIL = #{email}
-  	</select>  	
+  	</select>
+  	<select id="selectOneEmailExistCheckDao"
+  			parameterType="string"
+  			resultType="string">
+  			  			
+SELECT 
+		NVL(
+				(
+					SELECT 'Y'
+					FROM RECRUITMEMBER
+             		WHERE EMAIL = #{email}
+               		AND ROWNUM <![CDATA[<=]]> 1
+            	), 'N'
+           ) AS EMAIL_EXIST_YN
+FROM DUAL
+  	</select>  	  	
   </mapper>

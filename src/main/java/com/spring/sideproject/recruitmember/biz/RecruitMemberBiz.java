@@ -22,4 +22,7 @@ public interface RecruitMemberBiz {
 	public boolean unBlockUserBiz(String email);
 	public boolean blockUserBiz(String email);
 	public boolean increaseLoginFailCountBiz(String email);	
+	
+	// 이메일 존재 체크
+	public String readOneEmailExistCheckBiz(String email);
 }

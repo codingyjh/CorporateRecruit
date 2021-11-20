@@ -59,7 +59,7 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
 					out.println("<script>alert('로그인 시도 제한 마지막 횟수입니다.'); location.href='/recruitMember/recruitMemberLogin.do';</script>");
 					out.close();
 				} else {
-					out.println("<script>alert('로그인 시도에 실패하였습니다.(시도횟수 / 제한 5회)'); location.href='/recruitMember/recruitMemberLogin.do';</script>");
+					out.println("<script>alert('로그인 시도에 실패하였습니다.(시도횟수 : " + loginFailCount + "회 / 제한 5회)'); location.href='/recruitMember/recruitMemberLogin.do';</script>");
 					out.close();
 				}
 			}

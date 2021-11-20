@@ -22,7 +22,7 @@ var controller = $.extend(new $.CommonObj(), {
 				return;
 			}
 			else {
-				controller.autoClosingAlert("#successMessage", 2000);
+				//controller.autoClosingAlert("#successMessage", 2000);
 				$("#loginForm").attr({
 					method:"post", 				     	
 			     	action:"/recruitMemberLogin.do"

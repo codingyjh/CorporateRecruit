@@ -26,6 +26,11 @@ public class RecruitBoardServiceImpl implements RecruitBoardService {
 	}
 
 	@Override
+	public RecruitBoardVo readOneRecruitBoardService(int boardId) {
+		return this.recruitBoardBiz.readOneRecruitBoardBiz(boardId);
+	}
+	
+	@Override
 	public RecruitBoardVo readOneRecruitBoardService(int boardId, RecruitMemberVo recruitMemberVo) {
 		return this.recruitBoardBiz.readOneRecruitBoardBiz(boardId, recruitMemberVo);
 	}

@@ -11,6 +11,7 @@ public interface RecruitBoardBiz {
 	
 	public boolean createOneRecruitBoardBiz(RecruitBoardVo recruitBoardVo, RecruitMemberVo recruitMemberVo);
 	
+	public RecruitBoardVo readOneRecruitBoardBiz(int boardId);
 	public RecruitBoardVo readOneRecruitBoardBiz(int boardId, RecruitMemberVo recruitMemberVo);
 	
 	public boolean updateOneHitRecruitBoardBiz(int boardId);

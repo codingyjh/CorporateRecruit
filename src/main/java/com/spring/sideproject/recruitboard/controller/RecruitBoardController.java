@@ -218,4 +218,25 @@ public class RecruitBoardController {
 		
 		return view;
 	}
+	
+	@RequestMapping("/recruitBoard/recruitBoardFileDownload.do/{boardId}")
+	public void doRecruitBoardFileDownloadAction (
+			@PathVariable int boardId
+			, HttpServletRequest request
+			, HttpServletResponse response
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		RecruitBoardVo recruitBoard = this.recruitBoardService.readOneRecruitBoardService(boardId);
+		
+		String originFileName = recruitBoard.getOriginFileName();
+		String fileName = recruitBoard.getFileName();
+		
+		try {
+			new DownloadUtil(this.uploadFilePath + File.separator + fileName)
+			 .download(request, response, originFileName);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
+		
+	}
 }

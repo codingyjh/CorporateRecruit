@@ -43,10 +43,15 @@ public class RecruitBoardBizImpl implements RecruitBoardBiz {
 	}
 
 	@Override
+	public RecruitBoardVo readOneRecruitBoardBiz(int boardId) {
+		return this.recruitBoardDao.selectOneRecruitBoardDao(boardId);
+	}
+	
+	@Override
 	public RecruitBoardVo readOneRecruitBoardBiz(int boardId, RecruitMemberVo recruitMemberVo) {
 		
 		// 채용공고 게시물 조회
-		RecruitBoardVo recruitBoard = this.recruitBoardDao.selectOneRecruitBoardDao(boardId);
+		RecruitBoardVo recruitBoard = this.readOneRecruitBoardBiz(boardId);
 		
 		if ( !recruitBoard.getEmail().contentEquals(recruitMemberVo.getEmail()) ) {
 			// 조회 수  증가
@@ -57,6 +62,5 @@ public class RecruitBoardBizImpl implements RecruitBoardBiz {
 		}
 		return recruitBoard;
 	}
-	
 	
 }

@@ -40,4 +40,9 @@ public class RecruitBoardServiceImpl implements RecruitBoardService {
 		return this.recruitBoardBiz.updateOneRecruitBoardBiz(recruitBoardVo);
 	}
 
+	@Override
+	public boolean deleteOneRecruitBoardByBoardIdService(int boardId) {
+		return this.recruitBoardBiz.deleteOneRecruitBoardByBoardIdBiz(boardId);
+	}
+
 }

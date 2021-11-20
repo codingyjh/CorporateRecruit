@@ -67,5 +67,10 @@ public class RecruitBoardBizImpl implements RecruitBoardBiz {
 	public boolean updateOneRecruitBoardBiz(RecruitBoardVo recruitBoardVo) {
 		return this.recruitBoardDao.updateOneRecruitBoardDao(recruitBoardVo) > 0;
 	}
+
+	@Override
+	public boolean deleteOneRecruitBoardByBoardIdBiz(int boardId) {
+		return this.recruitBoardDao.deleteOneRecruitBoardByBoardIdDao(boardId) > 0;
+	}
 	
 }

@@ -23,6 +23,10 @@ public interface RecruitBoardDao {
 	// 채용공고 게시물 조회 수 업데이트 
 	public int updateHitOneRecruitBoardDao(int boardId);
 	
+	// 채용공고 게시물 수정
 	public int updateOneRecruitBoardDao(RecruitBoardVo recruitBoardVo);
+	
+	// 채용공고 게시물 삭제
+	public int deleteOneRecruitBoardByBoardIdDao(int boardId);
 
 }

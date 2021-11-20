@@ -120,5 +120,10 @@
   				, FILE_NAME = #{fileName}
   				, ORIGIN_FILE_NAME = #{originFileName}
   		WHERE	BOARD_ID = #{boardId}	
-  	</update>  	  		
+  	</update> 
+  	<delete id="deleteOneRecruitBoardByBoardIdDao" parameterType="_int">
+  		DELETE
+  		FROM	RECRUITBOARD
+  		WHERE	BOARD_ID = #{boardId}
+	</delete>  	 	  		
   </mapper>

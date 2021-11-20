@@ -50,4 +50,9 @@ public class RecruitBoardDaoImplMybatis extends SqlSessionDaoSupport implements 
 		return getSqlSession().update("RecruitBoardDao.updateOneRecruitBoardDao", recruitBoardVo);
 	}
 
+	@Override
+	public int deleteOneRecruitBoardByBoardIdDao(int boardId) {
+		return getSqlSession().delete("RecruitBoardDao.deleteOneRecruitBoardByBoardIdDao", boardId);
+	}
+
 }

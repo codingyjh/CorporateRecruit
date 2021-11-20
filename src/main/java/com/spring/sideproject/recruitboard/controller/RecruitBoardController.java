@@ -304,4 +304,14 @@ public class RecruitBoardController {
 		
 		return view;
 	}
+	
+	@RequestMapping("/recruitBoard/recruitBoardDelete.do/{boardId}")
+	public String doRecruitBoardDeleteAction(
+			@PathVariable int boardId
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		boolean isSuccess = this.recruitBoardService.deleteOneRecruitBoardByBoardIdService(boardId);
+		
+		return MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST;
+	}
 }

@@ -266,6 +266,35 @@ public class RecruitBoardController {
 			return view;
 		}
 		
+		MultipartFile uploadFile = recruitBoardVo.getFile();
+		
+		if ( !uploadFile.isEmpty() ) {
+			// 실제 파일 이름
+			String originFileName = uploadFile.getOriginalFilename();
+			// 파일 시스템에 저장될 파일의 이름(난수)
+			String fileName = UUID.randomUUID().toString();
+			
+			File uploadDir = new File(this.uploadFilePath);
+			
+			// 폴더가 존재하지 않는다면 생성
+			if ( !uploadDir.exists() ) {
+				uploadDir.mkdirs();
+			}
+			
+			// 파일이 업로드될 경로 지정
+			File destFile = new File(this.uploadFilePath, fileName);
+						
+			try {
+				// 업로드
+				uploadFile.transferTo(destFile);
+				// DB에 File 정보 저장하기 위한 정보 셋팅
+				recruitBoardVo.setOriginFileName(originFileName);
+				recruitBoardVo.setFileName(fileName);
+			} catch (IllegalStateException | IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+		}
+		
 		RecruitMemberVo loginRecruitMember = (RecruitMemberVo) session.getAttribute(Session.USER);
 		String email = loginRecruitMember.getEmail();
 		recruitBoardVo.setRecruitMemberVo(loginRecruitMember);

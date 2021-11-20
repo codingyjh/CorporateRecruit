@@ -10,7 +10,7 @@ var controller = $.extend(new $.CommonObj(), {
 		ClassicEditor
 			.create(document.querySelector("#content"), {
 				ckfinder: {
-					uploadUrl: 'https://localhost:8080/recruitBoard/recruitBoardImageFileUpload.do'
+					uploadUrl: 'http://localhost:8080/recruitBoard/recruitBoardImageFileUpload.do'
 				},
 				alignment: {
 					options: ['left', 'center', 'right']

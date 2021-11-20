@@ -323,4 +323,12 @@ public class RecruitBoardController {
 		
 		return MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST;
 	}
+	
+	@GetMapping("/recruitBoard/recruitAgreement.do/{boardId}")
+	public String viewRecruitAgreementPage(
+			@PathVariable int boardId
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		return HttpRequestHelper.getJspPath();
+	}
 }

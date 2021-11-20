@@ -26,12 +26,12 @@
 		<security:intercept-url pattern="/recruitMember/recruitMemberUpdate.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/recruitBoard/recruitBoardInit.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/recruitBoard/recruitBoardList.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/recruitBoard/recruitBoardWrite.do" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardWrite.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/recruitBoard/recruitBoardDetail.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/recruitBoard/recruitBoardUpdate.do/**" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/recruitBoard/recruitBoardDelete.do/**" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardUpdate.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardDelete.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/recruitBoard/recruitBoardFileDownload.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/recruitBoard/recruitBoardImageFileUpload.do" requires-channel="http" access="hasRole('ROLE_USER', 'ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/recruitBoard/recruitBoardImageFileUpload.do" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/recruitBoard/recruitBoardImageDownloaded.do/**" requires-channel="http" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>		
 		
 		<security:csrf disabled="true"/>

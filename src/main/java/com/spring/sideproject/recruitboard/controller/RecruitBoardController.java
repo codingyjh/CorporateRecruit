@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.nhncorp.lucy.security.xss.XssFilter;
 import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.common.mimetype.ExtFilter;
 import com.spring.sideproject.common.mimetype.ExtensionFilter;
@@ -95,6 +96,10 @@ public class RecruitBoardController {
 			, Errors errors
 			, HttpSession session) {
 		
+		XssFilter filter = XssFilter.getInstance("lucy-xss-superset.xml");
+		
+		recruitBoardVo.setTitle(filter.doFilter(recruitBoardVo.getTitle()));
+		recruitBoardVo.setContent(filter.doFilter(recruitBoardVo.getContent()));
 		
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST);
 		
@@ -257,6 +262,10 @@ public class RecruitBoardController {
 			, @Valid @ModelAttribute RecruitBoardVo recruitBoardVo
 			, Errors errors
 			, HttpSession session) {
+
+		XssFilter filter = XssFilter.getInstance("lucy-xss-superset.xml");		
+		recruitBoardVo.setTitle(filter.doFilter(recruitBoardVo.getTitle()));
+		recruitBoardVo.setContent(filter.doFilter(recruitBoardVo.getContent()));
 		
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_DETAIL + "/" + boardId);
 		

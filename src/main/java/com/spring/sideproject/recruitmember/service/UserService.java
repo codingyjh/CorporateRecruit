@@ -15,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import com.nhncorp.lucy.security.xss.XssFilter;
 import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 import com.spring.sideproject.recruitmember.vo.User;
@@ -34,8 +35,10 @@ public class UserService implements AuthenticationProvider {
 		
 		RecruitMemberVo recruitMember = new RecruitMemberVo();
 		
-		recruitMember.setEmail(userEmail);
-		recruitMember.setPassword(userPassword);
+		XssFilter filter = XssFilter.getInstance("lucy-xss-superset.xml");
+		
+		recruitMember.setEmail(filter.doFilter(userEmail));
+		recruitMember.setPassword(filter.doFilter(userPassword));
 		
 		RecruitMemberVo loginRecruitMember = null;
 		

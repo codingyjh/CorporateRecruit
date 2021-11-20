@@ -15,6 +15,6 @@ public interface RecruitBoardBiz {
 	public RecruitBoardVo readOneRecruitBoardBiz(int boardId, RecruitMemberVo recruitMemberVo);
 	
 	public boolean updateOneHitRecruitBoardBiz(int boardId);
-	
+	public boolean updateOneRecruitBoardBiz(RecruitBoardVo recruitBoardVo);;
 	
 }

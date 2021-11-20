@@ -110,5 +110,15 @@
   		UPDATE	RECRUITBOARD
   		SET		HIT = HIT + 1
   		WHERE	BOARD_ID = #{boardId}		
-  	</update>  		
+  	</update>
+  	<update id="updateOneRecruitBoardDao" parameterType="RecruitBoardVo">
+  		UPDATE	RECRUITBOARD
+  		SET		RECRUIT_DT = #{recruitDt}
+  				, TITLE = #{title}
+  				, CONTENT = #{content}
+  				, MDFY_DT = SYSDATE
+  				, FILE_NAME = #{fileName}
+  				, ORIGIN_FILE_NAME = #{originFileName}
+  		WHERE	BOARD_ID = #{boardId}	
+  	</update>  	  		
   </mapper>

@@ -13,4 +13,6 @@ public interface RecruitBoardService {
 	
 	public RecruitBoardVo readOneRecruitBoardService(int boardId);
 	public RecruitBoardVo readOneRecruitBoardService(int boardId, RecruitMemberVo recruitMemberVo);
+	
+	public boolean updateOneRecruitBoardService(RecruitBoardVo recruitBoardVo);
 }

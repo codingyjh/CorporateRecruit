@@ -6,6 +6,7 @@ public interface MasterCodeConstants {
 	public static final String REDIRECT_RECRUIT_MEMBER_LOGIN 	= "redirect:/recruitMember/recruitMemberLogin.do";
 	public static final String REDIRECT_COMPANY_MAIN 			= "redirect:/companyMain/main.do";
 	public static final String REDIRECT_RECRUIT_BOARD_LIST 		= "redirect:/recruitBoard/recruitBoardList.do";
+	public static final String REDIRECT_RECRUIT_BOARD_DETAIL	= "redirect:/recruitBoard/recruitBoardDetail.do";
 	
 	//Interceptor URL
 	public static final String INTERCEPTOR_COMPANY_MAIN 		= "/companyMain/main.do";

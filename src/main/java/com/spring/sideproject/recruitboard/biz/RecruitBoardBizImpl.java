@@ -62,5 +62,10 @@ public class RecruitBoardBizImpl implements RecruitBoardBiz {
 		}
 		return recruitBoard;
 	}
+
+	@Override
+	public boolean updateOneRecruitBoardBiz(RecruitBoardVo recruitBoardVo) {
+		return this.recruitBoardDao.updateOneRecruitBoardDao(recruitBoardVo) > 0;
+	}
 	
 }

@@ -22,5 +22,7 @@ public interface RecruitBoardDao {
 	
 	// 채용공고 게시물 조회 수 업데이트 
 	public int updateHitOneRecruitBoardDao(int boardId);
+	
+	public int updateOneRecruitBoardDao(RecruitBoardVo recruitBoardVo);
 
 }

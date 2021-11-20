@@ -250,4 +250,23 @@ public class RecruitBoardController {
 		
 		return view;
 	}
+	
+	@PostMapping("/recruitBoard/recruitBoardUpdate.do/{boardId}")
+	public ModelAndView doRecruitUpdateAction(
+			@PathVariable int boardId
+			, @ModelAttribute RecruitBoardVo recruitBoardVo
+			, HttpSession session
+			) {
+		
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_DETAIL + "/" + boardId);
+		
+		RecruitMemberVo loginRecruitMember = (RecruitMemberVo) session.getAttribute(Session.USER);
+		String email = loginRecruitMember.getEmail();
+		recruitBoardVo.setRecruitMemberVo(loginRecruitMember);
+		recruitBoardVo.setEmail(email);
+		
+		boolean isSuccess = this.recruitBoardService.updateOneRecruitBoardService(recruitBoardVo);
+		
+		return view;
+	}
 }

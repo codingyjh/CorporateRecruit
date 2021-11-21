@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="ActivityDao">
+  	
+  	<insert id="insertOneActivityDao" parameterType="ActivityVo">
+		INSERT	INTO	ACTIVITYINFO	(
+											ACT_ID	
+											,ACT_DIV	
+											,ACT_INST
+											,ACT_START_DT	
+											,ACT_END_DT
+											,ACT_ROLE
+											,ACT_CONTENT
+											,EMAIL	
+											,RESUME_ID
+		
+										)
+		VALUES							(
+											'ACT' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24') || '-' || LPAD(ACTIVITYINFO_ID_SEQ.NEXTVAL, 6, '0')	         
+											,NULL
+											,NULL							
+											,NULL
+											,NULL
+											,NULL
+											,NULL														   
+	 	                               		,#{email}               
+	 	                                    ,#{resumeId}
+	 	                                )
+	</insert>
+  </mapper>

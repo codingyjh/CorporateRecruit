@@ -152,8 +152,8 @@ var controller = $.extend(new $.CommonObj(), {
 		if ( handicapRadioCheck == "handicapRadioY") {
 			$("#handicapGrade").attr("disabled", false);
 			$("#handicapReason").attr("disabled", false);
-		}
-		else {
+			
+		} else {
 			
 			$("#handicapGrade").attr("disabled", true);
 			$("#handicapGrade").val("");
@@ -165,7 +165,7 @@ var controller = $.extend(new $.CommonObj(), {
 		
 		// 장애여부 Radio 버튼 변경 시
 		$("input[type=radio][name=handicapYn]").bind("change", function() {
-			controller.hadicapDisabledCheck();
+			controller.hadicapDisabledCheckFunc();
 		});
 		
 	}, boohoonDisabledCheckFunc : function() {
@@ -176,8 +176,8 @@ var controller = $.extend(new $.CommonObj(), {
 			$("#bohoonNum").attr("disabled", false);
 			$("#bohoonRltn").attr("disabled", false);
 			$("#bohoonCost").attr("disabled", false);
-		}
-		else {					
+			
+		} else {					
 			$("#bohoonNum").attr("disabled", true);
 			$("#bohoonNum").val("");
 			$("#bohoonRltn").attr("disabled", true);
@@ -190,7 +190,7 @@ var controller = $.extend(new $.CommonObj(), {
 		
 		// 장애여부 Radio 버튼 변경 시
 		$("input[type=radio][name=bohoonYn]").bind("change", function() {
-			controller.boohoonDisabledCheck();
+			controller.boohoonDisabledCheckFunc();
 		});
 		
 	}, militaryCheckFunc : function() {
@@ -211,8 +211,7 @@ var controller = $.extend(new $.CommonObj(), {
 			$("#milEndDt").attr("disabled", true);
 			$("#milEndDt").val("");
 			
-		}
-		else {
+		} else {
 			$("#milType").attr("disabled", false);
 			$("#milWork").attr("disabled", false);
 			$("#milLevel").attr("disabled", false);
@@ -224,7 +223,7 @@ var controller = $.extend(new $.CommonObj(), {
 	}, militaryDivSelectBoxCheckFunc : function() {
 	
 		$("#milDiv").bind("change", function () {
-			controller.militaryCheck();
+			controller.militaryCheckFunc();
 		});
 		
 	}, basicInfoValidationCheckFunc : function() {

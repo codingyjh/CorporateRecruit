@@ -3,6 +3,7 @@ package com.spring.sideproject.resume.basicinfo.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 import com.spring.sideproject.resume.academicbacground.biz.AcademicBackgroundBiz;
@@ -22,6 +23,7 @@ import com.spring.sideproject.resume.qualification.experience.common.officialexa
 import com.spring.sideproject.resume.selfintroduce.biz.SelfIntroduceBiz;
 import com.spring.sideproject.resume.selfintroduce.vo.SelfIntroduceVo;
 
+@Service
 public class BasicInfoServiceImpl implements BasicInfoService {
 
 	private Logger logger = LoggerFactory.getLogger(BasicInfoServiceImpl.class);

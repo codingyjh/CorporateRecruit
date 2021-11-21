@@ -39,7 +39,7 @@
   	 	<result property="finalDt" column="FINAL_DT" />  	 	 	 	
   	 	<result property="resumeFinishYn" column="RESUME_FINISH_YN" />  	 	
   	 	
-  	 	<association property="recruitMemberVO" javaType="RecruitMemberVO">
+  	 	<association property="recruitMemberVo" javaType="RecruitMemberVo">
 			<id property="email" column="M_EMAIL"/>
 		</association>		
   	</resultMap>

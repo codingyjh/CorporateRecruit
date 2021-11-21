@@ -13,7 +13,7 @@ public class ActivityBizImpl implements ActivityBiz {
 	private ActivityDao activityDao;
 
 	@Override
-	public boolean createOneActivity(ActivityVo activityVo) {
+	public boolean createOneActivityBiz(ActivityVo activityVo) {
 		return this.activityDao.insertOneActivityDao(activityVo) > 0;
 	}
 	

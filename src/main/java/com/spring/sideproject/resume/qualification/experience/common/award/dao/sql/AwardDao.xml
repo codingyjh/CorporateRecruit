@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="AwardDao">
+	<insert id="insertOneAwardDao" parameterType="AwardVo">
+		INSERT	INTO	AWARDINFO	(
+										AWARD_ID	
+										,AWARD_NAME
+										,AWARD_INST
+										,AWARD_DT
+										,AWARD_CONTENT	
+										,EMAIL	
+										,RESUME_ID
+
+									)
+		VALUES						(
+										'AWARD' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24') || '-' || LPAD(AWARDINFO_ID_SEQ.NEXTVAL, 6, '0')	         
+										,NULL
+										,NULL							
+										,NULL
+										,NULL																							   
+ 	                               		,#{email}               
+ 	                                    ,#{resumeId}
+ 	                                )
+	</insert>
+  </mapper>

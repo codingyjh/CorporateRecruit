@@ -4,5 +4,5 @@ import com.spring.sideproject.resume.qualification.experience.common.activity.vo
 
 public interface ActivityBiz {
 
-	public boolean createOneActivity(ActivityVo activityVo);
+	public boolean createOneActivityBiz(ActivityVo activityVo);
 }

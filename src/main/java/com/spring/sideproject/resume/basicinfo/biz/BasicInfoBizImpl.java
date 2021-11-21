@@ -14,7 +14,7 @@ public class BasicInfoBizImpl implements BasicInfoBiz{
 	private BasicInfoDao basicInfoDao;
 	
 	@Override
-	public boolean createOneBasicInfoDao(BasicInfoVo basicInfoVo) {
+	public boolean createOneBasicInfoBiz(BasicInfoVo basicInfoVo) {
 		return this.basicInfoDao.insertOneBasicInfoDao(basicInfoVo) > 0;
 	}
 

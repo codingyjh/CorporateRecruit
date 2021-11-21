@@ -4,5 +4,5 @@ import com.spring.sideproject.resume.basicinfo.vo.BasicInfoVo;
 
 public interface BasicInfoBiz {
 	
-	public boolean createOneBasicInfoDao(BasicInfoVo basicInfoVo);
+	public boolean createOneBasicInfoBiz(BasicInfoVo basicInfoVo);
 }

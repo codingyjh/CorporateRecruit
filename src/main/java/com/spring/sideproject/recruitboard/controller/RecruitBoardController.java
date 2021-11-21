@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -41,16 +43,23 @@ import com.spring.sideproject.recruitboard.service.RecruitBoardService;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardVo;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
+import com.spring.sideproject.resume.basicinfo.service.BasicInfoService;
 import com.spring.sideproject.resume.basicinfo.vo.BasicInfoVo;
+
 
 @Controller
 public class RecruitBoardController {
+	
+	private Logger logger = LoggerFactory.getLogger(RecruitBoardController.class);
 	
 	@Autowired
 	private String uploadFilePath;
 	
 	@Autowired
 	private RecruitBoardService recruitBoardService;
+	
+	@Autowired
+	private BasicInfoService basicInfoService;
 	
 	@RequestMapping("/recruitBoard/recruitBoardInit.do") 
 	public String viewRecruitBoardListPageForInitiate(HttpSession session) {
@@ -346,7 +355,19 @@ public class RecruitBoardController {
 		basicInfo.setRecruitMemberVo(recruitMemberVo);
 		basicInfo.setBoardId(boardId);
 		
-		return null;
+		boolean isSuccess = this.basicInfoService.createOneResumeInfoService(basicInfo, recruitMemberVo, boardId);
+		
+		int resumeId = this.basicInfoService.readOneBasicInfoByResumeIdService(email);
+		
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_BASIC_INFO + "/" + resumeId);
+		
+		if ( !agree ) {
+			logger.info("agree의 값 : " + agree);
+			view = new ModelAndView(HttpRequestHelper.getJspPath());
+			return view;
+		}
+		
+		return view;
 		
 	}
 }

@@ -36,15 +36,15 @@ public class AcademicBackgroundVo {
 	private String graUnivMajor;
 	private String graUnivScore;
 	private String graUnivPScore;
-	
+
 	@Types(alias = "ADM_EMAIL")
 	private String email;
 
 	@Types(alias = "ADM_RESUME_ID")
 	private int resumeId;
 
-	private RecruitMemberVo recruitMemberVO;
-	private BasicInfoVo basicInfoVO;
+	private RecruitMemberVo recruitMemberVo;
+	private BasicInfoVo basicInfoVo;
 
 	public String getAdmBgId() {
 		return admBgId;
@@ -302,19 +302,20 @@ public class AcademicBackgroundVo {
 		this.resumeId = resumeId;
 	}
 
-	public RecruitMemberVo getRecruitMemberVO() {
-		return recruitMemberVO;
+	public RecruitMemberVo getRecruitMemberVo() {
+		return recruitMemberVo;
 	}
 
-	public void setRecruitMemberVO(RecruitMemberVo recruitMemberVO) {
-		this.recruitMemberVO = recruitMemberVO;
+	public void setRecruitMemberVo(RecruitMemberVo recruitMemberVo) {
+		this.recruitMemberVo = recruitMemberVo;
 	}
 
-	public BasicInfoVo getBasicInfoVO() {
-		return basicInfoVO;
+	public BasicInfoVo getBasicInfoVo() {
+		return basicInfoVo;
 	}
 
-	public void setBasicInfoVO(BasicInfoVo basicInfoVO) {
-		this.basicInfoVO = basicInfoVO;
+	public void setBasicInfoVo(BasicInfoVo basicInfoVo) {
+		this.basicInfoVo = basicInfoVo;
 	}
+
 }

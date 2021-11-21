@@ -18,4 +18,9 @@ public class BasicInfoBizImpl implements BasicInfoBiz{
 		return this.basicInfoDao.insertOneBasicInfoDao(basicInfoVo) > 0;
 	}
 
+	@Override
+	public int readOneBasicInfoByResumeIdBiz(String email) {
+		return this.basicInfoDao.selectOneBasicInfoByResumeIdDao(email);
+	}
+
 }

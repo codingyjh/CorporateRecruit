@@ -73,4 +73,17 @@
 											,'N'
 										)								  					   
   	</insert>
+  	<select id="selectOneBasicInfoByResumeIdDao"
+  			parameterType="string"
+  			resultType="_int">
+
+  		SELECT	RESUME_ID
+  		FROM	(
+  					SELECT	RESUME_ID
+  					FROM	BASICINFO
+  					WHERE	EMAIL = #{email}
+  					ORDER	BY RESUME_ID DESC
+  				)
+  		WHERE	ROWNUM = 1
+  	</select>  	
   </mapper>

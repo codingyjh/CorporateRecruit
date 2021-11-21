@@ -21,4 +21,9 @@ public class BasicInfoDaoImplMyBatis extends SqlSessionDaoSupport implements Bas
 		return getSqlSession().insert("BasicInfoDao.insertOneBasicInfoDao", basicInfoVo);
 	}
 
+	@Override
+	public int selectOneBasicInfoByResumeIdDao(String email) {
+		return getSqlSession().selectOne("BasicInfoDao.selectOneBasicInfoByResumeIdDao", email);
+	}
+
 }

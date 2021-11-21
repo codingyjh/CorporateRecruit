@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,6 +41,7 @@ import com.spring.sideproject.recruitboard.service.RecruitBoardService;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo;
 import com.spring.sideproject.recruitboard.vo.RecruitBoardVo;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
+import com.spring.sideproject.resume.basicinfo.vo.BasicInfoVo;
 
 @Controller
 public class RecruitBoardController {
@@ -330,5 +332,21 @@ public class RecruitBoardController {
 			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
 		
 		return HttpRequestHelper.getJspPath();
+	}
+	
+	@PostMapping("/recruitBoard/recruitAgreement.do/{boardId}")
+	public ModelAndView doRecruitAgreementAction(
+			@PathVariable int boardId
+			, @RequestParam(value="agree", defaultValue="false") Boolean agree 
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		BasicInfoVo basicInfo = new BasicInfoVo();
+		String email = recruitMemberVo.getEmail();
+		basicInfo.setEmail(email);
+		basicInfo.setRecruitMemberVo(recruitMemberVo);
+		basicInfo.setBoardId(boardId);
+		
+		return null;
+		
 	}
 }

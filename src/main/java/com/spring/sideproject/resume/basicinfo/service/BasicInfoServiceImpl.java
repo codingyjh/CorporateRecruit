@@ -57,7 +57,7 @@ public class BasicInfoServiceImpl implements BasicInfoService {
 		boolean isSuccessBasicInfo = this.basicInfoBiz.createOneBasicInfoBiz(basicInfoVo);
 		
 		String email = recruitMemberVo.getEmail();
-		int resumeId = this.basicInfoBiz.readOneBasicInfoByResumeIdBiz(email);
+		int resumeId = this.basicInfoBiz.readOneBasicInfoByEmailBiz(email);
 		
 		// 학력 등록
 		AcademicBackgroundVo academicBackground = new AcademicBackgroundVo();
@@ -118,8 +118,13 @@ public class BasicInfoServiceImpl implements BasicInfoService {
 	}
 
 	@Override
-	public int readOneBasicInfoByResumeIdService(String email) {
-		return this.basicInfoBiz.readOneBasicInfoByResumeIdBiz(email);
+	public int readOneBasicInfoByEmailService(String email) {
+		return this.basicInfoBiz.readOneBasicInfoByEmailBiz(email);
+	}
+
+	@Override
+	public BasicInfoVo readOneBasicInfoByResumeIdService(int resumeId) {
+		return this.basicInfoBiz.readOneBasicInfoByResumeIdBiz(resumeId);
 	}
 	
 	

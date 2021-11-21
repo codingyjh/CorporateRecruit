@@ -7,5 +7,6 @@ public interface BasicInfoService {
 
 	public boolean createOneResumeInfoService(BasicInfoVo basicInfoVo, RecruitMemberVo recruitMemberVo, int boardId);
 	
-	public int readOneBasicInfoByResumeIdService(String email);
+	public BasicInfoVo readOneBasicInfoByResumeIdService(int resumeId);
+	public int readOneBasicInfoByEmailService(String email);
 }

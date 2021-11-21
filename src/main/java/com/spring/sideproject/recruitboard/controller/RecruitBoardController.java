@@ -357,7 +357,7 @@ public class RecruitBoardController {
 		
 		boolean isSuccess = this.basicInfoService.createOneResumeInfoService(basicInfo, recruitMemberVo, boardId);
 		
-		int resumeId = this.basicInfoService.readOneBasicInfoByResumeIdService(email);
+		int resumeId = this.basicInfoService.readOneBasicInfoByEmailService(email);
 		
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_BASIC_INFO + "/" + resumeId);
 		

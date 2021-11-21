@@ -6,5 +6,7 @@ public interface BasicInfoDao {
 
 	public int insertOneBasicInfoDao(BasicInfoVo basicInfoVo);
 	
-	public int selectOneBasicInfoByResumeIdDao(String email);
+	public BasicInfoVo selectOneBasicInfoByResumeIdDao(int resumeId);
+	
+	public int selectOneBasicInfoByEmailDao(String email);
 }

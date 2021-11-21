@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.container{
+	width: 70%;	
+}
+
+#addNum {
+	width: 100px;
+	height: 30px;
+}
+
+#address1 {
+	width: 250px;
+	height: 30px;
+}
+
+#address2 {
+	width: 250px;
+	height: 30px;
+}
+
+#successMessage {
+	display: none;
+} 
+
+/* #handicapGradeDiv {
+	display: none;
+}
+
+#handicapReasonDiv {
+	display: none;
+}
+
+#bohoonNumDiv{
+	display: none;
+}
+
+#bohoonRLTNDiv{
+	display: none;
+}
+
+#bohoonCostDiv{
+	display: none;
+} */
+
+hr {
+	border: 0;
+    height: 1px;
+    background: #ccc;
+}

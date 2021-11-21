@@ -4,6 +4,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="BasicInfoDao">
+  
+  	<resultMap type="BasicInfoVo" id="basicInfoResultMap">
+  	 	<id property="resumeId" column="RESUME_ID" />
+  	 	<result property="korName" column="KOR_NAME" />
+  	 	<result property="engName" column="ENG_NAME" />
+  	 	<result property="birth" column="BIRTH" />
+  	 	<result property="careerDiv" column="CAREER_DIV" />
+  	 	<result property="recruitField" column="RECRUIT_FIELD" />
+  	 	<result property="recruitJob" column="RECRUIT_JOB" />
+  	 	<result property="phone" column="PHONE" />
+  	 	<result property="zipCode" column="ZIPCODE" />
+  	 	<result property="address" column="ADDRESS" />
+  	 	<result property="dAddress" column="D_ADDRESS" />
+  	 	<result property="handicapYn" column="HANDICAP_YN" />
+  	 	<result property="handicapGrade" column="HANDICAP_GRADE" />
+  	 	<result property="handicapReason" column="HANDICAP_REASON" />
+  	 	<result property="bohoonYn" column="BOHOON_YN" />
+  	 	<result property="bohoonNum" column="BOHOON_NUM" />
+  	 	<result property="bohoonRltn" column="BOHOON_RLTN" />
+  	 	<result property="bohoonCost" column="BOHOON_COST" />
+  	 	<result property="milDiv" column="MIL_DIV" />
+  	 	<result property="milType" column="MIL_TYPE" />
+  	 	<result property="milWork" column="MIL_WORK" />
+  	 	<result property="milLevel" column="MIL_LEVEL" />
+  	 	<result property="milStartDt" column="MIL_START_DT" />
+  	 	<result property="milEndDt" column="MIL_END_DT" />
+  	 	<result property="milDischangeDiv" column="MIL_DISCHARGE_DIV" />
+  	 	<result property="chName" column="CH_NAME" />
+  	 	<result property="imgFileName" column="IMG_FILE_NAME" />
+  	 	<result property="imgOriginFileName" column="IMG_ORIGIN_FILE_NAME" />
+  	 	<result property="email" column="EMAIL" />
+  	 	<result property="boardId" column="BOARD_ID" />
+  	 	<result property="finalDt" column="FINAL_DT" />  	 	 	 	
+  	 	<result property="resumeFinishYn" column="RESUME_FINISH_YN" />  	 	
+  	 	
+  	 	<association property="recruitMemberVO" javaType="RecruitMemberVO">
+			<id property="email" column="M_EMAIL"/>
+		</association>		
+  	</resultMap>
+  	
   	<insert id="insertOneBasicInfoDao" parameterType="BasicInfoVo">
 		INSERT	INTO	BASICINFO		(
 											RESUME_ID
@@ -73,7 +113,7 @@
 											,'N'
 										)								  					   
   	</insert>
-  	<select id="selectOneBasicInfoByResumeIdDao"
+  	<select id="selectOneBasicInfoByEmailDao"
   			parameterType="string"
   			resultType="_int">
 
@@ -85,5 +125,44 @@
   					ORDER	BY RESUME_ID DESC
   				)
   		WHERE	ROWNUM = 1
-  	</select>  	
+  	</select>
+  	<select id="selectOneBasicInfoByResumeIdDao"
+  			parameterType="_int"
+  			resultMap="basicInfoResultMap">
+  			
+  		SELECT	RESUME_ID
+  				, KOR_NAME
+  				, ENG_NAME
+  				, BIRTH
+  				, CAREER_DIV
+  				, RECRUIT_FIELD
+  				, RECRUIT_JOB
+  				, PHONE
+  				, ZIPCODE
+  				, ADDRESS
+  				, D_ADDRESS
+  				, HANDICAP_YN
+  				, HANDICAP_GRADE
+  				, HANDICAP_REASON
+  				, BOHOON_YN
+  				, BOHOON_NUM
+  				, BOHOON_RLTN
+  				, BOHOON_COST
+  				, MIL_DIV
+  				, MIL_TYPE
+  				, MIL_WORK
+  				, MIL_LEVEL
+  				, MIL_START_DT
+  				, MIL_END_DT
+  				, MIL_DISCHARGE_DIV
+  				, CH_NAME
+  				, IMG_FILE_NAME
+  				, IMG_ORIGIN_FILE_NAME
+  				, EMAIL
+  				, BOARD_ID
+  				, FINAL_DT
+  				, RESUME_FINISH_YN
+  		FROM	BASICINFO
+  		WHERE	RESUME_ID = #{resumeId}		
+  	</select>  	  	
   </mapper>

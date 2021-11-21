@@ -6,5 +6,6 @@ public interface BasicInfoBiz {
 	
 	public boolean createOneBasicInfoBiz(BasicInfoVo basicInfoVo);
 	
-	public int readOneBasicInfoByResumeIdBiz(String email);
+	public BasicInfoVo readOneBasicInfoByResumeIdBiz(int resumeId);
+	public int readOneBasicInfoByEmailBiz(String email);
 }

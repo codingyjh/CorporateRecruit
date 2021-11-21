@@ -12,5 +12,13 @@
 			<typeAlias type="com.spring.sideproject.recruitmember.vo.RecruitMemberVo" alias="RecruitMemberVo"/>
 			<typeAlias type="com.spring.sideproject.recruitboard.vo.RecruitBoardVo" alias="RecruitBoardVo"/>
 			<typeAlias type="com.spring.sideproject.recruitboard.vo.RecruitBoardSearchVo" alias="RecruitBoardSearchVo"/>
+			<typeAlias type="com.spring.sideproject.resume.basicinfo.vo.BasicInfoVo" alias="BasicInfoVo"/>
+  			<typeAlias type="com.spring.sideproject.resume.academicbacground.vo.AcademicBackgroundVo" alias="AcademicBackgroundVo"/>
+  			<typeAlias type="com.spring.sideproject.resume.qualification.experience.common.activity.vo.ActivityVo" alias="ActivityVo"/>
+  			<typeAlias type="com.spring.sideproject.resume.qualification.experience.common.award.vo.AwardVo" alias="AwardVo"/>
+  			<typeAlias type="com.spring.sideproject.resume.qualification.experience.common.education.vo.EducationVo" alias="EducationVo"/>
+  			<typeAlias type="com.spring.sideproject.resume.qualification.experience.common.license.vo.LicenseVo" alias="LicenseVo"/>
+  			<typeAlias type="com.spring.sideproject.resume.qualification.experience.common.officialexam.vo.OfficialExamVo" alias="OfficialExamVo"/>
+  			<typeAlias type="com.spring.sideproject.resume.selfintroduce.vo.SelfIntroduceVo" alias="SelfIntroduceVo"/>
   		</typeAliases>
   	</configuration>

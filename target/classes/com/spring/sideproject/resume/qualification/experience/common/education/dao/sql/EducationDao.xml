@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="EducationDao">
+  	
+	<insert id="insertOneEducationDao" parameterType="EducationVo">
+		INSERT	INTO	EDUCATIONINFO	(
+											EDU_ID	
+											,EDU_NAME
+											,EDU_INST
+											,EDU_START_DT	
+											,EDU_END_DT
+											,EDU_TIME
+											,EDU_CONTENT
+											,EMAIL	
+											,RESUME_ID
+									)
+		VALUES						(
+											'EDU' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24') || '-' || LPAD(EDUCATIONINFO_ID_SEQ.NEXTVAL, 6, '0')	         
+											,NULL
+											,NULL							
+											,NULL
+											,NULL
+											,NULL
+											,NULL																							   
+	 	                               		,#{email}               
+	 	                                    ,#{resumeId}
+	 	                            )
+	</insert>
+  </mapper>

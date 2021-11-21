@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="SelfIntroduceDao">
+  	
+  	<insert id="insertOneSelfIntroduceDao" parameterType="SelfIntroduceVo">
+		INSERT	INTO	SELFINTRODUCEINFO	(
+												SELF_ITDT_ID		
+												,SELF_ITDT_CONTENT1	
+												,SELF_ITDT_CONTENT2
+												,SELF_ITDT_CONTENT3	
+												,EMAIL			
+												,RESUME_ID
+											)
+										
+		VALUES								(
+												'SELF_ITDT' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24') || '-' || LPAD(SELFINTRODUCEINFO_ID_SEQ.NEXTVAL, 6, '0')	         
+												,NULL
+												,NULL	
+												,NULL														
+		 	                               		,#{email}               
+		 	                                    ,#{resumeId}
+		 	                            	)
+	</insert>
+  </mapper>

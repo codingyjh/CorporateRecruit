@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="AcademicBackgroundDao">
+  	<insert id="insertOneAcademicBackgroundDao" parameterType="AcademicBackgroundVo">
+		INSERT	INTO	ACADEMICBACKGROUNDINFO	(
+													ADM_BG_ID	
+													,HIGHS_DIV			
+													,HIGHS_NAME			
+													,HIGHS_REGION	
+													,HIGHS_DAY_NIGHT		
+													,HIGHS_END_DT
+													,UNIV_DIV		
+													,UNIV_START_DT
+													,UNIV_END_DT		
+													,UNIV_NAME			
+													,UNIV_REGION			
+													,UNIV_DAY_NIGHT
+													,UNIV_MAIN_BRANCH
+													,UNIV_TYPE_NAME	
+													,UNIV_MAJOR			
+													,UNIV_SCORE			
+													,UNIV_PSCORE				
+													,UNIV_GRA_DIV	
+													,GRA_UNIV_DEGREE		
+													,GRA_UNIV_GRA_DIV
+													,GRA_UNIV_START_DT
+													,GRA_UNIV_END_DT	
+													,GRA_UNIV_NAME	
+													,GRA_UNIV_REGION	
+													,GRA_UNIV_DAY_NIGHT
+													,GRA_UNIV_MAIN_BRANCH	
+													,GRA_UNIV_TYPE_NAME
+													,GRA_UNIV_MAJOR	
+													,GRA_UNIV_SCORE	
+													,GRA_UNIV_PSCORE	
+													,EMAIL
+													,RESUME_ID			
+												
+											)
+		VALUES								(
+												'ADM_BG' || TO_CHAR(SYSDATE, 'YYYYMMDDHH24') || '-' || LPAD(ACADEMICBACKGROUNDINFO_ID_SEQ.NEXTVAL, 6, '0')	         
+												,NULL
+												,NULL							
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL
+												,NULL		  					   
+	  	                               			,#{email}               
+	  	                                        ,#{resumeId}
+	  	                                    )
+	</insert>
+  </mapper>

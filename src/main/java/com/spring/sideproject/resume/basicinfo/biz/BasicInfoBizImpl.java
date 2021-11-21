@@ -3,6 +3,7 @@ package com.spring.sideproject.resume.basicinfo.biz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 import com.spring.sideproject.resume.basicinfo.dao.BasicInfoDao;
 import com.spring.sideproject.resume.basicinfo.vo.BasicInfoVo;
 

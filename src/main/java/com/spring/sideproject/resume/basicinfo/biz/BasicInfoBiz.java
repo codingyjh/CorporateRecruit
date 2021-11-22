@@ -8,4 +8,6 @@ public interface BasicInfoBiz {
 	
 	public BasicInfoVo readOneBasicInfoByResumeIdBiz(int resumeId);
 	public int readOneBasicInfoByEmailBiz(String email);
+	
+	public boolean updateOneBasicInfoBiz(BasicInfoVo basicInfoVo);
 }

@@ -38,4 +38,6 @@ public interface MasterCodeConstants {
 	public static final String YN_Y				= "Y";
 	public static final String YN_N				= "N";
 	
+	public static final String FILE				= "file";
+	
 }

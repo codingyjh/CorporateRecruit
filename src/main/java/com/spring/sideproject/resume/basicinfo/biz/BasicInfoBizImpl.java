@@ -28,4 +28,9 @@ public class BasicInfoBizImpl implements BasicInfoBiz{
 		return this.basicInfoDao.selectOneBasicInfoByResumeIdDao(resumeId);
 	}
 
+	@Override
+	public boolean updateOneBasicInfoBiz(BasicInfoVo basicInfoVo) {
+		return this.basicInfoDao.updateOneBasicInfoDao(basicInfoVo) > 0;
+	}
+
 }

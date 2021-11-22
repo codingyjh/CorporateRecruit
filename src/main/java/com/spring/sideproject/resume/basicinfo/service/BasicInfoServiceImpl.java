@@ -128,7 +128,10 @@ public class BasicInfoServiceImpl implements BasicInfoService {
 	public BasicInfoVo readOneBasicInfoByResumeIdService(int resumeId) {
 		return this.basicInfoBiz.readOneBasicInfoByResumeIdBiz(resumeId);
 	}
-	
-	
+
+	@Override
+	public boolean updateOneBasicInfoService(BasicInfoVo basicInfoVo) {
+		return this.basicInfoBiz.updateOneBasicInfoBiz(basicInfoVo);
+	}
 	
 }

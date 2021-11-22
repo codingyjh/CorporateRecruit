@@ -22,8 +22,8 @@ var controller = $.extend(new $.CommonObj(), {
 		
 		$("#tempSaveBtn").click(function() {
 			
-			if ( basicInfoValidationCheckFunc() || humanInfoValidationCheckFunc() || recruitFieldValidaionCheckFunc() 
-					|| handicapValidationCheckFunc() || bohoonValidationCheckFunc() || militaryValidationCheckFunc() ) {
+			if ( controller.basicInfoValidationCheckFunc() || controller.humanInfoValidationCheckFunc() || controller.recruitFieldValidaionCheckFunc() 
+					|| controller.handicapValidationCheckFunc() || controller.bohoonValidationCheckFunc() || controller.militaryValidationCheckFunc() ) {
 	    		
 				return;
 				
@@ -58,8 +58,8 @@ var controller = $.extend(new $.CommonObj(), {
 		
 	    $("#nextStepBtn").click(function() {
 	    	
-	    	if ( basicInfoValidationCheckFunc() || humanInfoValidationCheckFunc() || recruitFieldValidaionCheckFunc() 
-	    			|| handicapValidationCheckFunc() || bohoonValidationCheckFunc() || militaryValidationCheckFunc() ) {
+	    	if ( controller.basicInfoValidationCheckFunc() || controller.humanInfoValidationCheckFunc() || controller.recruitFieldValidaionCheckFunc() 
+	    			|| controller.handicapValidationCheckFunc() || controller.bohoonValidationCheckFunc() || controller.militaryValidationCheckFunc() ) {
 	    		
 	    		return;
 	    		

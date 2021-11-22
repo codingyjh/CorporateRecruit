@@ -9,4 +9,6 @@ public interface BasicInfoService {
 	
 	public BasicInfoVo readOneBasicInfoByResumeIdService(int resumeId);
 	public int readOneBasicInfoByEmailService(String email);
+	
+	public boolean updateOneBasicInfoService(BasicInfoVo basicInfoVo);
 }

@@ -9,4 +9,6 @@ public interface BasicInfoDao {
 	public BasicInfoVo selectOneBasicInfoByResumeIdDao(int resumeId);
 	
 	public int selectOneBasicInfoByEmailDao(String email);
+	
+	public int updateOneBasicInfoDao(BasicInfoVo basicInfoVo);
 }

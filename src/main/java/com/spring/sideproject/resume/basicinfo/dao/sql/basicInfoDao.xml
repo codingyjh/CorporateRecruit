@@ -164,5 +164,39 @@
   				, RESUME_FINISH_YN
   		FROM	BASICINFO
   		WHERE	RESUME_ID = #{resumeId}		
-  	</select>  	  	
+  	</select>
+  	<update id="updateOneBasicInfoDao"
+  			parameterType="BasicInfoVo">
+  	
+  		UPDATE	BASICINFO
+  		SET		IMG_FILE_NAME = #{imgFileName}
+  				, IMG_ORIGIN_FILE_NAME = #{imgOriginFileName}
+  				, KOR_NAME = #{korName}
+  				, CH_NAME = #{chName}
+  				, ENG_NAME = #{engName}
+  				, BIRTH = #{birth}
+  				, CAREER_DIV = #{careerDiv}
+  				, RECRUIT_FIELD = #{recruitField}
+  				, RECRUIT_JOB = #{recruitJob}
+  				, PHONE = #{phone}
+  				, ZIPCODE = #{zipCode}
+  				, ADDRESS = #{address}
+  				, D_ADDRESS = #{dAddress}
+  				, HANDICAP_YN = #{handicapYn}
+  				, HANDICAP_GRADE = #{handicapGrade}
+  				, HANDICAP_REASON = #{handicapReason}
+	 			, BOHOON_YN	= #{bohoonYn}    
+				, BOHOON_NUM = #{bohoonNum}	    
+				, BOHOON_RLTN = #{bohoonRltn}		
+				, BOHOON_COST = #{bohoonCost}	
+				, MIL_DIV = #{milDiv}			
+				, MIL_TYPE = #{milType}          
+				, MIL_WORK = #{milWork}		    
+				, MIL_LEVEL = #{milLevel}	    
+				, MIL_START_DT = #{milStartDt}	    
+				, MIL_END_DT = #{milEndDt}	    
+				, MIL_DISCHARGE_DIV = #{milDischangeDiv}
+  		
+  		WHERE	EMAIL = #{email}		
+  	</update>  	
   </mapper>

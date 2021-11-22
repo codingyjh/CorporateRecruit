@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.sideproject.resume.academicbacground.vo.AcademicBackgroundVo;
 
 @Repository
-public class AcademicBackgroundDaoImplMyBatis extends SqlSessionDaoSupport implements AcademicBackgroundDao{
+public class AcademicBackgroundDaoImplMyBatis extends SqlSessionDaoSupport implements AcademicBackgroundDao {
 
 	@Autowired
 	@Override
@@ -19,6 +19,11 @@ public class AcademicBackgroundDaoImplMyBatis extends SqlSessionDaoSupport imple
 	@Override
 	public int insertOneAcademicBackgroundDao(AcademicBackgroundVo academicBackgroundVo) {
 		return getSqlSession().insert("AcademicBackgroundDao.insertOneAcademicBackgroundDao", academicBackgroundVo);
+	}
+
+	@Override
+	public AcademicBackgroundVo selectOneAcademicBackgroundByResumeIdDao(int resumeId) {
+		return getSqlSession().selectOne("AcademicBackgroundDao.selectOneAcademicBackgroundByResumeIdDao", resumeId);
 	}
 
 }

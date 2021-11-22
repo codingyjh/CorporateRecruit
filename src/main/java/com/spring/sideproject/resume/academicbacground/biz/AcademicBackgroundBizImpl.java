@@ -17,4 +17,9 @@ public class AcademicBackgroundBizImpl implements AcademicBackgroundBiz {
 		return this.academicBackgroundDao.insertOneAcademicBackgroundDao(academicBackgroundVo) > 0;
 	}
 
+	@Override
+	public AcademicBackgroundVo readOneAcademicBackgroundByResumeIdBiz(int resumeId) {
+		return this.academicBackgroundDao.selectOneAcademicBackgroundByResumeIdDao(resumeId);
+	}
+
 }

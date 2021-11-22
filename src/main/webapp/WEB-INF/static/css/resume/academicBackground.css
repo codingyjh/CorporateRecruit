@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.container{
+	width: 70%;	
+}
+
+hr {
+	border: 0;
+    height: 1px;
+    background: #ccc;
+}
+#successMessage {
+	display: none;
+}

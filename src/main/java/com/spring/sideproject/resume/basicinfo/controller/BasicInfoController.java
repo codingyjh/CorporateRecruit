@@ -9,9 +9,11 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -100,6 +102,61 @@ public class BasicInfoController {
 		map.put("success", isTempSaveCheck);
 		return map;	
 	}
+	
+	@PostMapping("/resume/basicInfoNextStep.do/{resumeId}")
+	public ModelAndView doBasicInfoAction(
+			@Valid @ModelAttribute BasicInfoVo basicInfoVo
+			, Errors errors
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		int resumeId = basicInfoVo.getResumeId();
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_ACADEMY_BACKGROUND + "/" + resumeId);
+		
+		if ( errors.hasErrors() ) {
+			view.setViewName(MasterCodeConstants.VIEW_RESUME_BASIC_INFO);
+			view.addObject("basicInfoVo", basicInfoVo);
+			return view;
+		}
+		
+		MultipartFile uploadFile = basicInfoVo.getFile();
+		
+		if ( !uploadFile.isEmpty() ) {
+			
+			// 실제 파일 이름
+			String imgOriginFileName = uploadFile.getOriginalFilename();
+			
+			// 파일 시스템에 저장될 파일의 이름(난수)
+			String imgFileName = UUID.randomUUID().toString();
+			
+			File uploadDir = new File(this.basicInfoImageUploadFilePath);
+			
+			// 폴더가 존재하지 않는다면 생성
+			if ( !uploadDir.exists() ) {
+				uploadDir.mkdirs();
+			}
+			
+			// 파일이 업로드될 경로 지정
+			File destFile = new File(this.basicInfoImageUploadFilePath, imgFileName);
+						
+			try {
+				// 업로드
+				uploadFile.transferTo(destFile);
+				// DB에 File 정보 저장하기 위한 정보 셋팅
+				basicInfoVo.setImgOriginFileName(imgOriginFileName);
+				basicInfoVo.setImgFileName(imgFileName);
+			} catch (IllegalStateException | IOException e) {
+				throw new RuntimeException(e.getMessage(), e);
+			}
+		}
+		
+		String email = recruitMemberVo.getEmail();
+		basicInfoVo.setEmail(email);
+		basicInfoVo.setRecruitMemberVo(recruitMemberVo);
+		
+		boolean isSuccess = this.basicInfoService.updateOneBasicInfoService(basicInfoVo);
+		
+		return view;		
+	}	
 	
 	@RequestMapping("/resume/basicInfoImageDownload.do/{resumeId}")
 	public void resumeImageFileDownload(

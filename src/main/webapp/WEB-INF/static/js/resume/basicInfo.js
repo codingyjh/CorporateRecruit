@@ -57,31 +57,37 @@ var controller = $.extend(new $.CommonObj(), {
 		});		
 		
 	    $("#nextStepBtn").click(function() {
-	    	
-	    	if ( controller.basicInfoValidationCheckFunc() || controller.humanInfoValidationCheckFunc() || controller.recruitFieldValidaionCheckFunc() 
-	    			|| controller.handicapValidationCheckFunc() || controller.bohoonValidationCheckFunc() || controller.militaryValidationCheckFunc() ) {
-	    		
-	    		return;
-	    		
-	    	} else {
-	    		
-	    		var resumeId = $("#resumeId").val();
-	    		
-	    		controller.handicapDisabledRemoveAttrFunc();
-	    		controller.bohoonDisabledRemoveAttrFunc();
-	    		controller.militaryDisabledRemoveAttrFunc();
-		    	
-	    		controller.autoClosingAlert("#successMessage", 2000);
-		    	$("#basicInfoForm").attr({
-		    		method:"post",
-					action: "/resume/basicInfoNextStep.do/" + resumeId,
-					enctype:"multipart/form-data"
-				}).submit();
-		    	
-		    	controller.hadicapDisabledCheckFunc();
-		    	controller.boohoonDisabledCheckFunc();
-		    	controller.militaryCheckFunc();
-	    	}
+	    	var resumeId = $("#resumeId").val();
+	    	controller.autoClosingAlert("#successMessage", 2000);
+	    	$("#basicInfoForm").attr({
+	    		method:"post",
+				action: "/resume/basicInfoNextStep.do/" + resumeId,
+				enctype:"multipart/form-data"
+			}).submit();
+//	    	if ( controller.basicInfoValidationCheckFunc() || controller.humanInfoValidationCheckFunc() || controller.recruitFieldValidaionCheckFunc() 
+//	    			|| controller.handicapValidationCheckFunc() || controller.bohoonValidationCheckFunc() || controller.militaryValidationCheckFunc() ) {
+//	    		
+//	    		return;
+//	    		
+//	    	} else {
+//	    		
+//	    		var resumeId = $("#resumeId").val();
+//	    		
+//	    		controller.handicapDisabledRemoveAttrFunc();
+//	    		controller.bohoonDisabledRemoveAttrFunc();
+//	    		controller.militaryDisabledRemoveAttrFunc();
+//		    	
+//	    		controller.autoClosingAlert("#successMessage", 2000);
+//		    	$("#basicInfoForm").attr({
+//		    		method:"post",
+//					action: "/resume/basicInfoNextStep.do/" + resumeId,
+//					enctype:"multipart/form-data"
+//				}).submit();
+//		    	
+//		    	controller.hadicapDisabledCheckFunc();
+//		    	controller.boohoonDisabledCheckFunc();
+//		    	controller.militaryCheckFunc();
+//	    	}
 	    	/* handicapDisabledRemoveAttrFunc();
 	    	bohoonDisabledRemoveAttrFunc();
 	    	militaryDisabledRemoveAttrFunc();

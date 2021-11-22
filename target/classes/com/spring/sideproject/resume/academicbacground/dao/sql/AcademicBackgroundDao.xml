@@ -4,6 +4,88 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="AcademicBackgroundDao">
+  	<resultMap type="AcademicBackgroundVo" id="academicBackgroundResultMap">
+  	 	<id property="admBgId" column="ADM_BG_ID" />
+  	 	<result property="highSDiv" column="HIGHS_DIV" />
+  	 	<result property="highSName" column="HIGHS_NAME" />
+  	 	<result property="highSRegion" column="HIGHS_REGION" />
+  	 	<result property="highSDayNight" column="HIGHS_DAY_NIGHT" />
+  	 	<result property="highSEndDt" column="HIGHS_END_DT" />
+  	 	<result property="univDiv" column="UNIV_DIV" />
+  	 	<result property="univStartDt" column="UNIV_START_DT" />
+  	 	<result property="univEndDt" column="UNIV_END_DT" />
+  	 	<result property="univName" column="UNIV_NAME" />
+  	 	<result property="univRegion" column="UNIV_REGION" />
+  	 	<result property="univDayNight" column="UNIV_DAY_NIGHT" />
+  	 	<result property="univMainBranch" column="UNIV_MAIN_BRANCH" />
+  	 	<result property="univTypeName" column="UNIV_TYPE_NAME" />
+  	 	<result property="univMajor" column="UNIV_MAJOR" />
+  	 	<result property="univScore" column="UNIV_SCORE" />
+  	 	<result property="univPScore" column="UNIV_PSCORE" />
+  	 	<result property="univGraDiv" column="UNIV_GRA_DIV" />
+  	 	<result property="graUnivDegree" column="GRA_UNIV_DEGREE" />
+  	 	<result property="graUnivGraDiv" column="GRA_UNIV_GRA_DIV" />
+  	 	<result property="graUnivStartDt" column="GRA_UNIV_START_DT" />
+  	 	<result property="graUnivEndDt" column="GRA_UNIV_END_DT" />
+  	 	<result property="graUnivName" column="GRA_UNIV_NAME" />
+  	 	<result property="graUnivRegion" column="GRA_UNIV_REGION" />
+  	 	<result property="graUnivDayNight" column="GRA_UNIV_DAY_NIGHT" />
+  	 	<result property="graUnivMainBranch" column="GRA_UNIV_MAIN_BRANCH" />
+  	 	<result property="graUnivTypeName" column="GRA_UNIV_TYPE_NAME" />
+  	 	<result property="graUnivMajor" column="GRA_UNIV_MAJOR" />
+  	 	<result property="graUnivScore" column="GRA_UNIV_SCORE" />
+  	 	<result property="graUnivPScore" column="GRA_UNIV_PSCORE" />
+  	 	<result property="email" column="ADM_EMAIL" />
+  	 	<result property="resumeId" column="ADM_RESUME_ID" />
+  	 	
+  	 	<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+		</association>
+		<association property="basicInfoVo" javaType="BasicInfoVo">
+			<id property="resumeId" column="BASICINFO_RESUME_ID"/>
+		</association>
+  	</resultMap>  
+  
+  	<select	id="selectOneAcademicBackgroundByResumeIdDao" 
+  			parameterType="_int"
+  			resultMap="academicBackgroundResultMap">
+  		SELECT	A.ADM_BG_ID
+  				, A.HIGHS_DIV
+  				, A.HIGHS_NAME
+  				, A.HIGHS_REGION
+  				, A.HIGHS_DAY_NIGHT
+  				, A.HIGHS_END_DT
+  				, A.UNIV_DIV
+				, A.UNIV_START_DT
+				, A.UNIV_END_DT
+				, A.UNIV_NAME
+				, A.UNIV_REGION
+				, A.UNIV_DAY_NIGHT
+				, A.UNIV_MAIN_BRANCH
+				, A.UNIV_TYPE_NAME
+				, A.UNIV_MAJOR
+				, A.UNIV_SCORE
+				, A.UNIV_PSCORE
+				, A.UNIV_GRA_DIV
+				, A.GRA_UNIV_DEGREE
+				, A.GRA_UNIV_GRA_DIV
+				, A.GRA_UNIV_START_DT
+				, A.GRA_UNIV_END_DT
+				, A.GRA_UNIV_NAME
+				, A.GRA_UNIV_REGION
+				, A.GRA_UNIV_DAY_NIGHT
+				, A.GRA_UNIV_MAIN_BRANCH
+				, A.GRA_UNIV_TYPE_NAME
+				, A.GRA_UNIV_MAJOR
+				, A.GRA_UNIV_SCORE
+				, A.GRA_UNIV_PSCORE
+				, A.RESUME_ID ADM_RESUME_ID
+  		FROM	ACADEMICBACKGROUNDINFO A
+  				, BASICINFO B
+  		WHERE	A.RESUME_ID = B.RESUME_ID
+  		AND		A.RESUME_ID = #{resumeId}
+  	</select>  
+  
   	<insert id="insertOneAcademicBackgroundDao" parameterType="AcademicBackgroundVo">
 		INSERT	INTO	ACADEMICBACKGROUNDINFO	(
 													ADM_BG_ID	

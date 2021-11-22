@@ -2,9 +2,13 @@ package com.spring.sideproject.resume.basicinfo.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,13 +16,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.sideproject.common.constant.MasterCodeConstants;
+import com.spring.sideproject.common.session.Session;
+import com.spring.sideproject.common.utils.DownloadUtil;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
+import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
 import com.spring.sideproject.resume.basicinfo.service.BasicInfoService;
 import com.spring.sideproject.resume.basicinfo.vo.BasicInfoVo;
 
@@ -90,5 +99,25 @@ public class BasicInfoController {
 		
 		map.put("success", isTempSaveCheck);
 		return map;	
+	}
+	
+	@RequestMapping("/resume/basicInfoImageDownload.do/{resumeId}")
+	public void resumeImageFileDownload(
+			@PathVariable int resumeId
+			, HttpServletRequest request
+			, HttpServletResponse response
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+				
+		BasicInfoVo basicInfo = this.basicInfoService.readOneBasicInfoByResumeIdService(resumeId);
+		
+		String resumeImgOriginFileName = basicInfo.getImgOriginFileName();
+		String resumeImgFileName = basicInfo.getImgFileName();
+		
+		try {
+			new DownloadUtil(this.basicInfoImageUploadFilePath + File.separator + resumeImgFileName)
+			 .download(request, response, resumeImgOriginFileName);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 }

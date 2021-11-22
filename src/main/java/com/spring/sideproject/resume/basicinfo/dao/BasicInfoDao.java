@@ -11,4 +11,5 @@ public interface BasicInfoDao {
 	public int selectOneBasicInfoByEmailDao(String email);
 	
 	public int updateOneBasicInfoDao(BasicInfoVo basicInfoVo);
+	
 }

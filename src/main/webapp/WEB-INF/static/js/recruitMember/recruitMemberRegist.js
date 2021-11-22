@@ -10,25 +10,25 @@ var controller = $.extend(new $.CommonObj(), {
 	onCreate:function() {
 		
 		$("#email").keyup(function() {
-			controller.emailCheck();
+			controller.emailCheckFunc();
 		});
 		
 		$("#password").keyup(function() {
-			controller.passwordRegCheck();
+			controller.passwordRegCheckFunc();
 			
 		});
 		
 		$("#passwordConfirm").keyup(function() {
-			controller.passwordConfirmCheck();
+			controller.passwordConfirmCheckFunc();
 		});
 		
 		$("#name").keyup(function() {
-			controller.nameCheck();
+			controller.nameCheckFunc();
 		});
 		
 		$("#registBtn").click(function() {
 			
-			if ( controller.validationCheck() ) {
+			if ( controller.validationCheckFunc() ) {
 				return;
 			} else {
 				controller.autoClosingAlert("#successMessage", 2000);
@@ -40,7 +40,7 @@ var controller = $.extend(new $.CommonObj(), {
 			
 		});
 		
-	}, emailCheck : function() {
+	}, emailCheckFunc : function() {
 		
 		var email = $("#email").val();
 		var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -70,7 +70,7 @@ var controller = $.extend(new $.CommonObj(), {
 				});
 		return false;
 		
-	}, passwordRegCheck : function() {
+	}, passwordRegCheckFunc : function() {
 		
 		var password = $("#password").val();
 		var reg =  /^(?=.*[a-zA-z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}/;
@@ -86,7 +86,7 @@ var controller = $.extend(new $.CommonObj(), {
 			passwordRegCheckFlag = true;
 		}
 		
-	}, passwordConfirmCheck : function() {
+	}, passwordConfirmCheckFunc : function() {
 		
 		var password = $("#password").val();
 		var passwordConfirm = $("#passwordConfirm").val();
@@ -100,7 +100,7 @@ var controller = $.extend(new $.CommonObj(), {
 			controller.errorState("#passwordConfirm");
 		}
 		
-	}, nameCheck : function() {
+	}, nameCheckFunc : function() {
 		
 		var name = $("#name").val();
 		
@@ -139,7 +139,7 @@ var controller = $.extend(new $.CommonObj(), {
 		alert.show();
 		window.setTimeout(function() { alert.hide() }, delay);
 		
-	}, emptyCheck : function() {
+	}, emptyCheckFunc : function() {
 		
 		emailEmpty = false;
 		passwordEmpty = false;
@@ -159,9 +159,9 @@ var controller = $.extend(new $.CommonObj(), {
 			nameEmpty = true;
 		}
 		
-	}, validationCheck : function() {
+	}, validationCheckFunc : function() {
 		
-		controller.emptyCheck();
+		controller.emptyCheckFunc();
 		
 		if ( emailEmpty || passwordEmpty || passwordConfirmEmpty || nameEmpty ) {
 			

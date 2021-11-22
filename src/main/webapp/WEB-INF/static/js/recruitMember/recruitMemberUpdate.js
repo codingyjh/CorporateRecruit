@@ -10,11 +10,11 @@ var controller = $.extend(new $.CommonObj(), {
 	onCreate:function() {
 		
 		$("#password").keyup(function() {
-			controller.passwordRegCheck();
+			controller.passwordRegCheckFunc();
 		});
 		
 		$("#passwordConfirm").keyup(function() {
-			controller.passwordConfirmCheck();
+			controller.passwordConfirmCheckFunc();
 		});
 		
 		$("#updateBtn").click(function() {
@@ -27,7 +27,7 @@ var controller = $.extend(new $.CommonObj(), {
 				return false;
 			}
 			
-			if ( controller.validationCheck() ) {
+			if ( controller.validationCheckFunc() ) {
 				return;
 			}
 			else {
@@ -39,7 +39,7 @@ var controller = $.extend(new $.CommonObj(), {
 			} 
 		});
 		
-	}, passwordRegCheck : function() {
+	}, passwordRegCheckFunc : function() {
 		
 		var password = $("#password").val();
 		var reg =  /^(?=.*[a-zA-z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}/;
@@ -56,7 +56,7 @@ var controller = $.extend(new $.CommonObj(), {
 			passwordRegCheckFlag = true;
 		}
 		
-	}, passwordConfirmCheck : function() {
+	}, passwordConfirmCheckFunc : function() {
 		
 		var password = $("#password").val();
 		var passwordConfirm = $("#passwordConfirm").val();
@@ -89,7 +89,7 @@ var controller = $.extend(new $.CommonObj(), {
 		  .addClass("glyphicon-remove")
 		  .show();
 		
-	}, emptyCheck : function() {
+	}, emptyCheckFunc : function() {
 		
 		passwordEmpty = false;
 		passwordConfirmEmpty = false;
@@ -106,9 +106,9 @@ var controller = $.extend(new $.CommonObj(), {
 		alert.show();
 		window.setTimeout(function() { alert.hide() }, delay);
 		
-	}, validationCheck : function() {
+	}, validationCheckFunc : function() {
 		
-		controller.emptyCheck();
+		controller.emptyCheckFunc();
 		 
 		 if ( passwordEmpty || passwordConfirmEmpty ) {
 			 

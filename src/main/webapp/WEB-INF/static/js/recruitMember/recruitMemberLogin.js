@@ -9,7 +9,7 @@ var controller = $.extend(new $.CommonObj(), {
 	onCreate:function() {
 		
 		$("#email").keyup(function() {			
-			controller.emailCheck();
+			controller.emailCheckFunc();
 		});
 		
 		$("#password").keyup(function() {
@@ -18,7 +18,7 @@ var controller = $.extend(new $.CommonObj(), {
 		
 		$("#loginBtn").click(function() {
 			
-			if ( controller.validationCheck() ) {
+			if ( controller.validationCheckFunc() ) {
 				return;
 			}
 			else {
@@ -34,7 +34,7 @@ var controller = $.extend(new $.CommonObj(), {
 			window.open("http://localhost:8080/recruitMember/passwordFindPopup.do")
 		});
 		
-	}, emailCheck : function() {
+	}, emailCheckFunc : function() {
 		
 		var email = $("#email").val();
 		var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -75,9 +75,9 @@ var controller = $.extend(new $.CommonObj(), {
 		alert.show();
 		window.setTimeout(function() { alert.hide() }, delay);	
 		
-	}, validationCheck : function() {
+	}, validationCheckFunc : function() {
 		
-		controller.emptyCheck();
+		controller.emptyCheckFunc();
 		
 		if ( emailEmpty || passwordEmpty ) {
 			if ( emailEmpty ) {
@@ -90,13 +90,13 @@ var controller = $.extend(new $.CommonObj(), {
 			}
 			return true;
 		} else {
-			if ( controller.emailCheck() == true ) {
+			if ( controller.emailCheckFunc() == true ) {
 				return true;
 			}
 			return false;
 		}
 		
-	}, emptyCheck : function() {
+	}, emptyCheckFunc : function() {
 		
 		emailEmpty = false;
 		passwordEmpty = false;

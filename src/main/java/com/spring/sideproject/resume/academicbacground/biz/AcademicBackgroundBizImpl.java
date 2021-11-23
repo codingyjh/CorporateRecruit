@@ -22,4 +22,9 @@ public class AcademicBackgroundBizImpl implements AcademicBackgroundBiz {
 		return this.academicBackgroundDao.selectOneAcademicBackgroundByResumeIdDao(resumeId);
 	}
 
+	@Override
+	public boolean updateOneAcademicBackgroundBiz(AcademicBackgroundVo academicBackgroundVo) {
+		return this.academicBackgroundDao.updateOneAcademicBackgroundDao(academicBackgroundVo) > 0;
+	}
+
 }

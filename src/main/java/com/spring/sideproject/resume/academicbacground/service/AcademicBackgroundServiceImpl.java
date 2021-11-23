@@ -16,5 +16,10 @@ public class AcademicBackgroundServiceImpl implements AcademicBackgroundService 
 	public AcademicBackgroundVo readOneAcademicBackgroundByResumeIdService(int resumeId) {
 		return this.academicBackgroundBiz.readOneAcademicBackgroundByResumeIdBiz(resumeId);
 	}
+
+	@Override
+	public boolean updateOneAcademicBackgroundService(AcademicBackgroundVo academicBackgroundVo) {
+		return this.academicBackgroundBiz.updateOneAcademicBackgroundBiz(academicBackgroundVo);
+	}
 	
 }

@@ -26,4 +26,9 @@ public class AcademicBackgroundDaoImplMyBatis extends SqlSessionDaoSupport imple
 		return getSqlSession().selectOne("AcademicBackgroundDao.selectOneAcademicBackgroundByResumeIdDao", resumeId);
 	}
 
+	@Override
+	public int updateOneAcademicBackgroundDao(AcademicBackgroundVo academicBackgroundVo) {
+		return getSqlSession().update("AcademicBackgroundDao.updateOneAcademicBackgroundDao", academicBackgroundVo);
+	}
+
 }

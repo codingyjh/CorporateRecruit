@@ -157,4 +157,37 @@
 	  	                                        ,#{resumeId}
 	  	                                    )
 	</insert>
+	<update id="updateOneAcademicBackgroundDao" parameterType="AcademicBackgroundVo">
+		UPDATE	ACADEMICBACKGROUNDINFO
+		SET		HIGHS_DIV = #{highSDiv}
+				, HIGHS_NAME = #{highSName}
+				, HIGHS_REGION = #{highSRegion}
+				, HIGHS_DAY_NIGHT = #{highSDayNight}
+				, HIGHS_END_DT = #{highSEndDt}
+				, UNIV_DIV = #{univDiv}
+				, UNIV_START_DT = #{univStartDt}
+				, UNIV_END_DT = #{univEndDt}
+				, UNIV_NAME = #{univName}		
+				, UNIV_REGION = #{univRegion}		
+				, UNIV_DAY_NIGHT = #{univDayNight}    
+				, UNIV_MAIN_BRANCH = #{univMainBranch}  
+				, UNIV_TYPE_NAME = #{univTypeName}	    
+				, UNIV_MAJOR = #{univMajor}			
+				, UNIV_SCORE = #{univScore}			
+				, UNIV_PSCORE = #{univPScore}		
+				, UNIV_GRA_DIV = #{univGraDiv}	    
+				, GRA_UNIV_DEGREE = #{graUnivDegree}	
+				, GRA_UNIV_GRA_DIV = #{graUnivGraDiv}   
+				, GRA_UNIV_START_DT = #{graUnivStartDt} 
+				, GRA_UNIV_END_DT = #{graUnivEndDt}	
+				, GRA_UNIV_NAME	= #{graUnivName}    
+				, GRA_UNIV_REGION = #{graUnivRegion}	
+				, GRA_UNIV_DAY_NIGHT = #{graUnivDayNight}
+				, GRA_UNIV_MAIN_BRANCH = #{graUnivMainBranch}
+				, GRA_UNIV_TYPE_NAME = #{graUnivTypeName}
+				, GRA_UNIV_MAJOR = #{graUnivMajor}	    
+				, GRA_UNIV_SCORE = #{graUnivScore}	    
+				, GRA_UNIV_PSCORE = #{graUnivPScore}	
+		WHERE	EMAIL = #{email}			
+	</update>	
   </mapper>

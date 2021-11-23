@@ -3,22 +3,24 @@ package com.spring.sideproject.common.constant;
 public interface MasterCodeConstants {
 
 	//Redirect URL
-	public static final String REDIRECT_RECRUIT_MEMBER_LOGIN 		= "redirect:/recruitMember/recruitMemberLogin.do";
-	public static final String REDIRECT_COMPANY_MAIN 				= "redirect:/companyMain/main.do";
-	public static final String REDIRECT_RECRUIT_BOARD_LIST 			= "redirect:/recruitBoard/recruitBoardList.do";
-	public static final String REDIRECT_RECRUIT_BOARD_DETAIL		= "redirect:/recruitBoard/recruitBoardDetail.do";
-	public static final String REDIRECT_RESUME_BASIC_INFO			= "redirect:/resume/basicInfo.do";
-	public static final String REDIRECT_RESUME_ACADEMY_BACKGROUND 	= "redirect:/resume/academicBackground.do";
+	public static final String REDIRECT_RECRUIT_MEMBER_LOGIN 				= "redirect:/recruitMember/recruitMemberLogin.do";
+	public static final String REDIRECT_COMPANY_MAIN 						= "redirect:/companyMain/main.do";
+	public static final String REDIRECT_RECRUIT_BOARD_LIST 					= "redirect:/recruitBoard/recruitBoardList.do";
+	public static final String REDIRECT_RECRUIT_BOARD_DETAIL				= "redirect:/recruitBoard/recruitBoardDetail.do";
+	public static final String REDIRECT_RESUME_BASIC_INFO					= "redirect:/resume/basicInfo.do";
+	public static final String REDIRECT_RESUME_ACADEMY_BACKGROUND 			= "redirect:/resume/academicBackground.do";
+	public static final String REDIRECT_RESUME_QUALIFICATION_AND_EDUCATION 	= "redirect:/resume/qualificationAndEducation.do"; 
+	
 	
 	//Interceptor URL
-	public static final String INTERCEPTOR_COMPANY_MAIN 			= "/companyMain/main.do";
-	public static final String INTERCEPTOR_RECRUIT_MEMBER_LOGIN 	= "/recruitMember/recruitMemberLogin.do";
+	public static final String INTERCEPTOR_COMPANY_MAIN 					= "/companyMain/main.do";
+	public static final String INTERCEPTOR_RECRUIT_MEMBER_LOGIN 			= "/recruitMember/recruitMemberLogin.do";
 	
 	//다운로드 URL
-	public static final String RECRUIT_BOARD_IMAGE_DOWNLOADED 		= "/recruitBoard/recruitBoardImageDownloaded.do/";
+	public static final String RECRUIT_BOARD_IMAGE_DOWNLOADED 				= "/recruitBoard/recruitBoardImageDownloaded.do/";
 	
 	//View 경로
-	public static final String VIEW_RESUME_BASIC_INFO				= "pc/resume/basicInfo";
+	public static final String VIEW_RESUME_BASIC_INFO						= "pc/resume/basicInfo";
 	
 	//마스터 코드
 	public static final String URL 				= "url";

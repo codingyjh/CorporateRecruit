@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
@@ -56,5 +57,22 @@ public class AcademicBackgroundController {
 		
 		map.put("success", isTempSaveCheck);
 		return map;	
+	}
+	
+	@PostMapping("/resume/academicBackgroundNextStep.do/{resumeId}")
+	public ModelAndView doAcademicBackgroundAction(
+			@ModelAttribute AcademicBackgroundVo academicBackgroundVo			
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		int resumeId = academicBackgroundVo.getResumeId();
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_QUALIFICATION_AND_EDUCATION + "/" + resumeId);
+		
+		String email = recruitMemberVo.getEmail();
+		academicBackgroundVo.setEmail(email);
+		academicBackgroundVo.setRecruitMemberVo(recruitMemberVo);
+		
+		boolean isSuccess = this.academicBackgroundService.updateOneAcademicBackgroundService(academicBackgroundVo);
+		
+		return view;
 	}
 }

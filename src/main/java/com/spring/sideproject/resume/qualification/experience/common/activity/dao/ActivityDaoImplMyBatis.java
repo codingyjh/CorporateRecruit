@@ -20,6 +20,11 @@ public class ActivityDaoImplMyBatis extends SqlSessionDaoSupport implements Acti
 	public int insertOneActivityDao(ActivityVo activityVo) {
 		return getSqlSession().insert("ActivityDao.insertOneActivityDao", activityVo);
 	}
+
+	@Override
+	public ActivityVo selectOneActivityByResumeIdDao(int resumeId) {
+		return getSqlSession().selectOne("ActivityDao.selectOneActivityByResumeIdDao", resumeId);
+	}
 	
 	
 }

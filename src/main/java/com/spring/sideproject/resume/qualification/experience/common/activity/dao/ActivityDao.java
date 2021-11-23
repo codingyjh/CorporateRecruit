@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.activity.vo
 public interface ActivityDao {
 
 	public int insertOneActivityDao(ActivityVo activityVo);
+	public ActivityVo selectOneActivityByResumeIdDao(int resumeId);
 }

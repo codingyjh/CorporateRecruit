@@ -5,6 +5,24 @@
   
   <mapper namespace="ActivityDao">
   	
+  	<resultMap type="ActivityVo" id="activityResultMap">
+  		<id property="actId" column="ACT_ID" />
+  		<result property="actDiv" column="ACT_DIV" />
+  		<result property="actInst" column="ACT_INST" />
+  		<result property="actStartDt" column="ACT_START_DT" />
+  		<result property="actEndDt" column="ACT_END_DT" />
+  		<result property="actRole" column="ACT_ROLE" />
+  		<result property="actContent" column="ACT_CONTENT" />
+  		<result property="email" column="ACT_EMAIL" />
+  		<result property="resumeId" column="ACT_RESUME_ID" />
+  		
+  		<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+		</association>
+		<association property="basicInfoVo" javaType="BasicInfoVo">
+			<id property="resumeId" column="BASICINFO_RESUME_ID"/>
+		</association>
+  	</resultMap>  	
   	<insert id="insertOneActivityDao" parameterType="ActivityVo">
 		INSERT	INTO	ACTIVITYINFO	(
 											ACT_ID	
@@ -30,4 +48,22 @@
 	 	                                    ,#{resumeId}
 	 	                                )
 	</insert>
+  	<select	id="selectOneActivityByResumeIdDao"
+  			parameterType="_int"
+  			resultMap="activityResultMap">
+  			
+  		SELECT  A.ACT_ID
+  				, A.ACT_DIV
+		        , A.ACT_INST
+		        , A.ACT_START_DT
+		        , A.ACT_END_DT
+		        , A.ACT_ROLE
+		        , A.ACT_CONTENT
+		        , A.RESUME_ID ACT_RESUME_ID
+		FROM    ACTIVITYINFO A
+		        , BASICINFO B
+		WHERE   A.RESUME_ID = B.RESUME_ID
+		AND     A.RESUME_ID = #{resumeId}         
+	
+  	</select>	
   </mapper>

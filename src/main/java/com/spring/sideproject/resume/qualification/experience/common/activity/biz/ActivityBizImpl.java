@@ -16,6 +16,11 @@ public class ActivityBizImpl implements ActivityBiz {
 	public boolean createOneActivityBiz(ActivityVo activityVo) {
 		return this.activityDao.insertOneActivityDao(activityVo) > 0;
 	}
+
+	@Override
+	public ActivityVo readOneActivity(int resumeId) {
+		return this.activityDao.selectOneActivityByResumeIdDao(resumeId);
+	}
 	
 	
 }

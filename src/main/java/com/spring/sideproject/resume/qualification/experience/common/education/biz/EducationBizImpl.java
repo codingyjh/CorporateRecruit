@@ -16,5 +16,10 @@ public class EducationBizImpl implements EducationBiz {
 	public boolean createOneEducationBiz(EducationVo educationVo) {
 		return this.educationDao.insertOneEducationDao(educationVo) > 0;
 	}
+
+	@Override
+	public EducationVo readOneEducationByResumeIdBiz(int resumeId) {
+		return this.educationDao.selectOneEducationByResumeIdDao(resumeId);
+	}
 	
 }

@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.education.v
 public interface EducationBiz {
 
 	public boolean createOneEducationBiz(EducationVo educationVo);
+	public EducationVo readOneEducationByResumeIdBiz(int resumeId);
 }

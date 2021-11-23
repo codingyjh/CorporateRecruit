@@ -5,6 +5,24 @@
   
   <mapper namespace="EducationDao">
   	
+  	<resultMap type="EducationVo" id="educationResultMap">
+  		<id property="eduId" column="EDU_ID" />
+  		<result property="eduName" column="EDU_NAME" />
+  		<result property="eduInst" column="EDU_INST" />
+  		<result property="eduStartDt" column="EDU_START_DT" />
+  		<result property="eduEndDt" column="EDU_END_DT" />
+  		<result property="eduTime" column="EDU_TIME" />
+  		<result property="eduContent" column="EDU_CONTENT" />
+  		<result property="email" column="EDU_EMAIL" />
+  		<result property="resumeId" column="EDU_RESUME_ID" />
+  		
+  		<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+		</association>
+		<association property="basicInfoVo" javaType="BasicInfoVo">
+			<id property="resumeId" column="BASICINFO_RESUME_ID"/>
+		</association>
+  	</resultMap>  	
 	<insert id="insertOneEducationDao" parameterType="EducationVo">
 		INSERT	INTO	EDUCATIONINFO	(
 											EDU_ID	
@@ -29,4 +47,21 @@
 	 	                                    ,#{resumeId}
 	 	                            )
 	</insert>
+  	<select	id="selectOneEducationByResumeIdDao"
+  			parameterType="_int"
+  			resultMap="educationResultMap">
+  			
+  		SELECT E.EDU_ID
+  			   , E.EDU_NAME
+		       , E.EDU_INST
+		       , E.EDU_START_DT
+		       , E.EDU_END_DT
+		       , E.EDU_TIME
+		       , E.EDU_CONTENT
+		       , E.RESUME_ID EDU_RESUME_ID
+		FROM   EDUCATIONINFO E
+		       , BASICINFO B
+		WHERE   E.RESUME_ID = B.RESUME_ID
+		AND     E.RESUME_ID = #{resumeId}       
+  	</select>	
   </mapper>

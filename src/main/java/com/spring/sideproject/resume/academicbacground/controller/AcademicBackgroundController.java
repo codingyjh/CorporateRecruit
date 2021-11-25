@@ -65,7 +65,7 @@ public class AcademicBackgroundController {
 			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
 		
 		int resumeId = academicBackgroundVo.getResumeId();
-		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_QUALIFICATION_AND_EDUCATION + "/" + resumeId);
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_QUALIFICATION_EXPERIENCE + "/" + resumeId);
 		
 		String email = recruitMemberVo.getEmail();
 		academicBackgroundVo.setEmail(email);

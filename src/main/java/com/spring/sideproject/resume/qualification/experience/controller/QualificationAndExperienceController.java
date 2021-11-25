@@ -16,8 +16,8 @@ public class QualificationAndExperienceController {
 	@Autowired
 	private QualificationExperienceService qualificationExperienceService;
 	
-	@GetMapping("/resume/qualificationAndEducation.do/{resumeId}")
-	public ModelAndView viewQualificationAndEducationPage(
+	@GetMapping("/resume/qualificationExperience.do/{resumeId}")
+	public ModelAndView viewQualificationExperiencePage(
 			@PathVariable int resumeId) {
 		
 		QualificationExperienceVo qualificationExperience = this.qualificationExperienceService.readOneQualificationExperience(resumeId);

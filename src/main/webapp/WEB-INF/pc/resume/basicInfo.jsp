@@ -17,7 +17,7 @@
 			<ul class="nav nav-pills nav-justified">				  		  
 			  <li class="active"><a href="<c:url value='/resume/basicInfo.do/${basicInfoVo.resumeId}'/>">1.기본정보</a></li>
 			  <li><a href="<c:url value='/resume/academicBackground.do/${basicInfoVo.resumeId}'/>">2.학력사항</a></li>
-			  <li><a href="<c:url value='/resume/qualificationAndEducation.do/${basicInfoVo.resumeId}'/>">3.자격 및 경험</a></li>
+			  <li><a href="<c:url value='/resume/qualificationExperience.do/${basicInfoVo.resumeId}'/>">3.자격 및 경험</a></li>
 			  <li><a href="<c:url value='/resume/selfIntroduce.do/${basicInfoVo.resumeId}'/>">4.자기소개서</a></li>
 			  <li><a href="<c:url value='/resume/finalSubmissionAgreement.do/${basicInfoVo.resumeId}'/>">5.최종제출</a></li>			  	
 			</ul>

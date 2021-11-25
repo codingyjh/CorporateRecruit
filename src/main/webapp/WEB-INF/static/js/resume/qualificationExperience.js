@@ -14,8 +14,8 @@ var controller = $.extend(new $.CommonObj(), {
 				return;
 			}
 			else {
-				$.post("/resume/qualificationAndEducationTempSave.do"
-						,$("#qualificationAndEducationForm").serialize()
+				$.post("/resume/qualificationExperienceTempSave.do"
+						,$("#qualificationExperienceForm").serialize()
 						, function(response) {
 					
 					 if ( response == "fail" ) {
@@ -41,9 +41,9 @@ var controller = $.extend(new $.CommonObj(), {
 				var resumeId = $("#resumeId").val();
 				
 				controller.autoClosingAlert("#successMessage", 2000);
-				$("#qualificationAndEducationForm").attr({
+				$("#qualificationExperienceForm").attr({
 					method:"post",
-					action: "/resume/qualificationAndEducationNextStep.do/" + resumeId						
+					action: "/resume/qualificationExperienceNextStep.do/" + resumeId						
 				}).submit();
 			}				
 		});

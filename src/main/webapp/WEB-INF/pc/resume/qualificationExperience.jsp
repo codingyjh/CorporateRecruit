@@ -3,11 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
 
-	<link rel="stylesheet" href="<c:url value='/css/resume/qualificationAndEducation.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/resume/qualificationExperience.css' />">
 	
 	<title>자격 및 경험</title>
 	
-	<script src="<c:url value='/js/resume/qualificationAndEducation.js' />"></script>	
+	<script src="<c:url value='/js/resume/qualificationExperience.js' />"></script>	
 
 	<input type="hidden" name="resumeId" id="resumeId" value="${qualificationExperienceVo.resumeId}"/>
 	<div class="container" style="width: 70%;">
@@ -15,15 +15,15 @@
 			<ul class="nav nav-pills nav-justified">
 			  <li><a href="<c:url value='/resume/basicInfo.do/${qualificationExperienceVo.resumeId}'/>">1.기본정보</a></li>
 			  <li><a href="<c:url value='/resume/academicBackground.do/${qualificationExperienceVo.resumeId}'/>">2.학력사항</a></li>
-			  <li class="active"><a href="<c:url value='/resume/qualificationAndEducation.do/${qualificationExperienceVo.resumeId}'/>">3.자격 및 경험</a></li>
+			  <li class="active"><a href="<c:url value='/resume/qualificationExperience.do/${qualificationExperienceVo.resumeId}'/>">3.자격 및 경험</a></li>
 			  <li><a href="<c:url value='/resume/selfIntroduce.do/${qualificationExperienceVo.resumeId}'/>">4.자기소개서</a></li>
 			  <li><a href="<c:url value='/resume/finalSubmit.do/${qualificationExperienceVo.resumeId}'/>">5.최종제출</a></li>
 			</ul>
 		</div>
 		<br />
 		<br />
-		<form:form	id="qualificationAndEducationForm"
-					modelAttribute="qualificationAndEducationVo">
+		<form:form	id="qualificationExperienceForm"
+					modelAttribute="qualificationExperienceVo">
 				<h1>교육이수</h1>
 				<hr>
 				<div class="row">

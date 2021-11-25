@@ -10,6 +10,7 @@ public interface MasterCodeConstants {
 	public static final String REDIRECT_RESUME_BASIC_INFO					= "redirect:/resume/basicInfo.do";
 	public static final String REDIRECT_RESUME_ACADEMY_BACKGROUND 			= "redirect:/resume/academicBackground.do";
 	public static final String REDIRECT_RESUME_QUALIFICATION_AND_EDUCATION 	= "redirect:/resume/qualificationAndEducation.do"; 
+	public static final String REDIRECT_RESUME_QUALIFICATION_EXPERIENCE 	= "redirect:/resume/qualificationExperience.do"; 
 	
 	
 	//Interceptor URL

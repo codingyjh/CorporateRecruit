@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.officialexa
 public interface OffcialExamDao {
 
 	public int insertOneOfficialExamDao(OfficialExamVo officialExamVo);
+	public OfficialExamVo selectOneOfficialExamByResumeIdDao(int resumeId);
 }

@@ -20,5 +20,10 @@ public class OffcialExamImplMyBatis extends SqlSessionDaoSupport implements Offc
 	public int insertOneOfficialExamDao(OfficialExamVo officialExamVo) {
 		return getSqlSession().insert("OffcialExamDao.insertOneOfficialExamDao", officialExamVo);
 	}
+
+	@Override
+	public OfficialExamVo selectOneOfficialExamByResumeIdDao(int resumeId) {
+		return getSqlSession().selectOne("OffcialExamDao.selectOneOfficialExamByResumeIdDao", resumeId);
+	}
 	
 }

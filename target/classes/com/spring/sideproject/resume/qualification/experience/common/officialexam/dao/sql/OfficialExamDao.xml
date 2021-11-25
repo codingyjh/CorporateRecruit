@@ -4,6 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="OffcialExamDao">
+  	<resultMap type="OfficialExamVo" id="offcialExamResultMap">
+  		<id property="ofclEmId" column="OFCL_EM_ID" />
+  		<result property="ofclEmType" column="OFCL_EM_TYPE" />
+  		<result property="ofclEmRegistNum" column="OFCL_EM_REGIST_NUM" />
+  		<result property="ofclEmDt" column="OFCL_EM_DT" />
+  		<result property="ofclEmScore" column="OFCL_EM_SCORE" />
+  		<result property="email" column="OFCL_EMAIL" />
+  		<result property="resumeId" column="OFCL_RESUME_ID" />
+  		
+  		<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+		</association>
+		<association property="basicInfoVo" javaType="BasicInfoVo">
+			<id property="resumeId" column="BASICINFO_RESUME_ID"/>
+		</association>
+  	</resultMap>  	
   	
   	<insert id="insertOneOfficialExamDao" parameterType="OfficialExamVo">
 		INSERT	INTO	OFFICIALEXAMINFO	(
@@ -26,4 +42,19 @@
 		 	                                    ,#{resumeId}
 		 	                            	)
 	</insert>
+  	<select	id="selectOneOfficialExamByResumeIdDao"
+  			parameterType="_int"
+  			resultMap="offcialExamResultMap">
+  			
+  			SELECT  O.OFCL_EM_ID
+  					, O.OFCL_EM_TYPE
+			        , O.OFCL_EM_DT
+			        , O.OFCL_EM_SCORE
+			        , O.OFCL_EM_REGIST_NUM
+			        , O.RESUME_ID OFCL_RESUME_ID
+			FROM    OFFICIALEXAMINFO O
+			        , BASICINFO B
+			WHERE   O.RESUME_ID = B.RESUME_ID
+			AND     O.RESUME_ID = #{resumeId}
+  	</select>	
   </mapper>

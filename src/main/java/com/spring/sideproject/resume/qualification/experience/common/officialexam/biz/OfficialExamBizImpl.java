@@ -17,4 +17,9 @@ public class OfficialExamBizImpl implements OfficialExamBiz {
 		return this.offcialExamDao.insertOneOfficialExamDao(officialExamVo) > 0;
 	}
 
+	@Override
+	public OfficialExamVo readOndOfficialExamByResumeIdBiz(int resumeId) {
+		return this.offcialExamDao.selectOneOfficialExamByResumeIdDao(resumeId);
+	}
+
 }

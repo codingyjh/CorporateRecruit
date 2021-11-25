@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.officialexa
 public interface OfficialExamBiz {
 
 	public boolean createOneOfficialExamBiz(OfficialExamVo officialExamVo);
+	public OfficialExamVo readOndOfficialExamByResumeIdBiz(int resumeId);
 }

@@ -18,7 +18,7 @@ public class ActivityBizImpl implements ActivityBiz {
 	}
 
 	@Override
-	public ActivityVo readOneActivity(int resumeId) {
+	public ActivityVo readOneActivityBiz(int resumeId) {
 		return this.activityDao.selectOneActivityByResumeIdDao(resumeId);
 	}
 	

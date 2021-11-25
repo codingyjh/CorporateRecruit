@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.license.vo.
 public interface LicenseBiz {
 
 	public boolean createOneLicenseBiz(LicenseVo licenseVo);
+	public LicenseVo readOneLicenseByResumeIdBiz(int resumeId);
 }

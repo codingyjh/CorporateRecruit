@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.license.vo.
 public interface LicenseDao {
 
 	public int insertOneLicenseDao(LicenseVo licenseVo);
+	public LicenseVo selectOneLicenseByResumeIdDao(int resumeId);
 }

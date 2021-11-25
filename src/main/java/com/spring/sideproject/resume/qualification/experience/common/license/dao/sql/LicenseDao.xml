@@ -5,6 +5,21 @@
   
   <mapper namespace="LicenseDao">
   	
+  	<resultMap type="LicenseVo" id="licenseResultMap">
+  		<id property="licenseId" column="LICENSE_ID" />
+  		<result property="licenseType" column="LICENSE_TYPE" />
+  		<result property="licenseAcqDt" column="LICENSE_ACQ_DT" />
+  		<result property="licenseRegistNum" column="LICENSE_REGIST_NUM" />
+  		<result property="email" column="LC_EMAIL" />
+  		<result property="resumeId" column="LC_RESUME_ID" />
+  		
+  		<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+		</association>
+		<association property="basicInfoVo" javaType="BasicInfoVo">
+			<id property="resumeId" column="BASICINFO_RESUME_ID"/>
+		</association>
+  	</resultMap>  	
   	<insert id="insertOneLicenseDao" parameterType="LicenseVo">
 		INSERT	INTO	LICENSEINFO	(
 										LICENSE_ID	
@@ -23,4 +38,18 @@
  	                                    ,#{resumeId}
  	                            	)
 	</insert>
+  	<select	id="selectOneLicenseByResumeIdDao"
+  			parameterType="_int"
+  			resultMap="licenseResultMap">
+  			
+  		SELECT  L.LICENSE_ID
+  				, L.LICENSE_TYPE
+		        , L.LICENSE_ACQ_DT
+		        , L.LICENSE_REGIST_NUM
+		        , L.RESUME_ID LC_RESUME_ID
+		FROM    LICENSEINFO L
+		        , BASICINFO B
+		WHERE   L.RESUME_ID = B.RESUME_ID
+		AND     L.RESUME_ID = #{resumeId}
+  	</select>	
   </mapper>

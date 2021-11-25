@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.award.vo.Aw
 public interface AwardDao {
 
 	public int insertOneAwardDao(AwardVo awardVo);
+	public AwardVo selectOneAwardByResumeIdDao(int resumeId);
 }

@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.qualification.experience.common.award.vo.Aw
 public interface AwardBiz {
 	
 	public boolean createOneAwardBiz(AwardVo awardVo);
+	public AwardVo readOneAwardByResumeIdBiz(int resumeId);
 }

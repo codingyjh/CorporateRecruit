@@ -4,6 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="AwardDao">
+  	<resultMap type="AwardVo" id="awardResultMap">
+  		<id property="awardId" column="AWARD_ID" />
+  		<result property="awardName" column="AWARD_NAME" />
+  		<result property="awardInst" column="AWARD_INST" />
+  		<result property="awardDt" column="AWARD_DT" />
+  		<result property="awardContent" column="AWARD_CONTENT" />
+  		<result property="email" column="AW_EMAIL" />
+  		<result property="resumeId" column="AW_RESUME_ID" />
+  		
+  		<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+		</association>
+		<association property="basicInfoVo" javaType="BasicInfoVo">
+			<id property="resumeId" column="BASICINFO_RESUME_ID"/>
+		</association>
+  	</resultMap>  
 	<insert id="insertOneAwardDao" parameterType="AwardVo">
 		INSERT	INTO	AWARDINFO	(
 										AWARD_ID	
@@ -25,4 +41,20 @@
  	                                    ,#{resumeId}
  	                                )
 	</insert>
+  	<select id="selectOneAwardByResumeIdDao"
+  			parameterType="_int"
+  			resultMap="awardResultMap">
+  		
+  		SELECT  A.AWARD_ID
+  				, A.AWARD_NAME
+		        , A.AWARD_INST
+		        , A.AWARD_DT
+		        , A.AWARD_CONTENT
+		        , A.RESUME_ID AW_RESUME_ID
+		FROM    AWARDINFO A
+		        , BASICINFO B
+		WHERE   A.RESUME_ID = B.RESUME_ID
+		AND     A.RESUME_ID = #{resumeId}
+		
+  	</select>	
   </mapper>

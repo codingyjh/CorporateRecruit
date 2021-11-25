@@ -1,6 +1,7 @@
 package com.spring.sideproject.resume.qualification.experience.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.spring.sideproject.resume.qualification.experience.common.activity.biz.ActivityBiz;
 import com.spring.sideproject.resume.qualification.experience.common.activity.vo.ActivityVo;
@@ -14,6 +15,7 @@ import com.spring.sideproject.resume.qualification.experience.common.officialexa
 import com.spring.sideproject.resume.qualification.experience.common.officialexam.vo.OfficialExamVo;
 import com.spring.sideproject.resume.qualification.experience.vo.QualificationExperienceVo;
 
+@Service
 public class QualificationExperienceServiceImpl implements QualificationExperienceService {
 
 	@Autowired

@@ -6,4 +6,5 @@ public interface AwardBiz {
 	
 	public boolean createOneAwardBiz(AwardVo awardVo);
 	public AwardVo readOneAwardByResumeIdBiz(int resumeId);
+	public boolean updateOneAwardBiz(AwardVo awardVo);
 }

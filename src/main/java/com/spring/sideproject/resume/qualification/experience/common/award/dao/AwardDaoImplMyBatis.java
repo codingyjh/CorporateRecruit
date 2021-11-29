@@ -25,6 +25,11 @@ public class AwardDaoImplMyBatis extends SqlSessionDaoSupport implements AwardDa
 	public AwardVo selectOneAwardByResumeIdDao(int resumeId) {
 		return getSqlSession().selectOne("AwardDao.selectOneAwardByResumeIdDao", resumeId);
 	}
+
+	@Override
+	public int updateOneAwardDao(AwardVo awardVo) {
+		return getSqlSession().update("AwardDao.updateOneAwardDao", awardVo);
+	}
 	
 	
 }

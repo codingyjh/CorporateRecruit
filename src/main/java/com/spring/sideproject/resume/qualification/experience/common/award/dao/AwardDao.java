@@ -6,4 +6,5 @@ public interface AwardDao {
 
 	public int insertOneAwardDao(AwardVo awardVo);
 	public AwardVo selectOneAwardByResumeIdDao(int resumeId);
+	public int updateOneAwardDao(AwardVo awardVo);
 }

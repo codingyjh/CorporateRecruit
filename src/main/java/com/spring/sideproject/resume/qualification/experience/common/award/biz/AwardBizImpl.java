@@ -21,5 +21,10 @@ public class AwardBizImpl implements AwardBiz {
 	public AwardVo readOneAwardByResumeIdBiz(int resumeId) {
 		return this.awardDao.selectOneAwardByResumeIdDao(resumeId);
 	}
+
+	@Override
+	public boolean updateOneAwardBiz(AwardVo awardVo) {
+		return this.awardDao.updateOneAwardDao(awardVo) > 0;
+	}
 	
 }

@@ -56,5 +56,13 @@
 		WHERE   A.RESUME_ID = B.RESUME_ID
 		AND     A.RESUME_ID = #{resumeId}
 		
-  	</select>	
+  	</select>
+	<update id="updateOneAwardDao" parameterType="AwardVo">
+		UPDATE	AWARDINFO
+		SET		AWARD_NAME = #{awardName}
+				,AWARD_INST = #{awardInst}
+				,AWARD_DT = #{awardDt}
+				,AWARD_CONTENT = #{awardContent}
+		WHERE	EMAIL = #{email}
+	</update>  	
   </mapper>

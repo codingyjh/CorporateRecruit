@@ -6,4 +6,5 @@ public interface EducationDao {
 
 	public int insertOneEducationDao(EducationVo educationVo);
 	public EducationVo selectOneEducationByResumeIdDao(int resumeId);
+	public int updateOneEducationDao(EducationVo educationVo);
 }

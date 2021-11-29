@@ -63,5 +63,15 @@
 		       , BASICINFO B
 		WHERE   E.RESUME_ID = B.RESUME_ID
 		AND     E.RESUME_ID = #{resumeId}       
-  	</select>	
+  	</select>
+	<update id="updateOneEducationDao" parameterType="EducationVo">
+		UPDATE	EDUCATIONINFO
+		SET		EDU_NAME = #{eduName}
+				, EDU_INST = #{eduInst}
+				, EDU_START_DT = #{eduStartDt}
+				, EDU_END_DT = #{eduEndDt}
+				, EDU_TIME = #{eduTime}
+				, EDU_CONTENT = #{eduContent}
+		WHERE	EMAIL = #{email}
+	</update>  		
   </mapper>

@@ -25,6 +25,11 @@ public class EducationDaoImplMyBatis extends SqlSessionDaoSupport implements Edu
 	public EducationVo selectOneEducationByResumeIdDao(int resumeId) {
 		return getSqlSession().selectOne("EducationDao.selectOneEducationByResumeIdDao", resumeId);
 	}
+
+	@Override
+	public int updateOneEducationDao(EducationVo educationVo) {
+		return getSqlSession().update("EducationDao.updateOneEducationDao", educationVo);
+	}
 	
 	
 }

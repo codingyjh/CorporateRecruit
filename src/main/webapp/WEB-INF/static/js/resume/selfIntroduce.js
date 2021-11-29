@@ -37,8 +37,8 @@ var controller = $.extend(new $.CommonObj(), {
 					 if ( response == "fail" ) {
 						$("#errorAlertMessage").html("자기소개 수정처리가 실패되었습니다.");
 						$("#errorMessageModal").modal("show");
-					}
-					else {
+						
+					} else {
 						$("#successAlertMessage").html("자기소개 정보가 수정되었습니다.");
 						$("#successMessageModal").modal("show");
 					} 

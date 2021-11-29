@@ -12,6 +12,7 @@ public interface MasterCodeConstants {
 	public static final String REDIRECT_RESUME_QUALIFICATION_AND_EDUCATION 	= "redirect:/resume/qualificationAndEducation.do"; 
 	public static final String REDIRECT_RESUME_QUALIFICATION_EXPERIENCE 	= "redirect:/resume/qualificationExperience.do"; 
 	public static final String REDIRECT_RESUME_SELF_INTRODUCE 				= "redirect:/resume/selfIntroduce.do"; 
+	public static final String REDIRECT_RESUME_FINAL_SUBMISSION_AGREEEMENT 	= "redirect:/resume/finalSubmissionAgreement.do"; 
 	
 	
 	//Interceptor URL
@@ -23,6 +24,7 @@ public interface MasterCodeConstants {
 	
 	//View 경로
 	public static final String VIEW_RESUME_BASIC_INFO						= "pc/resume/basicInfo";
+	public static final String VIEW_RESUME_SELF_INTRODUCE					= "pc/resume/selfIntroduce";
 	
 	//마스터 코드
 	public static final String URL 				= "url";

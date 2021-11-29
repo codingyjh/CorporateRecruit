@@ -3,8 +3,11 @@ package com.spring.sideproject.resume.selfintroduce.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
@@ -56,5 +60,29 @@ public class SelfIntroduceController {
 		
 		map.put("success", isTempSaveCheck);
 		return map;
+	}
+	
+	@PostMapping("/resume/finalSubmitCheck.do/{resumeId}")
+	public ModelAndView doFinalSubmitAction(
+			@PathVariable int resumeId
+			, @Valid @ModelAttribute SelfIntroduceVo selfIntroduceVo
+			, Errors errors
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+				
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_FINAL_SUBMISSION_AGREEEMENT + "/" +  resumeId);
+		
+		if ( errors.hasErrors() ) {
+			view.setViewName(MasterCodeConstants.VIEW_RESUME_SELF_INTRODUCE);
+			view.addObject("selfIntroduceVo", selfIntroduceVo);
+			return view;
+		}
+		
+		String email = recruitMemberVo.getEmail();
+		selfIntroduceVo.setEmail(email);
+		selfIntroduceVo.setRecruitMemberVo(recruitMemberVo);
+		
+		boolean isSuccess = this.selfIntroduceService.updateOneFinalSubmitService(selfIntroduceVo);
+		
+		return view;
 	}
 }

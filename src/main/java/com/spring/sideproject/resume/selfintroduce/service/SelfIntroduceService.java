@@ -6,4 +6,5 @@ public interface SelfIntroduceService {
 
 	public SelfIntroduceVo readOneSelfIntroduceByResumeIdService(int resumeId);
 	public boolean updateOneSelfIntroduceService(SelfIntroduceVo selfIntroduceVo);
+	public boolean updateOneFinalSubmitService(SelfIntroduceVo selfIntroduceVo);
 }

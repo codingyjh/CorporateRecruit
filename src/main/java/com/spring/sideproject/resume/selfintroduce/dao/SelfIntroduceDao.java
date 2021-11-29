@@ -5,4 +5,5 @@ import com.spring.sideproject.resume.selfintroduce.vo.SelfIntroduceVo;
 public interface SelfIntroduceDao {
 
 	public int insertOneSelfIntroduceDao(SelfIntroduceVo selfIntroduceVo);
+	public SelfIntroduceVo selectOneSelfIntroduceByResumeIdDao(int resumeId);
 }

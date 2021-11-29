@@ -5,6 +5,22 @@
   
   <mapper namespace="SelfIntroduceDao">
   	
+  	<resultMap type="SelfIntroduceVo" id="selfIntroduceResultMap">
+  		<id property="selfItdtId" column="SELF_ITDT_ID" />
+  		<result property="selfItdtContent1" column="SELF_ITDT_CONTENT1" />
+  		<result property="selfItdtContent2" column="SELF_ITDT_CONTENT2" />
+  		<result property="selfItdtContent3" column="SELF_ITDT_CONTENT3" />
+  		<result property="email" column="SELF_EMAIL" />
+  		<result property="resumeId" column="SELF_RESUME_ID" />
+  		
+  		<association property="recruitMemberVo" javaType="RecruitMemberVo">
+			<id property="email" column="M_EMAIL"/>
+		</association>
+		<association property="basicInfoVo" javaType="BasicInfoVo">
+			<id property="resumeId" column="BASICINFO_RESUME_ID"/>
+		</association>
+  	</resultMap>
+  	  	
   	<insert id="insertOneSelfIntroduceDao" parameterType="SelfIntroduceVo">
 		INSERT	INTO	SELFINTRODUCEINFO	(
 												SELF_ITDT_ID		
@@ -24,4 +40,19 @@
 		 	                                    ,#{resumeId}
 		 	                            	)
 	</insert>
+  	<select id="selectOneSelfIntroduceByResumeIdDao"
+  			parameterType="_int"
+  			resultMap="selfIntroduceResultMap">
+  			
+  		SELECT  S.SELF_ITDT_ID
+		        , S.SELF_ITDT_CONTENT1
+		        , S.SELF_ITDT_CONTENT2
+		        , S.SELF_ITDT_CONTENT3
+		        , S.RESUME_ID SELF_RESUME_ID
+		FROM    SELFINTRODUCEINFO S
+		        , BASICINFO B
+		WHERE   S.RESUME_ID = B.RESUME_ID
+		AND     S.RESUME_ID = #{resumeId} 	
+  		
+  	</select>	
   </mapper>

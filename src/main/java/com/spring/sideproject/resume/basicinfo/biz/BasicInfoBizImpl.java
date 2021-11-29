@@ -33,4 +33,9 @@ public class BasicInfoBizImpl implements BasicInfoBiz{
 		return this.basicInfoDao.updateOneBasicInfoDao(basicInfoVo) > 0;
 	}
 
+	@Override
+	public boolean updateOneFinalSubmitByEmailBiz(String email) {
+		return this.basicInfoDao.updateOneFinalSubmitByEmailDao(email) > 0;
+	}
+
 }

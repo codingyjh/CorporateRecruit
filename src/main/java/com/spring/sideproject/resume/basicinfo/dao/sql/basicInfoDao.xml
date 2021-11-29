@@ -198,5 +198,11 @@
 				, MIL_DISCHARGE_DIV = #{milDischangeDiv}
   		
   		WHERE	EMAIL = #{email}		
+  	</update>
+  	<update id="updateOneFinalSubmitByEmailDao" parameterType="string">
+  		UPDATE	BASICINFO
+  		SET		FINAL_DT = SYSDATE
+  				, RESUME_FINISH_YN = 'Y'
+  		WHERE	EMAIL = #{email}
   	</update>  	
   </mapper>

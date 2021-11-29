@@ -11,5 +11,6 @@ public interface BasicInfoDao {
 	public int selectOneBasicInfoByEmailDao(String email);
 	
 	public int updateOneBasicInfoDao(BasicInfoVo basicInfoVo);
+	public int updateOneFinalSubmitByEmailDao(String email);
 	
 }

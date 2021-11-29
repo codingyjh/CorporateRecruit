@@ -36,4 +36,9 @@ public class BasicInfoDaoImplMyBatis extends SqlSessionDaoSupport implements Bas
 		return getSqlSession().update("BasicInfoDao.updateOneBasicInfoDao", basicInfoVo);
 	}
 
+	@Override
+	public int updateOneFinalSubmitByEmailDao(String email) {
+		return getSqlSession().update("BasicInfoDao.updateOneFinalSubmitByEmailDao", email);
+	}
+
 }

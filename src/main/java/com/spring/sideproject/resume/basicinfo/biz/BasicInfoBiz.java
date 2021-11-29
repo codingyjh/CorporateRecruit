@@ -10,4 +10,5 @@ public interface BasicInfoBiz {
 	public int readOneBasicInfoByEmailBiz(String email);
 	
 	public boolean updateOneBasicInfoBiz(BasicInfoVo basicInfoVo);
+	public boolean updateOneFinalSubmitByEmailBiz(String email);
 }

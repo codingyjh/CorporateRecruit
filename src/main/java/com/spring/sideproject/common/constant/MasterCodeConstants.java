@@ -13,6 +13,7 @@ public interface MasterCodeConstants {
 	public static final String REDIRECT_RESUME_QUALIFICATION_EXPERIENCE 	= "redirect:/resume/qualificationExperience.do"; 
 	public static final String REDIRECT_RESUME_SELF_INTRODUCE 				= "redirect:/resume/selfIntroduce.do"; 
 	public static final String REDIRECT_RESUME_FINAL_SUBMISSION_AGREEEMENT 	= "redirect:/resume/finalSubmissionAgreement.do"; 
+	public static final String REDIRECT_RESUME_FINISH_RESUME 				= "redirect:/resume/finishResume.do"; 
 	
 	
 	//Interceptor URL

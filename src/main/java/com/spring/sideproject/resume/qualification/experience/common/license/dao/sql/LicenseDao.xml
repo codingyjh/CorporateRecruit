@@ -51,5 +51,12 @@
 		        , BASICINFO B
 		WHERE   L.RESUME_ID = B.RESUME_ID
 		AND     L.RESUME_ID = #{resumeId}
-  	</select>	
+  	</select>
+	<update id="updateOneLicenseDao" parameterType="LicenseVo">
+		UPDATE	LICENSEINFO
+		SET		LICENSE_TYPE = #{licenseType}
+				,LICENSE_ACQ_DT = #{licenseAcqDt}
+				,LICENSE_REGIST_NUM = #{licenseRegistNum}	
+		WHERE	EMAIL = #{email}
+	</update>  		
   </mapper>

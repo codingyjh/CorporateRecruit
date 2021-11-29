@@ -21,6 +21,11 @@ public class LicenseBizImpl implements LicenseBiz {
 	public LicenseVo readOneLicenseByResumeIdBiz(int resumeId) {
 		return this.licenseDao.selectOneLicenseByResumeIdDao(resumeId);
 	}
+
+	@Override
+	public boolean updateOneLicenseBiz(LicenseVo licenseVo) {
+		return this.licenseDao.updateOneLicenseDao(licenseVo) > 0;
+	}
 	
 	
 }

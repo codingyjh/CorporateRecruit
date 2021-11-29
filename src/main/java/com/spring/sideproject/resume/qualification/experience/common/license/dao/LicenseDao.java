@@ -6,4 +6,5 @@ public interface LicenseDao {
 
 	public int insertOneLicenseDao(LicenseVo licenseVo);
 	public LicenseVo selectOneLicenseByResumeIdDao(int resumeId);
+	public int updateOneLicenseDao(LicenseVo licenseVo);
 }

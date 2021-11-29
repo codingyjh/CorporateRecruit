@@ -6,4 +6,5 @@ public interface LicenseBiz {
 
 	public boolean createOneLicenseBiz(LicenseVo licenseVo);
 	public LicenseVo readOneLicenseByResumeIdBiz(int resumeId);
+	public boolean updateOneLicenseBiz(LicenseVo licenseVo);
 }

@@ -25,6 +25,11 @@ public class LicenseDaoImplMyBatis extends SqlSessionDaoSupport implements Licen
 	public LicenseVo selectOneLicenseByResumeIdDao(int resumeId) {
 		return getSqlSession().selectOne("LicenseDao.selectOneLicenseByResumeIdDao", resumeId);
 	}
+
+	@Override
+	public int updateOneLicenseDao(LicenseVo licenseVo) {
+		return getSqlSession().update("LicenseDao.updateOneLicenseDao", licenseVo);
+	}
 	
 	
 

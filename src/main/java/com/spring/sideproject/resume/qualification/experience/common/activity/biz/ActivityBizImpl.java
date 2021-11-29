@@ -21,6 +21,11 @@ public class ActivityBizImpl implements ActivityBiz {
 	public ActivityVo readOneActivityBiz(int resumeId) {
 		return this.activityDao.selectOneActivityByResumeIdDao(resumeId);
 	}
+
+	@Override
+	public boolean updateOneActivityBiz(ActivityVo activityVo) {
+		return this.activityDao.updateOneActivityDao(activityVo) > 0;
+	}
 	
 	
 }

@@ -65,5 +65,15 @@
 		WHERE   A.RESUME_ID = B.RESUME_ID
 		AND     A.RESUME_ID = #{resumeId}         
 	
-  	</select>	
+  	</select>
+	<update id="updateOneActivityDao" parameterType="ActivityVo">
+		UPDATE	ACTIVITYINFO
+		SET		ACT_DIV = #{actDiv}
+				, ACT_INST = #{actInst}
+				, ACT_START_DT = #{actStartDt}
+				, ACT_END_DT = #{actEndDt}
+				, ACT_ROLE = #{actRole}
+				, ACT_CONTENT = #{actContent}
+		WHERE	EMAIL = #{email}
+	</update>  	
   </mapper>

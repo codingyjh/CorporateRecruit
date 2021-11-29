@@ -6,4 +6,5 @@ public interface ActivityDao {
 
 	public int insertOneActivityDao(ActivityVo activityVo);
 	public ActivityVo selectOneActivityByResumeIdDao(int resumeId);
+	public int updateOneActivityDao(ActivityVo activityVo);
 }

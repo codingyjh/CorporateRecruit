@@ -25,6 +25,11 @@ public class ActivityDaoImplMyBatis extends SqlSessionDaoSupport implements Acti
 	public ActivityVo selectOneActivityByResumeIdDao(int resumeId) {
 		return getSqlSession().selectOne("ActivityDao.selectOneActivityByResumeIdDao", resumeId);
 	}
+
+	@Override
+	public int updateOneActivityDao(ActivityVo activityVo) {
+		return getSqlSession().update("ActivityDao.updateOneActivityDao", activityVo);
+	}
 	
 	
 }

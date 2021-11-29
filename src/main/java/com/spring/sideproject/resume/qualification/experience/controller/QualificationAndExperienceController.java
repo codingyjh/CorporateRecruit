@@ -56,4 +56,21 @@ public class QualificationAndExperienceController {
 		return map;
 	}
 	
+	@PostMapping("/resume/qualificationExperienceNextStep.do/{resumeId}")
+	public ModelAndView doQualificationAndEducationAction(
+			@ModelAttribute QualificationExperienceVo qualificationExperienceVo
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+		
+		int resumeId = qualificationExperienceVo.getResumeId();
+		ModelAndView view =  new ModelAndView("redirect:/resume/selfIntroduce.do/" + resumeId);
+		
+		String email = recruitMemberVo.getEmail();
+		qualificationExperienceVo.setEmail(email);
+		qualificationExperienceVo.setRecruitMemberVo(recruitMemberVo);
+		
+		boolean isSuccess = this.qualificationExperienceService.updateOneQualificationExperienceService(qualificationExperienceVo);
+		
+		return view;
+	}
+	
 }

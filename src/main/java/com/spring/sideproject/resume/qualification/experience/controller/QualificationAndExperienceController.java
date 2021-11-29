@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.sideproject.common.constant.MasterCodeConstants;
 import com.spring.sideproject.common.session.Session;
 import com.spring.sideproject.common.utils.HttpRequestHelper;
 import com.spring.sideproject.recruitmember.vo.RecruitMemberVo;
@@ -62,7 +63,7 @@ public class QualificationAndExperienceController {
 			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
 		
 		int resumeId = qualificationExperienceVo.getResumeId();
-		ModelAndView view =  new ModelAndView("redirect:/resume/selfIntroduce.do/" + resumeId);
+		ModelAndView view =  new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_SELF_INTRODUCE + "/" + resumeId);
 		
 		String email = recruitMemberVo.getEmail();
 		qualificationExperienceVo.setEmail(email);

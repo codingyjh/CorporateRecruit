@@ -54,5 +54,12 @@
 		WHERE   S.RESUME_ID = B.RESUME_ID
 		AND     S.RESUME_ID = #{resumeId} 	
   		
-  	</select>	
+  	</select>
+	<update id="updateOneSelfIntroduceDao" parameterType="SelfIntroduceVo">
+		UPDATE	SELFINTRODUCEINFO
+		SET		SELF_ITDT_CONTENT1 = #{selfItdtContent1}	
+				,SELF_ITDT_CONTENT2 = #{selfItdtContent2}
+				,SELF_ITDT_CONTENT3	= #{selfItdtContent3}
+		WHERE	EMAIL = #{email}
+	</update>  		
   </mapper>

@@ -16,6 +16,11 @@ public class SelfIntroduceServiceImpl implements SelfIntroduceService {
 	public SelfIntroduceVo readOneSelfIntroduceByResumeIdService(int resumeId) {
 		return this.selfIntroduceBiz.readOneSelfIntroduceByResumeIdBiz(resumeId);
 	}
+
+	@Override
+	public boolean updateOneSelfIntroduceService(SelfIntroduceVo selfIntroduceVo) {
+		return this.selfIntroduceBiz.updateOneSelfIntroduceBiz(selfIntroduceVo);
+	}
 	
 	
 }

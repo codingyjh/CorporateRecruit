@@ -21,6 +21,11 @@ public class SelfIntroduceBizImpl implements SelfIntroduceBiz {
 	public SelfIntroduceVo readOneSelfIntroduceByResumeIdBiz(int resumeId) {
 		return this.selfIntroduceDao.selectOneSelfIntroduceByResumeIdDao(resumeId);
 	}
+
+	@Override
+	public boolean updateOneSelfIntroduceBiz(SelfIntroduceVo selfIntroduceVo) {
+		return this.selfIntroduceDao.updateOneSelfIntroduceDao(selfIntroduceVo) > 0;
+	}
 	
 	
 }

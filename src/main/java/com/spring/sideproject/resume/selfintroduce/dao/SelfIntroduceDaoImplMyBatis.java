@@ -25,5 +25,10 @@ public class SelfIntroduceDaoImplMyBatis extends SqlSessionDaoSupport implements
 	public SelfIntroduceVo selectOneSelfIntroduceByResumeIdDao(int resumeId) {
 		return getSqlSession().selectOne("SelfIntroduceDao.selectOneSelfIntroduceByResumeIdDao", resumeId);
 	}
+
+	@Override
+	public int updateOneSelfIntroduceDao(SelfIntroduceVo selfIntroduceVo) {
+		return getSqlSession().update("SelfIntroduceDao.updateOneSelfIntroduceDao", selfIntroduceVo);
+	}
 	
 }

@@ -34,7 +34,7 @@ public class QualificationExperienceServiceImpl implements QualificationExperien
 	private AwardBiz awardBiz;
 
 	@Override
-	public QualificationExperienceVo readOneQualificationExperience(int resumeId) {
+	public QualificationExperienceVo readOneQualificationExperienceService(int resumeId) {
 		
 		QualificationExperienceVo qualificationExperience = new QualificationExperienceVo();
 		
@@ -91,6 +91,61 @@ public class QualificationExperienceServiceImpl implements QualificationExperien
 		qualificationExperience.setAwardContent(award.getAwardContent());
 		
 		return qualificationExperience;
+	}
+
+	@Override
+	public boolean updateOneQualificationExperienceService(QualificationExperienceVo qualificationExperienceVo) {
+		
+		EducationVo education = new EducationVo();
+		education.setEduName(qualificationExperienceVo.getEduName());
+		education.setEduInst(qualificationExperienceVo.getEduInst());
+		education.setEduStartDt(qualificationExperienceVo.getEduStartDt());
+		education.setEduEndDt(qualificationExperienceVo.getEduEndDt());
+		education.setEduTime(qualificationExperienceVo.getEduTime());
+		education.setEduContent(qualificationExperienceVo.getEduContent());
+		education.setEmail(qualificationExperienceVo.getEmail());
+		
+		ActivityVo activity = new ActivityVo();
+		activity.setActDiv(qualificationExperienceVo.getActDiv());
+		activity.setActInst(qualificationExperienceVo.getActInst());
+		activity.setActStartDt(qualificationExperienceVo.getActStartDt());
+		activity.setActEndDt(qualificationExperienceVo.getActEndDt());
+		activity.setActRole(qualificationExperienceVo.getActRole());
+		activity.setActContent(qualificationExperienceVo.getActContent());
+		activity.setEmail(qualificationExperienceVo.getEmail());
+		
+		OfficialExamVo officialExam = new OfficialExamVo();
+		officialExam.setOfclEmType(qualificationExperienceVo.getOfclEmType());
+		officialExam.setOfclEmDt(qualificationExperienceVo.getOfclEmDt());
+		officialExam.setOfclEmScore(qualificationExperienceVo.getOfclEmScore());
+		officialExam.setOfclEmRegistNum(qualificationExperienceVo.getOfclEmRegistNum());
+		officialExam.setEmail(qualificationExperienceVo.getEmail());
+		
+		LicenseVo license = new LicenseVo();
+		license.setLicenseType(qualificationExperienceVo.getLicenseType());
+		license.setLicenseRegistNum(qualificationExperienceVo.getLicenseRegistNum());
+		license.setLicenseAcqDt(qualificationExperienceVo.getLicenseAcqDt());
+		license.setEmail(qualificationExperienceVo.getEmail());
+		
+		AwardVo award = new AwardVo();
+		award.setAwardName(qualificationExperienceVo.getAwardName());
+		award.setAwardInst(qualificationExperienceVo.getAwardInst());
+		award.setAwardDt(qualificationExperienceVo.getAwardDt());
+		award.setAwardContent(qualificationExperienceVo.getAwardContent());
+		award.setEmail(qualificationExperienceVo.getEmail());		
+		
+		boolean isSuccessEducation = this.educationBiz.updateOneEducationBiz(education);
+		boolean isSuccessActivity = this.activityBiz.updateOneActivityBiz(activity);
+		boolean isSuccessOfficialExam = this.officialExamBiz.updateOneOfficialExamBiz(officialExam);
+		boolean isSuccessLicense = this.licenseBiz.updateOneLicenseBiz(license);
+		boolean isSuccessAward = this.awardBiz.updateOneAwardBiz(award);
+		
+		if ( isSuccessEducation != true || isSuccessActivity != true || isSuccessOfficialExam != true 
+				|| isSuccessLicense != true || isSuccessAward != true ) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	

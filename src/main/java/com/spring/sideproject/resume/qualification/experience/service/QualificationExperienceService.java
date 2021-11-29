@@ -4,5 +4,6 @@ import com.spring.sideproject.resume.qualification.experience.vo.QualificationEx
 
 public interface QualificationExperienceService {
 
-	public QualificationExperienceVo readOneQualificationExperience(int resumeId);
+	public QualificationExperienceVo readOneQualificationExperienceService(int resumeId);
+	public boolean updateOneQualificationExperienceService(QualificationExperienceVo qualificationExperienceVo);
 }

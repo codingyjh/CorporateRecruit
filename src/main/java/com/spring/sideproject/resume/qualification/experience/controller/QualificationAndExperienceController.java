@@ -29,7 +29,7 @@ public class QualificationAndExperienceController {
 	public ModelAndView viewQualificationExperiencePage(
 			@PathVariable int resumeId) {
 		
-		QualificationExperienceVo qualificationExperience = this.qualificationExperienceService.readOneQualificationExperience(resumeId);
+		QualificationExperienceVo qualificationExperience = this.qualificationExperienceService.readOneQualificationExperienceService(resumeId);
 		ModelAndView view = new ModelAndView(HttpRequestHelper.getJspPath());
 		view.addObject("qualificationExperienceVo", qualificationExperience);
 		

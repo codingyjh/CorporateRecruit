@@ -36,4 +36,24 @@ public class QualificationAndExperienceController {
 		return view;
 	}
 	
+	@PostMapping("/resume/qualificationExperienceTempSave.do")
+	@ResponseBody
+	public Map<Object, Object> doQualificationExperienceTempSaveAction(
+			@ModelAttribute QualificationExperienceVo qualificationExperienceVo
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+
+		String email = recruitMemberVo.getEmail();
+		qualificationExperienceVo.setEmail(email);
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		boolean isTempSaveCheck = this.qualificationExperienceService.updateOneQualificationExperienceService(qualificationExperienceVo);
+		
+		if ( !isTempSaveCheck == true ) {
+			map.put("fail", isTempSaveCheck);
+			return map;
+		}
+		map.put("success", isTempSaveCheck);
+		return map;
+	}
+	
 }

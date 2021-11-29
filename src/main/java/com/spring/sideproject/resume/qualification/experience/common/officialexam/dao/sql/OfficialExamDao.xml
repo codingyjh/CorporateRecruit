@@ -56,5 +56,13 @@
 			        , BASICINFO B
 			WHERE   O.RESUME_ID = B.RESUME_ID
 			AND     O.RESUME_ID = #{resumeId}
-  	</select>	
+  	</select>
+	<update id="updateOneOfficialExamDao" parameterType="OfficialExamVo">
+		UPDATE	OFFICIALEXAMINFO
+		SET		OFCL_EM_TYPE = #{ofclEmType}
+				,OFCL_EM_REGIST_NUM = #{ofclEmRegistNum}
+				,OFCL_EM_DT	= #{ofclEmDt} 
+				,OFCL_EM_SCORE = #{ofclEmScore}
+		WHERE	EMAIL = #{email}
+	</update>  	
   </mapper>

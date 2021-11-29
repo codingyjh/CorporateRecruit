@@ -6,4 +6,5 @@ public interface OfficialExamBiz {
 
 	public boolean createOneOfficialExamBiz(OfficialExamVo officialExamVo);
 	public OfficialExamVo readOndOfficialExamByResumeIdBiz(int resumeId);
+	public boolean updateOneOfficialExamBiz(OfficialExamVo officialExamVo);
 }

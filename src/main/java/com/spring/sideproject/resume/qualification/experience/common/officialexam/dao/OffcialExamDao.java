@@ -6,4 +6,5 @@ public interface OffcialExamDao {
 
 	public int insertOneOfficialExamDao(OfficialExamVo officialExamVo);
 	public OfficialExamVo selectOneOfficialExamByResumeIdDao(int resumeId);
+	public int updateOneOfficialExamDao(OfficialExamVo officialExamVo);
 }

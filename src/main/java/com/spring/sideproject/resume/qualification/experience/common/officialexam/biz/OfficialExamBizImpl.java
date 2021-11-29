@@ -22,4 +22,9 @@ public class OfficialExamBizImpl implements OfficialExamBiz {
 		return this.offcialExamDao.selectOneOfficialExamByResumeIdDao(resumeId);
 	}
 
+	@Override
+	public boolean updateOneOfficialExamBiz(OfficialExamVo officialExamVo) {
+		return this.offcialExamDao.updateOneOfficialExamDao(officialExamVo) > 0;
+	}
+
 }

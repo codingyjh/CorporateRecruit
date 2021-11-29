@@ -40,9 +40,6 @@ public class SelfIntroduceServiceImpl implements SelfIntroduceService {
 		
 		return true;
 		
-		
-		return false;
 	}
-	
 	
 }

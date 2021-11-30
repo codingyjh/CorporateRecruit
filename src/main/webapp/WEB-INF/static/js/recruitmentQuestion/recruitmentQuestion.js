@@ -21,7 +21,7 @@ var controller = $.extend(new $.CommonObj(), {
 					return false;
 				}
 					
-				controller.autoClosingAlert("#successMessage", 10000);
+				controller.autoClosingAlert("#successMessage", 15000);
 				$("#recruitmentQuestionEmailForm").attr({
 					method:"post", 
 			     	action:"/recruitmentQuestion/recruitmentQuestion.do"					

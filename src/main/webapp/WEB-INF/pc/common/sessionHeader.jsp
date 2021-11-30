@@ -34,7 +34,7 @@
 				</ul>
 			</li>				
 			<li><a href="<c:url value='/recruitBoard/recruitBoardList.do' />">채용공고</a></li>				
-			<li><a href="<c:url value='/recruitmentQuestion/recruitmentQuestion.do' />">채용문의</a></li>
+			<li><a href="<c:url value='/recruitmentQuestion/recruitmentQuestion.do?token=${sessionScope._CSRF_TOKEN_}' />">채용문의</a></li>
 		</ul>
 		<c:choose>
 			<c:when test="${not empty sessionScope._USER_}">

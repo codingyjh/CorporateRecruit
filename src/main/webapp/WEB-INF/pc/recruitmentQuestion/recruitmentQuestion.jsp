@@ -36,7 +36,7 @@
 						<input type="hidden" name="toEmail" class="form-control" value="yoojh0325@gmail.com" readonly />
 						<input type="hidden" name="fromEmail" class="form-control" value="${sessionScope._USER_.email}" readonly />
 						<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요" />
-<%-- 						<input type="hidden" id="token" name="token" value="${sessionScope._CSRF_TOKEN_}"/> --%>
+						<input type="hidden" id="token" name="token" value="${sessionScope._CSRF_TOKEN_}"/>
 					</td>
 				</tr>
 				<tr>

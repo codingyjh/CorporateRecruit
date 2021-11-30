@@ -29,7 +29,14 @@ public class RecruitQnaController {
 	private JavaMailSender mailSender;
 	
 	@GetMapping("/recruitmentQuestion/recruitmentQuestion.do")
-	public String viewRecruitQuestionPage() {
+	public String viewRecruitQuestionPage(
+			@RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
+		
 		return HttpRequestHelper.getJspPath();
 	}
 	
@@ -37,14 +44,19 @@ public class RecruitQnaController {
 	public ModelAndView recruitQuestionMailSending(
 			@Valid @ModelAttribute RecruitQnaVo recruitQnaVo
 			, Errors errors
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
 		
 		XssFilter filter = XssFilter.getInstance("lucy-xss-superset.xml");
 		recruitQnaVo.setTitle(filter.doFilter(recruitQnaVo.getTitle()));
 		recruitQnaVo.setContent(filter.doFilter(recruitQnaVo.getContent()));
 		
+		if ( !recruitQnaVo.getToken().equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
-		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUITMENT_QUESTION);
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUITMENT_QUESTION + "?token=" + sessionToken);
 		
 		if ( errors.hasErrors() ) {
 			view.setViewName(MasterCodeConstants.VIEW_RECRUITMENT_QUESTION);

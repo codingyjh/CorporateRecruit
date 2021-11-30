@@ -71,7 +71,7 @@
 					</tr>			
 				</tbody>
 			</table>
-<%-- 			<input type="hidden" name="token" id="token" value="${sessionScope._CSRF_TOKEN_}"/>	   	 --%>
+			<input type="hidden" name="token" id="token" value="${sessionScope._CSRF_TOKEN_}"/>	   	
 		</form:form>
 	</div>
 	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-hidden="true">

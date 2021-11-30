@@ -97,7 +97,14 @@ public class RecruitBoardController {
 	}
 	
 	@GetMapping("/recruitBoard/recruitBoardWrite.do")
-	public String viewRecruitBoardWritePage() {
+	public String viewRecruitBoardWritePage(
+			@RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}		
+		
 		return HttpRequestHelper.getJspPath();
 	}
 	
@@ -105,12 +112,17 @@ public class RecruitBoardController {
 	public ModelAndView doRecruitBoardWriteAction(
 			@Valid @ModelAttribute RecruitBoardVo recruitBoardVo
 			, Errors errors
-			, HttpSession session) {
+			, HttpSession session
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
 		
 		XssFilter filter = XssFilter.getInstance("lucy-xss-superset.xml");
 		
 		recruitBoardVo.setTitle(filter.doFilter(recruitBoardVo.getTitle()));
 		recruitBoardVo.setContent(filter.doFilter(recruitBoardVo.getContent()));
+		
+		if ( !recruitBoardVo.getToken().equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RECRUIT_BOARD_LIST);
 		

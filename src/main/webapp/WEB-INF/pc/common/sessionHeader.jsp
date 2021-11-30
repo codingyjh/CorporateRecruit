@@ -44,10 +44,10 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
 							aria-haspopup="true" aria-expanded="false">접속중<span class="caret"></span></a>
 						<ul class="dropdown-menu">						
-							<li><a href="<c:url value='/recruitMember/recruitMemberUpdate.do' />">비밀번호 변경</a></li>						
+							<li><a href="<c:url value='/recruitMember/recruitMemberUpdate.do?token=${sessionScope._CSRF_TOKEN_}' />">비밀번호 변경</a></li>						
 							<li><a href="#">이력서 정보</a></li>
 							<li><a href="<c:url value='/recruitMember/recruitMemberList.do' />">회원정보</a></li>	
-							<li><a href="<c:url value='/recruitMember/recruitMemberLogout.do' />">로그아웃</a></li>
+							<li><a href="<c:url value='/recruitMember/recruitMemberLogout.do?token=${sessionScope._CSRF_TOKEN_}' />">로그아웃</a></li>
 						</ul>
 					</li>
 				</ul>

@@ -16,7 +16,7 @@
 	            <div class="input-group col-4">
      					<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
      					<input id="email" type="text" class="form-control" name="email" placeholder="이메일" value="${sessionScope._USER_.email}" readOnly />
-<%--      					<input type="hidden" name="token" value="${sessionScope._CSRF_TOKEN_}"/> --%>
+     					<input type="hidden" name="token" value="${sessionScope._CSRF_TOKEN_}"/>
    				</div>
        		</div>
        		<div class="form-group has-feedback">

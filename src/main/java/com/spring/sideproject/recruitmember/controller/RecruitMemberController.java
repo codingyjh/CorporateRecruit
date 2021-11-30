@@ -88,6 +88,7 @@ public class RecruitMemberController {
 		loginRecruitMember.setPassword(recruitMemberVo.getPassword());
 		
 		session.setAttribute(Session.USER, loginRecruitMember);
+		session.setAttribute(Session.CSRF_TOKEN, user.getToken());
 		
 		return view;
 	}
@@ -130,14 +131,28 @@ public class RecruitMemberController {
 	}
 	
 	@GetMapping("/recruitMember/recruitMemberLogout.do")
-	public String doRecruitMemberLogoutAction(HttpSession session) {
+	public String doRecruitMemberLogoutAction(
+			HttpSession session
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		session.invalidate();
 		return MasterCodeConstants.REDIRECT_COMPANY_MAIN;
 	}
 	
 	@GetMapping("/recruitMember/recruitMemberUpdate.do")
-	public String viewRecruitMemberInfoUpdatePage() {
+	public String viewRecruitMemberInfoUpdatePage(
+			@RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
+		
 		return HttpRequestHelper.getJspPath();
 	}
 	
@@ -145,7 +160,12 @@ public class RecruitMemberController {
 	public ModelAndView doRecruitMemberInfoUpdateAction(
 			@Validated(value = {RecruitMemberValidator.Update.class})
 			@SessionAttribute(Session.USER) @ModelAttribute RecruitMemberVo recruitMemberVo
-			, Errors errors) {
+			, Errors errors
+			, @SessionAttribute(Session.CSRF_TOKEN) String token) {
+		
+		if ( !recruitMemberVo.getToken().equals(token) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_COMPANY_MAIN);
 		

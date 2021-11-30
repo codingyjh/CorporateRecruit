@@ -22,6 +22,7 @@
 			<mvc:mapping path="/recruitMember/recruitMemberInit.do"/>
 			<mvc:mapping path="/recruitBoard/recruitBoardWrite.do" />
 			<mvc:mapping path="/recruitBoard/recruitBoardUpdate.do" />
+			<mvc:mapping path="/recruitmentQuestion/recruitmentQuestion.do" />
 			<mvc:exclude-mapping path="/recruitMember/recruitMemberLogin.do"/>
 			<mvc:exclude-mapping path="/recruitMember/recruitMemberRegist.do"/>
 			<bean id="sessionInterceptor"

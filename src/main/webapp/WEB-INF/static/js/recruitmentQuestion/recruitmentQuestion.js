@@ -28,6 +28,12 @@ var controller = $.extend(new $.CommonObj(), {
 				}).submit();
 				
 		 });
+		 
+	}, autoClosingAlert : function(selector, delay) {
+		
+		var alert = $(selector).alert();
+		alert.show();
+		window.setTimeout(function() { alert.hide() }, delay);
 	}
 });
 

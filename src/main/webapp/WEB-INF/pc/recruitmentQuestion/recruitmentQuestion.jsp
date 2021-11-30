@@ -14,13 +14,13 @@
 	</div>
 	<h1 class="page-header">채용문의</h1>
 	<form:form id="recruitmentQuestionEmailForm"
-		  	   modelAttribute="emailVo">
+		  	   modelAttribute="recruitQnaVo">
 	
 		<div>
-			<form:errors path="title" />
+			<form:errors id="errorsTitle" cssStyle="color: red;" path="title" />
 		</div>
 		<div>
-			<form:errors path="content" />
+			<form:errors id="errorsContent" cssStyle="color: red;" path="content" />
 		</div>	
 		
 		<table class="table table-bordered table-hover">
@@ -36,7 +36,7 @@
 						<input type="hidden" name="toEmail" class="form-control" value="yoojh0325@gmail.com" readonly />
 						<input type="hidden" name="fromEmail" class="form-control" value="${sessionScope._USER_.email}" readonly />
 						<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요" />
-						<input type="hidden" id="token" name="token" value="${sessionScope._CSRF_TOKEN_}"/>
+<%-- 						<input type="hidden" id="token" name="token" value="${sessionScope._CSRF_TOKEN_}"/> --%>
 					</td>
 				</tr>
 				<tr>

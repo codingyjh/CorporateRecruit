@@ -270,7 +270,13 @@ public class RecruitBoardController {
 	@GetMapping("/recruitBoard/recruitBoardUpdate.do/{boardId}")
 	public ModelAndView viewRecruitBoardUpdatePage(
 			@PathVariable int boardId
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		RecruitBoardVo recruitBoard = this.recruitBoardService.readOneRecruitBoardService(boardId);
 		ModelAndView view = new ModelAndView(HttpRequestHelper.getJspPath());

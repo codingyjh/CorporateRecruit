@@ -346,7 +346,13 @@ public class RecruitBoardController {
 	@RequestMapping("/recruitBoard/recruitBoardDelete.do/{boardId}")
 	public String doRecruitBoardDeleteAction(
 			@PathVariable int boardId
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}		
 		
 		boolean isSuccess = this.recruitBoardService.deleteOneRecruitBoardByBoardIdService(boardId);
 		

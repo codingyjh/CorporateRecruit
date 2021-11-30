@@ -52,7 +52,7 @@
    			<tr>
    				<td colspan="6" style="text-align: right;">
         			<a href="<c:url value='/recruitBoard/recruitBoardUpdate.do/${recruitBoardVo.boardId}?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning" type="button" >수정</a>	         				
-        			<a href="<c:url value='/recruitBoard/recruitBoardDelete.do/${recruitBoardVo.boardId}' />" class="btn btn-primary btn-warning" type="submit" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+        			<a href="<c:url value='/recruitBoard/recruitBoardDelete.do/${recruitBoardVo.boardId}?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning" type="submit" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
        				<a href="<c:url value='/recruitBoard/recruitAgreement.do/${recruitBoardVo.boardId}' />" class="btn btn-primary" type="button" >지원하기</a>         				
    					<a href="<c:url value='/recruitBoard/recruitBoardList.do' />" class="btn btn-primary" type="button" >목록</a>     					     					   					
    				</td>

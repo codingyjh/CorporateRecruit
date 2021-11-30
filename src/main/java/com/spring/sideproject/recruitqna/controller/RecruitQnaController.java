@@ -1,7 +1,11 @@
 package com.spring.sideproject.recruitqna.controller;
 
+import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +25,9 @@ import com.spring.sideproject.recruitqna.vo.RecruitQnaVo;
 @Controller
 public class RecruitQnaController {
 
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	@GetMapping("/recruitmentQuestion/recruitmentQuestion.do")
 	public String viewRecruitQuestionPage() {
 		return HttpRequestHelper.getJspPath();
@@ -45,6 +52,19 @@ public class RecruitQnaController {
 			return view;
 		}
 	
+		String setFrom = "QnA [from : " + recruitQnaVo.getFromEmail() + "] ";
+		
+		try {
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			messageHelper.setTo(recruitQnaVo.getToEmail());
+			messageHelper.setSubject(setFrom + recruitQnaVo.getTitle());
+			messageHelper.setText(recruitQnaVo.getContent());
+			mailSender.send(message);
+	
+		} catch ( Exception e) {
+			e.printStackTrace();
+		}		
 		return view;
 	}	
 }

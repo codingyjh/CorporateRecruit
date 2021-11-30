@@ -56,6 +56,25 @@
 			<tx:method name="update*" rollback-for="RuntimeException" />
 			<tx:method name="delete*" rollback-for="RuntimeException" />
 		</tx:attributes>
-	</tx:advice>		
+	</tx:advice>
+	
+	<util:properties id="mail" location="file:////C:/SideProject/CorporateRecruit/ProjectMail/properties/CorporateRecruitMail.properties" />
+	
+	<bean id="mailSender" 
+		  class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		  
+		<property name="host" value="#{mail['smtp.mail.host']}" />
+		<property name="port" value="#{mail['smtp.mail.port']}" />
+		<property name="username" value="#{mail['smtp.mail.username']}" />
+		<property name="password" value="#{mail['smtp.mail.password']}" />
+		<property name="javaMailProperties" >
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>	
 		
 </beans>

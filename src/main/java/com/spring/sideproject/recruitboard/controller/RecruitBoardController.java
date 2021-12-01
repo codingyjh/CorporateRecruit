@@ -362,7 +362,13 @@ public class RecruitBoardController {
 	@GetMapping("/recruitBoard/recruitAgreement.do/{boardId}")
 	public String viewRecruitAgreementPage(
 			@PathVariable int boardId
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		return HttpRequestHelper.getJspPath();
 	}

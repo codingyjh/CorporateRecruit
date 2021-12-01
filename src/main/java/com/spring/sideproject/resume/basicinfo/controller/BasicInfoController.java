@@ -129,7 +129,7 @@ public class BasicInfoController {
 		}
 		
 		int resumeId = basicInfoVo.getResumeId();
-		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_ACADEMY_BACKGROUND + "/" + resumeId);
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_ACADEMY_BACKGROUND + "/" + resumeId + "?token=" + sessionToken);
 		
 		if ( errors.hasErrors() ) {
 			view.setViewName(MasterCodeConstants.VIEW_RESUME_BASIC_INFO);

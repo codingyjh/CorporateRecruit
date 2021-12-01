@@ -305,6 +305,7 @@
 				<input type="button" id="tempSaveBtn" class="btn btn-primary" value="임시저장" />
 				<input type="button" id="nextStepBtn" class="btn btn-primary btn-warning" value="다음단계" />
 			</div>
+			<input type="hidden" name="token" id="token" value="${sessionScope._CSRF_TOKEN_}"/>
 		</form:form>
 	</div>
 	<div class="modal fade" id="errorMessageModal" tabindex="-1" role="dialog" aria-hidden="true">

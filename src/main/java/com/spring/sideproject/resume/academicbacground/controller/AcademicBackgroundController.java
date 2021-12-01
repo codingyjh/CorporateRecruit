@@ -48,7 +48,13 @@ public class AcademicBackgroundController {
 	@ResponseBody
 	public Map<Object, Object> doAcademicBackgroundTempSaveAction(
 			@ModelAttribute AcademicBackgroundVo academicBackgroundVo
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		String email = recruitMemberVo.getEmail();
 		academicBackgroundVo.setEmail(email);
@@ -69,10 +75,16 @@ public class AcademicBackgroundController {
 	@PostMapping("/resume/academicBackgroundNextStep.do/{resumeId}")
 	public ModelAndView doAcademicBackgroundAction(
 			@ModelAttribute AcademicBackgroundVo academicBackgroundVo			
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		int resumeId = academicBackgroundVo.getResumeId();
-		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_QUALIFICATION_EXPERIENCE + "/" + resumeId);
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_QUALIFICATION_EXPERIENCE + "/" + resumeId + "?token=" + sessionToken);
 		
 		String email = recruitMemberVo.getEmail();
 		academicBackgroundVo.setEmail(email);

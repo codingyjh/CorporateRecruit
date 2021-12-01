@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +29,13 @@ public class QualificationAndExperienceController {
 	
 	@GetMapping("/resume/qualificationExperience.do/{resumeId}")
 	public ModelAndView viewQualificationExperiencePage(
-			@PathVariable int resumeId) {
+			@PathVariable int resumeId
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		QualificationExperienceVo qualificationExperience = this.qualificationExperienceService.readOneQualificationExperienceService(resumeId);
 		ModelAndView view = new ModelAndView(HttpRequestHelper.getJspPath());

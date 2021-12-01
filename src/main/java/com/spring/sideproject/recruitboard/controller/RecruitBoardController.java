@@ -377,7 +377,13 @@ public class RecruitBoardController {
 	public ModelAndView doRecruitAgreementAction(
 			@PathVariable int boardId
 			, @RequestParam(value="agree", defaultValue="false") Boolean agree 
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		BasicInfoVo basicInfo = new BasicInfoVo();
 		String email = recruitMemberVo.getEmail();
@@ -389,7 +395,7 @@ public class RecruitBoardController {
 		
 		int resumeId = this.basicInfoService.readOneBasicInfoByEmailService(email);
 		
-		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_BASIC_INFO + "/" + resumeId);
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_BASIC_INFO + "/" + resumeId + "?token=" + sessionToken);
 		
 		if ( !agree ) {
 			logger.info("agree의 값 : " + agree);

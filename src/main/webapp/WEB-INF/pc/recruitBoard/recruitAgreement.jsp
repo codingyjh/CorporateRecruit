@@ -42,6 +42,7 @@
 						</div>
 						<input type="button" id="agreeBtn" class="btn btn-primary" value="다음단계">
 						<input type="hidden" name="boardId" id="boardId" value="${boardId}"/>
+						<input type="hidden" name="token" id="token" value="${sessionScope._CSRF_TOKEN_}"/>
 					</form:form>
 		    	</div>
 		    </div>

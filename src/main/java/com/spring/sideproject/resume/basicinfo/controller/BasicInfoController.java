@@ -64,7 +64,13 @@ public class BasicInfoController {
 	@ResponseBody
 	public Map<Object, Object> doBasicInfoTempSaveAction(
 			MultipartRequest multipartRequest
-			, @ModelAttribute BasicInfoVo basicInfoVo) {
+			, @ModelAttribute BasicInfoVo basicInfoVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		
@@ -114,7 +120,13 @@ public class BasicInfoController {
 	public ModelAndView doBasicInfoAction(
 			@Valid @ModelAttribute BasicInfoVo basicInfoVo
 			, Errors errors
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		int resumeId = basicInfoVo.getResumeId();
 		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_ACADEMY_BACKGROUND + "/" + resumeId);

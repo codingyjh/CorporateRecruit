@@ -13,11 +13,11 @@
 	<div class="container" style="width: 70%;">
 		<div class="tabDiv">
 			<ul class="nav nav-pills nav-justified">
-			  <li><a href="<c:url value='/resume/basicInfo.do/${academicBackgroundVo.resumeId}'/>">1.기본정보</a></li>
-			  <li class="active"><a href="<c:url value='/resume/qualificationExperience.do/${academicBackgroundVo.resumeId}'/>">2.학력사항</a></li>
-			  <li><a href="<c:url value='/resume/qualificationExperience.do/${academicBackgroundVo.resumeId}'/>">3.자격 및 경험</a></li>
-			  <li><a href="<c:url value='/resume/selfIntroduce.do/${academicBackgroundVo.resumeId}'/>">4.자기소개서</a></li>
-			  <li><a href="<c:url value='/resume/finalSubmissionAgreement.do/${academicBackgroundVo.resumeId}'/>">5.최종제출</a></li>
+			  <li><a href="<c:url value='/resume/basicInfo.do/${academicBackgroundVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">1.기본정보</a></li>
+			  <li class="active"><a href="<c:url value='/resume/qualificationExperience.do/${academicBackgroundVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">2.학력사항</a></li>
+			  <li><a href="<c:url value='/resume/qualificationExperience.do/${academicBackgroundVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">3.자격 및 경험</a></li>
+			  <li><a href="<c:url value='/resume/selfIntroduce.do/${academicBackgroundVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">4.자기소개서</a></li>
+			  <li><a href="<c:url value='/resume/finalSubmissionAgreement.do/${academicBackgroundVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">5.최종제출</a></li>
 			</ul>
 		</div>
 		<br />

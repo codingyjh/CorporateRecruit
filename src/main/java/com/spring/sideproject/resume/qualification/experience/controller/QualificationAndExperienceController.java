@@ -48,8 +48,14 @@ public class QualificationAndExperienceController {
 	@ResponseBody
 	public Map<Object, Object> doQualificationExperienceTempSaveAction(
 			@ModelAttribute QualificationExperienceVo qualificationExperienceVo
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
 
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
+		
 		String email = recruitMemberVo.getEmail();
 		qualificationExperienceVo.setEmail(email);
 		
@@ -67,10 +73,16 @@ public class QualificationAndExperienceController {
 	@PostMapping("/resume/qualificationExperienceNextStep.do/{resumeId}")
 	public ModelAndView doQualificationAndEducationAction(
 			@ModelAttribute QualificationExperienceVo qualificationExperienceVo
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		int resumeId = qualificationExperienceVo.getResumeId();
-		ModelAndView view =  new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_SELF_INTRODUCE + "/" + resumeId);
+		ModelAndView view =  new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_SELF_INTRODUCE + "/" + resumeId + "?token=" + sessionToken);
 		
 		String email = recruitMemberVo.getEmail();
 		qualificationExperienceVo.setEmail(email);

@@ -13,11 +13,11 @@
 	<div class="container" style="width: 70%;">
 		<div class="tabDiv">
 			<ul class="nav nav-pills nav-justified">
-			  <li><a href="<c:url value='/resume/basicInfo.do/${qualificationExperienceVo.resumeId}'/>">1.기본정보</a></li>
-			  <li><a href="<c:url value='/resume/academicBackground.do/${qualificationExperienceVo.resumeId}'/>">2.학력사항</a></li>
-			  <li class="active"><a href="<c:url value='/resume/qualificationExperience.do/${qualificationExperienceVo.resumeId}'/>">3.자격 및 경험</a></li>
-			  <li><a href="<c:url value='/resume/selfIntroduce.do/${qualificationExperienceVo.resumeId}'/>">4.자기소개서</a></li>
-			  <li><a href="<c:url value='/resume/finalSubmit.do/${qualificationExperienceVo.resumeId}'/>">5.최종제출</a></li>
+			  <li><a href="<c:url value='/resume/basicInfo.do/${qualificationExperienceVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">1.기본정보</a></li>
+			  <li><a href="<c:url value='/resume/academicBackground.do/${qualificationExperienceVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">2.학력사항</a></li>
+			  <li class="active"><a href="<c:url value='/resume/qualificationExperience.do/${qualificationExperienceVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">3.자격 및 경험</a></li>
+			  <li><a href="<c:url value='/resume/selfIntroduce.do/${qualificationExperienceVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">4.자기소개서</a></li>
+			  <li><a href="<c:url value='/resume/finalSubmit.do/${qualificationExperienceVo.resumeId}?token=${sessionScope._CSRF_TOKEN_}'/>">5.최종제출</a></li>
 			</ul>
 		</div>
 		<br />
@@ -176,6 +176,7 @@
 				<input type="button" id="tempSaveBtn" class="btn btn-primary" value="임시저장" />
 				<input type="button" id="nextStepBtn" class="btn btn-primary btn-warning" value="다음단계" />
 			</div>
+			<input type="hidden" name="token" id="token" value="${sessionScope._CSRF_TOKEN_}"/>
 		</form:form>
 	</div>
 	<div class="modal fade" id="errorMessageModal" tabindex="-1" role="dialog" aria-hidden="true">

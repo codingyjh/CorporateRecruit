@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,8 +32,14 @@ public class SelfIntroduceController {
 	
 	@GetMapping("/resume/selfIntroduce.do/{resumeId}")
 	public ModelAndView viewSelfIntroducePage(
-			@PathVariable int resumeId) {
+			@PathVariable int resumeId
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
 
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
+		
 		SelfIntroduceVo selfIntroduce = this.selfIntroduceService.readOneSelfIntroduceByResumeIdService(resumeId);
 		ModelAndView view = new ModelAndView(HttpRequestHelper.getJspPath());
 		view.addObject("selfIntroduceVo", selfIntroduce);
@@ -44,7 +51,13 @@ public class SelfIntroduceController {
 	@ResponseBody
 	public Map<Object, Object> doSelfIntroduceTempSaveAction(
 			@ModelAttribute SelfIntroduceVo selfIntroduceVo
-			,@SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
+			,@SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
 		
 		String email = recruitMemberVo.getEmail();
 		selfIntroduceVo.setEmail(email);
@@ -67,9 +80,15 @@ public class SelfIntroduceController {
 			@PathVariable int resumeId
 			, @Valid @ModelAttribute SelfIntroduceVo selfIntroduceVo
 			, Errors errors
-			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo) {
-				
-		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_FINAL_SUBMISSION_AGREEEMENT + "/" +  resumeId);
+			, @SessionAttribute(Session.USER) RecruitMemberVo recruitMemberVo
+			, @RequestParam String token
+			, @SessionAttribute(Session.CSRF_TOKEN) String sessionToken) {
+		
+		if ( !token.equals(sessionToken) ) {
+			throw new RuntimeException("잘못된 인증");
+		}
+		
+		ModelAndView view = new ModelAndView(MasterCodeConstants.REDIRECT_RESUME_FINAL_SUBMISSION_AGREEEMENT + "/" +  resumeId + "?token=" + sessionToken);
 		
 		if ( errors.hasErrors() ) {
 			view.setViewName(MasterCodeConstants.VIEW_RESUME_SELF_INTRODUCE);

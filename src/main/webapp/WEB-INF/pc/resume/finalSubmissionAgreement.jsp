@@ -53,6 +53,7 @@
 					<div id="agreeBtnDiv" style="text-align:center;" >
 						<input type="button" id="finalSubmissionAgreeBtn" class="btn btn-primary" value="최종제출">
 					</div>
+					<input type="hidden" name="token" id="token" value="${sessionScope._CSRF_TOKEN_}"/>
 				</form:form>										
 	    	</div>
 	    </div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags" %>
 
 <link rel="stylesheet" href="<c:url value='/css/recruitBoard/recruitBoardDetail.css' />">
 
@@ -51,8 +52,10 @@
    		<tbody>
    			<tr>
    				<td colspan="6" style="text-align: right;">
-        			<a href="<c:url value='/recruitBoard/recruitBoardUpdate.do/${recruitBoardVo.boardId}?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning" type="button" >수정</a>	         				
-        			<a href="<c:url value='/recruitBoard/recruitBoardDelete.do/${recruitBoardVo.boardId}?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning" type="submit" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+   					<s:authorize access="hasRole('ROLE_ADMIN')" >
+	        			<a href="<c:url value='/recruitBoard/recruitBoardUpdate.do/${recruitBoardVo.boardId}?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning" type="button" >수정</a>	         				
+	        			<a href="<c:url value='/recruitBoard/recruitBoardDelete.do/${recruitBoardVo.boardId}?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning" type="submit" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+        			</s:authorize>
        				<a href="<c:url value='/recruitBoard/recruitAgreement.do/${recruitBoardVo.boardId}?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary" type="button" >지원하기</a>         				
    					<a href="<c:url value='/recruitBoard/recruitBoardList.do' />" class="btn btn-primary" type="button" >목록</a>     					     					   					
    				</td>

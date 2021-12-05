@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib	prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%-- <%@ taglib prefix="s" uri="http://www.springframework.org/security/tags" %>        --%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags" %>       
 
 <link rel="stylesheet" href="<c:url value='/css/recruitBoard/recruitBoardList.css' />">
 
@@ -14,13 +14,15 @@
 		<p class="text-center">OO 기업의 채용공고 게시판 입니다.</p>
 	</div>
 	<form:form id="searchForm" onsubmit="javascript:movePage(0);">
-    	<div class="col-lg-12">
-           <h1 class="page-header">채용공고 게시판 </h1>
-           <input type="text" name="searchKeyword" value="${recruitBoardSearchVo.searchKeyword}" />
-           <input type="submit" class="btn btn-primary" value="검색" onsubmit="javascript:movePage(0);"/>			   
-		   <a href="<c:url value='/recruitBoard/recruitBoardInit.do' />" class="btn btn-primary" type="button">검색 초기화</a>
-		   <a href="<c:url value='/recruitBoard/recruitBoardWrite.do?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning pull-right" type="button" >글 작성</a>
-        </div>
+		<div class="col-lg-12">
+			<h1 class="page-header">채용공고 게시판 </h1>
+			<input type="text" name="searchKeyword" value="${recruitBoardSearchVo.searchKeyword}" />
+			<input type="submit" class="btn btn-primary" value="검색" onsubmit="javascript:movePage(0);"/>			   
+			<a href="<c:url value='/recruitBoard/recruitBoardInit.do' />" class="btn btn-primary" type="button">검색 초기화</a>
+			<s:authorize access="hasRole('ROLE_ADMIN')" >
+				<a href="<c:url value='/recruitBoard/recruitBoardWrite.do?token=${sessionScope._CSRF_TOKEN_}' />" class="btn btn-primary btn-warning pull-right" type="button" >글 작성</a>
+			</s:authorize>
+		</div>
         <div class="col-lg-12"><!--게시판 넓이 -->
             <div class="panel panel-default">
                 <div class="panel-heading">채용공고 </div>

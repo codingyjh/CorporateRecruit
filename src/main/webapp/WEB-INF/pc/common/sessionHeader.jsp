@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/security/tags" %>
 <%@ page session="true" %>    
 
 <nav class="navbar navbar-default">
@@ -46,7 +47,9 @@
 						<ul class="dropdown-menu">						
 							<li><a href="<c:url value='/recruitMember/recruitMemberUpdate.do?token=${sessionScope._CSRF_TOKEN_}' />">비밀번호 변경</a></li>						
 							<li><a href="#">이력서 정보</a></li>
-							<li><a href="<c:url value='/recruitMember/recruitMemberList.do' />">회원정보</a></li>	
+							<s:authorize access="hasRole('ROLE_ADMIN')" >
+								<li><a href="<c:url value='/recruitMember/recruitMemberList.do' />">회원정보</a></li>
+							</s:authorize>	
 							<li><a href="<c:url value='/recruitMember/recruitMemberLogout.do?token=${sessionScope._CSRF_TOKEN_}' />">로그아웃</a></li>
 						</ul>
 					</li>
